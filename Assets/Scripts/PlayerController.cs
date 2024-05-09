@@ -6,33 +6,27 @@ public class PlayerController : MonoBehaviour
 {
     #region COMPONENTS
 
-    // -- COMPONENTS -- //
-
-    /// Holds the reference to the player's Rigidbody2D component.
+    // Holds the reference to the player's Rigidbody2D component.
     private Rigidbody2D rigidBody;
 
-    /// Holds the reference to the player's Sprite Renderer component.
+    // Holds the reference to the player's Sprite Renderer component.
     private SpriteRenderer spriteRenderer;
 
-    /// Holds the reference to the player's Animator component
+    // Holds the reference to the player's Animator component
     private Animator animator;
 
     #endregion
 
-    #region STATS
+    #region ATRIBUTES
 
-    // -- STATS -- //
-
-    /// The value to multiply the movement vector by; the speed of the player.
+    // The value to multiply the movement vector by; the speed of the player.
     [SerializeField] private float movementSpeed;
 
     #endregion
 
     #region PROPERTIES
 
-    // -- PROPERTIES -- //
-
-    /// Gets or sets the movement speed of the player.
+    // Gets or sets the movement speed of the player.
     public float MovementSpeed
     {
         get { return this.movementSpeed; }
@@ -43,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     #region UNITY CALLBACKS
 
-    /// Called once at beginning of scene.
+    // Called once at beginning of scene.
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -51,7 +45,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    /// Called once a frame. Varies with framerate.
+    // Called once a frame. Varies with framerate.
     private void Update()
     {
         Movement();
@@ -61,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     #region METHODS
 
-    /// Handles movement related input and rigidbody forces responsible for movement
+    // Handles movement related input and rigidbody forces responsible for movement
     private void Movement()
     {
 
