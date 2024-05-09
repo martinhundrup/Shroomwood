@@ -6,11 +6,11 @@ public class ItemDrop : MonoBehaviour
 {
     #region ATRIBUTES
 
-    // The transform of the game object the camera will target.
-    [SerializeField] private Vector3 target;
+    // The transform of the game object we will target.
+    [SerializeField] private Transform targetTrans;
 
-    // The offset at which we look at the target.
-    [SerializeField] private Vector3 offset;
+    // The coords of the target to move to upon instantiation.
+    [SerializeField] private Vector3 targetPos;
 
     // The damping value to follow the target with. Smaller values result in closer following.
     [SerializeField] private float smoothness;
@@ -29,10 +29,16 @@ public class ItemDrop : MonoBehaviour
     #region PROPERTIES
 
     // Gets or sets the transform of the game object the camera will target.
-    public Vector3 Target
+    public Vector3 TargetPos
     {
-        get { return this.target; }
-        set { this.target = value; }
+        get { return this.targetPos; }
+        set { this.targetPos = value; }
+    }
+
+    public Transform TargetTrans
+    {
+        get { return this.targetTrans; } 
+        set { this.targetTrans = value; }
     }
 
     // Gets or sets the damping value to follow the target with. Smaller values result in closer following.
@@ -49,7 +55,10 @@ public class ItemDrop : MonoBehaviour
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        if (Mathf.Abs(Vector2.Distance(transform.position, target)) > 0.2f) // only moves the object if it's not at the target already
+        if (targetsPlayer)
+            targetPos = targetTrans.position;
+
+        if (Mathf.Abs(Vector2.Distance(transform.position, targetPos)) > 0.1f) // only moves the object if it's not at the target already
         {
             UpdatePosition();
         }
@@ -71,7 +80,7 @@ public class ItemDrop : MonoBehaviour
         // the player is in our trigger collider
         if (hasArrived && collision.CompareTag("Player"))
         {
-            target = collision.gameObject.transform.position;
+            targetTrans = collision.gameObject.transform;
             targetsPlayer = true;
         }
     }
@@ -84,10 +93,10 @@ public class ItemDrop : MonoBehaviour
     private void UpdatePosition()
     {
         // apply any offset
-        Vector2 targetPos = target + offset;
+        Vector2 _target = targetPos;
 
         // smooth the position to a new variable
-        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, targetPos, ref zeroVector, smoothness);
+        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, _target, ref zeroVector, smoothness);
 
         // set our position to the smoothed position
         transform.position = smoothedPosition;

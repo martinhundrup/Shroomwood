@@ -69,7 +69,7 @@ public class Breakable : MonoBehaviour
                 // instantiate the drop and place it in the random area
                 ItemDrop item = Instantiate(_item);
                 item.transform.position = transform.position;
-                item.Target = pos;
+                item.TargetPos = pos;
             }
         }
     }
@@ -97,9 +97,9 @@ public class Breakable : MonoBehaviour
     }
 
     // The method called when the hurtbox is hit.
-    private void Hurt(int damage)
+    private void Hurt(int _damage)
     {
-        health -= damage;
+        health -= _damage;
         CheckHealth();
     }
 
