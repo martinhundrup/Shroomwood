@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
-    #region ATRIBUTES
+    #region ATTRIBUTES
 
     // The current amount of damage this object can take before it is destroyed.
     [SerializeField] private int health;
-
-    // Holds reference to the hurtbox of this object.
-    private Hurtbox hurtbox;
 
     // Holds reference to all the items and amounts to be dropped when this object is destroyed. 
     private Dictionary<ItemDrop, int> itemDrops;
@@ -47,8 +44,6 @@ public class Breakable : MonoBehaviour
     // Called once at beginning of scene.
     private void Start()
     {
-        hurtbox = GetComponent<Hurtbox>();
-        hurtbox.OnHurt += Hurt;
         itemDrops = new Dictionary<ItemDrop, int>();
 
         LoadDictionary();
@@ -71,6 +66,16 @@ public class Breakable : MonoBehaviour
                 item.transform.position = transform.position;
                 item.TargetPos = pos;
             }
+        }
+    }
+
+    // The method called when another object with a 2D collider overlaps with this object's collider.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // a hitbox has collided with this
+        if (collision.gameObject.GetComponent<Hitbox>() != null)
+        {
+            Hurt(collision.gameObject.GetComponent<Hitbox>().Damage);
         }
     }
 

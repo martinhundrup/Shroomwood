@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// ** DEPRECATED ** //
+
 public class Hurtbox : MonoBehaviour
 {
     #region EVENTS

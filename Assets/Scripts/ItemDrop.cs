@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    #region ATRIBUTES
+    #region EVENTS
+
+    // An event called when a hurtbox takes damage (collides with a hitbox).
+    public delegate void CollectAction(ItemData _item);
+
+    // The event called when this object collides with a hitbox.
+    public event CollectAction OnCollect;
+
+    #endregion
+
+    #region ATTRIBUTES
+
+    // The item data that represents this object
+    [SerializeField] private ItemData itemData;
 
     // The transform of the game object we will target.
     [SerializeField] private Transform targetTrans;
@@ -48,9 +61,21 @@ public class ItemDrop : MonoBehaviour
         set { this.smoothness = value; }
     }
 
+    // Gets the item data.
+    public ItemData ItemData
+    {
+        get { return this.itemData; } 
+    }
+
     #endregion
 
     #region UNITY CALLBACKS
+
+    // Called when this object enters the scene.
+    private void Awake()
+    {
+        FindObjectOfType<InventoryManager>().Subscribe(this);
+    }
 
     // Called once a frame. Varies with framerate.
     private void Update()
@@ -69,6 +94,7 @@ public class ItemDrop : MonoBehaviour
             // destroys this object when it arrives at the player.
             if (targetsPlayer)
             {
+                OnCollect(this.itemData);
                 Destroy(this.gameObject);
             }
         }

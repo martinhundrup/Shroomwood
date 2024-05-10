@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    #region ATRIBUTES
+    #region ATTRIBUTES
 
     // The transform of the game object the camera will target.
     [SerializeField] private Transform target;

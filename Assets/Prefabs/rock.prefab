@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6436821109767996659}
   - component: {fileID: 7877211506961135578}
   m_Layer: 0
-  m_Name: dropitem
+  m_Name: rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8301887, g: 0.3563546, b: 0.3563546, a: 1}
+  m_Color: {r: 0.4326547, g: 0.83137256, b: 0.35686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3164b1d7fb3fa914ab39ce609fe6f83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  offset: {x: 0, y: 0, z: 0}
+  itemData: {fileID: 11400000, guid: 3b1372f1791b3f3438d001bac2c994d2, type: 2}
+  targetTrans: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
   smoothness: 0.2
 --- !u!58 &7877211506961135578
 CircleCollider2D:

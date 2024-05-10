@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region ATRIBUTES
+    #region ATTRIBUTES
 
     // The value to multiply the movement vector by; the speed of the player.
     [SerializeField] private float movementSpeed;

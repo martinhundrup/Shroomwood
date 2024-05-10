@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    #region ATRIBUTES
+    #region ATTRIBUTES
 
     // The damage this object deals.
     [SerializeField] private int damage;
