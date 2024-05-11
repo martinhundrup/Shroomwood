@@ -19,19 +19,18 @@ public class PlayerController : MonoBehaviour
 
     #region ATTRIBUTES
 
-    // The value to multiply the movement vector by; the speed of the player.
-    [SerializeField] private float movementSpeed;
+    // Contains the scriptable object that contains the player's stats.
+    [SerializeField] private PlayerData playerData;
+
+    // The player's melee hitbox.
+    [SerializeField] private GameObject meleeHitbox;
+
+    // The last direction the player was moving/facing.
+    private Direction direction;
 
     #endregion
 
-    #region PROPERTIES
-
-    // Gets or sets the movement speed of the player.
-    public float MovementSpeed
-    {
-        get { return this.movementSpeed; }
-        set {  this.movementSpeed = value; }
-    }
+    #region PROPERTIES    
 
     #endregion
 
@@ -49,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Movement();
+        Attack();
     }
 
     #endregion
@@ -70,6 +70,20 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Running", true);
             animator.SetBool("Idle", false);
+
+            // get the direction the player is facing only when moving
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                // facing left or right
+                if (x > 0) this.direction = Direction.Right;
+                else this.direction = Direction.Left;
+            }
+            else
+            {
+                // facing up or down
+                if (y > 0) this.direction = Direction.Up;
+                else this.direction = Direction.Down;
+            }
         }
         else
         {
@@ -90,7 +104,30 @@ public class PlayerController : MonoBehaviour
 
         // set the rigidbody velocity to the movement vector
         // velocity is normalized with framerate by default
-        rigidBody.velocity = movement_vector * movementSpeed;
+        rigidBody.velocity = movement_vector * this.playerData.MovementSpeed;
+    }
+
+    // Handles the input and logistics of the attack
+    private void Attack()
+    {
+        // melee attack
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject hitbox = Instantiate(this.meleeHitbox.gameObject, transform);
+            hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
+            
+            switch (this.direction)
+            {
+                case Direction.Left:
+                    hitbox.transform.position = new Vector3 (-1, 0, 0) + this.transform.position; break;
+                case Direction.Right:
+                    hitbox.transform.position = new Vector3(1, 0, 0) + this.transform.position; break;
+                case Direction.Up:
+                    hitbox.transform.position = new Vector3(0, 1, 0) + this.transform.position; break;
+                default:
+                    hitbox.transform.position = new Vector3(0, -1, 0) + this.transform.position; break;
+            }
+        }
     }
 
     #endregion

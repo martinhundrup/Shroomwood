@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Breakable : MonoBehaviour
@@ -11,7 +12,7 @@ public class Breakable : MonoBehaviour
     [SerializeField] private int health;
 
     // Holds reference to all the items and amounts to be dropped when this object is destroyed. 
-    private Dictionary<ItemDrop, int> itemDrops;
+    private Dictionary<ItemData, int> itemDrops;
 
     // The size of the area items are dropped in.
     [SerializeField] private float dropRadius;
@@ -20,7 +21,7 @@ public class Breakable : MonoBehaviour
     [Serializable]
     private class KeyValuePair
     {
-        public ItemDrop key;
+        public ItemData key;
         public int val;
     }
 
@@ -44,7 +45,7 @@ public class Breakable : MonoBehaviour
     // Called once at beginning of scene.
     private void Start()
     {
-        itemDrops = new Dictionary<ItemDrop, int>();
+        itemDrops = new Dictionary<ItemData, int>();
 
         LoadDictionary();
     }
@@ -52,7 +53,7 @@ public class Breakable : MonoBehaviour
     // Called when this object/script is destroyed.
     private void OnDestroy()
     {
-        foreach (ItemDrop _item in this.itemDrops.Keys)
+        foreach (ItemData _item in this.itemDrops.Keys)
         {
             for (int i = 0; i < this.itemDrops[_item]; i++)
             {
@@ -62,7 +63,7 @@ public class Breakable : MonoBehaviour
                 pos.y += dropRadius * UnityEngine.Random.value - dropRadius / 2;
 
                 // instantiate the drop and place it in the random area
-                ItemDrop item = Instantiate(_item);
+                ItemDrop item = Instantiate(_item.ItemDrop.GetComponent<ItemDrop>());
                 item.transform.position = transform.position;
                 item.TargetPos = pos;
             }
@@ -71,6 +72,16 @@ public class Breakable : MonoBehaviour
 
     // The method called when another object with a 2D collider overlaps with this object's collider.
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // a hitbox has collided with this
+        if (collision.gameObject.GetComponent<Hitbox>() != null)
+        {
+            Hurt(collision.gameObject.GetComponent<Hitbox>().Damage);
+        }
+    }
+
+    // The method called when another object with a 2D collider overlaps with this object's collider.
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // a hitbox has collided with this
         if (collision.gameObject.GetComponent<Hitbox>() != null)
