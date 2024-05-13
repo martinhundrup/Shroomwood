@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,12 +26,22 @@ public class PlayerController : MonoBehaviour
     // The player's melee hitbox.
     [SerializeField] private GameObject meleeHitbox;
 
+    // The player's ranged attack projectile.
+    [SerializeField] private GameObject projectile;
+
     // The last direction the player was moving/facing.
     private Direction direction;
 
     #endregion
 
     #region PROPERTIES    
+
+    // Gets the current direction of the player.
+    public Direction Direction
+    {
+        get { return this.direction; }
+
+    }
 
     #endregion
 
@@ -72,18 +83,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Idle", false);
 
             // get the direction the player is facing only when moving
-            if (Mathf.Abs(x) > Mathf.Abs(y))
-            {
-                // facing left or right
-                if (x > 0) this.direction = Direction.Right;
-                else this.direction = Direction.Left;
-            }
-            else
-            {
-                // facing up or down
-                if (y > 0) this.direction = Direction.Up;
-                else this.direction = Direction.Down;
-            }
+            this.direction = FindDir(x, y);
         }
         else
         {
@@ -111,22 +111,89 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         // melee attack
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Melee"))
         {
             GameObject hitbox = Instantiate(this.meleeHitbox.gameObject, transform);
             hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
-            
-            switch (this.direction)
-            {
-                case Direction.Left:
-                    hitbox.transform.position = new Vector3 (-1, 0, 0) + this.transform.position; break;
-                case Direction.Right:
-                    hitbox.transform.position = new Vector3(1, 0, 0) + this.transform.position; break;
-                case Direction.Up:
-                    hitbox.transform.position = new Vector3(0, 1, 0) + this.transform.position; break;
-                default:
-                    hitbox.transform.position = new Vector3(0, -1, 0) + this.transform.position; break;
-            }
+
+            hitbox.transform.position = DirToVect(this.direction) + this.transform.position;
+        }
+        else if (Input.GetButtonDown("Ranged"))
+        {
+            GameObject proj = Instantiate(this.projectile.gameObject);
+            proj.transform.position = this.transform.position;
+            Projectile p = proj.GetComponent<Projectile>();
+
+            p.Dir = DirToVect(this.direction);
+            p.Fire();
+        }
+    }
+
+    #endregion
+
+    #region UTILITY
+
+    // Finds the direction something is facing based on x and y coords.
+    private Direction FindDir(float _x, float _y)
+    {
+
+        //Debug.Log("x: " + _x + "\ny: " + _y);
+
+        if (_x == 0 && _y > 0) // up
+        {
+            return Direction.Up;
+        }
+        else if (_x == 0 && _y < 0) // down
+        {
+            return Direction.Down;
+        }
+        else if (_x < 0 && _y == 0) // left
+        {
+            return Direction.Left;
+        }
+        else if (_x > 0 && _y == 0) // right
+        {
+            return Direction.Right;
+        }
+        else if (_x < 0 && _y > 0) // up left
+        {
+            return Direction.UpLeft;
+        }
+        else if (_x > 0 && _y > 0) // up right
+        {
+            return Direction.UpRight;
+        }
+        else if (_x < 0 && _y < 0) // down left
+        {
+            return Direction.DownLeft;
+        }
+        else // down right
+        {
+            return Direction.DownRight;
+        }
+    }
+
+    // Converts a direction enum to a normalized vector 3.
+    private Vector3 DirToVect(Direction _dir)
+    {
+        switch (_dir)
+        {
+            case Direction.Left:
+                return new Vector3(-1, 0, 0); 
+            case Direction.Right:
+                return new Vector3(1, 0, 0); 
+            case Direction.Up:
+                return new Vector3(0, 1, 0); 
+            case Direction.UpLeft:
+                return new Vector3(-1, 1, 0).normalized; 
+            case Direction.UpRight:
+                return new Vector3(1, 1, 0).normalized; 
+            case Direction.DownLeft:
+                return new Vector3(-1, -1, 0).normalized; 
+            case Direction.DownRight:
+                return new Vector3(1, -1, 0).normalized; 
+            default:
+                return new Vector3(0, -1, 0); 
         }
     }
 

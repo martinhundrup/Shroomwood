@@ -509,7 +509,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7d49a6b3e08d734d996115d394f6364, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -698,7 +698,6 @@ GameObject:
   - component: {fileID: 2032898766}
   - component: {fileID: 2032898765}
   - component: {fileID: 2032898764}
-  - component: {fileID: 2032898768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -719,6 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 9d96a854cb3671a46ac6a975315ff9a5, type: 2}
+  meleeHitbox: {fileID: 1104272908595059409, guid: a309f76c4290163478df8da1e3eb46e9, type: 3}
 --- !u!61 &2032898765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -807,19 +807,6 @@ Transform:
   - {fileID: 911834082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2032898768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032898763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07e3d91192ca4b40b5196b5c051d18c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
