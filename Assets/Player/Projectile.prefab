@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  knockbackForce: 1
+  stunTime: 1
 --- !u!114 &3629401553325274459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,4 +177,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1508b2d5a3e8654da65351569ebbebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 10

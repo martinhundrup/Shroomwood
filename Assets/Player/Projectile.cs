@@ -7,11 +7,12 @@ public class Projectile : MonoBehaviour
     #region ATTRIBUTES
 
     // Ref to the projectile's rigidbody component.
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rigidBody;
 
     // The direction the projectile should move in.
     private Vector2 dir = new Vector2(1f, 1f);
 
+    // The speed at which the projecile moves.
     [SerializeField] private float speed;
 
     #endregion
@@ -39,14 +40,14 @@ public class Projectile : MonoBehaviour
     // Called when object created.
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Called when a trigger collision occurs.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // destroy this if it collides with a breakable object
-        if (collision.GetComponent<Breakable>() != null)
+        // destroy this if it collides with anything other than the player
+        if (!collision.CompareTag("Player") && !collision.CompareTag("ItemDrop"))
         {
             Destroy(this.gameObject);
         }
@@ -59,7 +60,7 @@ public class Projectile : MonoBehaviour
     // Starts the movement of the object.
     public void Fire()
     {
-        rigidbody.velocity = (dir.normalized * speed);
+        rigidBody.velocity = (dir.normalized * speed);
     }
 
     #endregion

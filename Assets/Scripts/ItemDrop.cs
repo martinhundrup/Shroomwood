@@ -80,10 +80,16 @@ public class ItemDrop : MonoBehaviour
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        if (targetsPlayer)
+        // r allows the player to collect objects from a more reasonable distance
+        float r = 0.1f;
+        if (targetsPlayer) 
+        { 
             targetPos = targetTrans.position;
+            r = 0.4f;
+        }
+            
 
-        if (Mathf.Abs(Vector2.Distance(transform.position, targetPos)) > 0.1f) // only moves the object if it's not at the target already
+        if (Mathf.Abs(Vector2.Distance(transform.position, targetPos)) > r) // only moves the object if it's not at the target already
         {
             UpdatePosition();
         }

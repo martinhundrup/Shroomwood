@@ -9,6 +9,12 @@ public class Hitbox : MonoBehaviour
     // The damage this object deals.
     [SerializeField] private int damage;
 
+    // The force of which objects are pushed back.
+    [SerializeField] private float knockbackForce;
+
+    // The amount of time objects are pushed back for (tenths of seconds).
+    [SerializeField] private float stunTime;
+
     #endregion
 
     #region PROPERTIES
@@ -18,6 +24,18 @@ public class Hitbox : MonoBehaviour
     {
         get { return this.damage; }
         set { this.damage = value; }
+    }
+
+    // Gets the knockback force.
+    public float KnockbackForce
+    {
+        get { return this.knockbackForce; }
+    }
+
+    // Gets the stun time.
+    public float StunTime
+    {
+        get { return this.stunTime; }
     }
 
     #endregion

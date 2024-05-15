@@ -128,8 +128,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
+      x: 136
+      y: 406
       width: 58
       height: 58
     spriteID: daca49ef2d65af84f8b2f8cad338f891
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 136, y: 406}
   - name: shroomie_Frame_1
     originalName: 
     pivot: {x: 0.5, y: -0.03448276}
@@ -148,8 +148,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 70
+      x: 202
+      y: 4
       width: 58
       height: 58
     spriteID: 04eca5bad6e39c440b2ed9c13d5c6fcf
@@ -160,7 +160,667 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 70}
+    uvTransform: {x: 202, y: 4}
+  - name: shroomie_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 70
+      width: 58
+      height: 58
+    spriteID: 62c720a401910344c874d6777c960b87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 70}
+  - name: shroomie_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 58
+      height: 59
+    spriteID: dbd9ddbddc46c1943aaa1e34066044a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: shroomie_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.0877193}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 136
+      width: 58
+      height: 57
+    spriteID: 9ad9f7adf05a97644abd09584122a444
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 136}
+  - name: shroomie_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 71
+      width: 58
+      height: 59
+    spriteID: dc569adb6d81c16498fa0081817f7019
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 71}
+  - name: shroomie_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.0877193}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 201
+      width: 58
+      height: 57
+    spriteID: 3d8d1df47ba86f140bab7f0c0080ce10
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 201}
+  - name: shroomie_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 138
+      width: 58
+      height: 59
+    spriteID: 180ee05267b66564e8f5e180639f528f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 138}
+  - name: shroomie_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 266
+      width: 58
+      height: 57
+    spriteID: eaa4cd78617c990438bf7dc49ae43865
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 266}
+  - name: shroomie_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 331
+      width: 58
+      height: 57
+    spriteID: 8848522c0cedd324cab0f3fce57350df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 331}
+  - name: shroomie_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 205
+      width: 58
+      height: 59
+    spriteID: c4976c55f5711b044aa1caf13417663e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 205}
+  - name: shroomie_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 272
+      width: 58
+      height: 59
+    spriteID: e75a2a154a4c7594790ff0dd4b30a2d8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 272}
+  - name: shroomie_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 396
+      width: 58
+      height: 57
+    spriteID: d6b7d8a2bcf5e3c4c87d8acc9f4d5209
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 202, y: 396}
+  - name: shroomie_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 4
+      width: 58
+      height: 57
+    spriteID: 168945686dc9ebc439047a4a87a640f8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 4}
+  - name: shroomie_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 339
+      width: 58
+      height: 59
+    spriteID: 7954ac006988b734dbe38e8ee945a968
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 339}
+  - name: shroomie_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 406
+      width: 58
+      height: 59
+    spriteID: 157c45e572379cc468a032f8638a70c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 406}
+  - name: shroomie_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 69
+      width: 58
+      height: 57
+    spriteID: d011cd613d935e84da7548deb1e9f274
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 69}
+  - name: shroomie_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 134
+      width: 58
+      height: 57
+    spriteID: 5e9820b299de0f14eb94fdb626a3c84b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 134}
+  - name: shroomie_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 4
+      width: 58
+      height: 59
+    spriteID: 7204c0af1cc0d0f4db1907b6ab29d160
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 4}
+  - name: shroomie_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 71
+      width: 58
+      height: 59
+    spriteID: b2ee6c96f8d25d74fb59b2612ba907d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 71}
+  - name: shroomie_Frame_20
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 199
+      width: 58
+      height: 57
+    spriteID: 3301b2caf2e9363429e7df11337d47d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 199}
+  - name: shroomie_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 264
+      width: 58
+      height: 57
+    spriteID: 6d04ac67a2078f047847ef264ab99e6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 264}
+  - name: shroomie_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 138
+      width: 58
+      height: 59
+    spriteID: 6e48680365378704581cb22f08860458
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 138}
+  - name: shroomie_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 205
+      width: 58
+      height: 59
+    spriteID: 5277031377c28ad4185a442f20cf9df9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 205}
+  - name: shroomie_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 329
+      width: 58
+      height: 57
+    spriteID: d2fdd86eb2d63d349a27f3569fa89285
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 329}
+  - name: shroomie_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: -0.03508772}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 394
+      width: 58
+      height: 57
+    spriteID: 8bb7c97c126ee8343a7074a1d0b0404c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 394}
+  - name: shroomie_Frame_26
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 272
+      width: 58
+      height: 59
+    spriteID: 1ef036f2451e09740a8e520259944dbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 272}
+  - name: shroomie_Frame_27
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 339
+      width: 58
+      height: 59
+    spriteID: 3211756f2311f7f458976aa9ba682118
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 339}
+  - name: shroomie_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 70
+      y: 406
+      width: 58
+      height: 59
+    spriteID: 39607e2c2d6b7ee4188fd6934dc45a69
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 70, y: 406}
+  - name: shroomie_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 4
+      width: 58
+      height: 59
+    spriteID: 21381828827a20f4ea90d6fd498cc34e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 4}
+  - name: shroomie_Frame_30
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 71
+      width: 58
+      height: 59
+    spriteID: 85f11aa77d4262249a14ce819e908cc4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 71}
+  - name: shroomie_Frame_31
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 138
+      width: 58
+      height: 59
+    spriteID: 2f78af4702da816479967bd5ad4660fb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 138}
+  - name: shroomie_Frame_32
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 205
+      width: 58
+      height: 59
+    spriteID: e5666e7a00c48cc4ba389ca868f1ffe6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 205}
+  - name: shroomie_Frame_33
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 272
+      width: 58
+      height: 59
+    spriteID: 18a11ef02b0961b4cbd69ed1cf77cdcf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 272}
+  - name: shroomie_Frame_34
+    originalName: 
+    pivot: {x: 0.5, y: -0.033898305}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 339
+      width: 58
+      height: 59
+    spriteID: 722e7864df18d364783201d2ffcffb13
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 339}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -186,6 +846,270 @@ ScriptedImporter:
         width: 58
         height: 58
       spriteId: 04eca5bad6e39c440b2ed9c13d5c6fcf
+    - name: shroomie_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 58
+      spriteId: 62c720a401910344c874d6777c960b87
+    - name: shroomie_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: dbd9ddbddc46c1943aaa1e34066044a6
+    - name: shroomie_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 3
+        y: 5
+        width: 58
+        height: 57
+      spriteId: 9ad9f7adf05a97644abd09584122a444
+    - name: shroomie_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: dc569adb6d81c16498fa0081817f7019
+    - name: shroomie_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 3
+        y: 5
+        width: 58
+        height: 57
+      spriteId: 3d8d1df47ba86f140bab7f0c0080ce10
+    - name: shroomie_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 180ee05267b66564e8f5e180639f528f
+    - name: shroomie_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: eaa4cd78617c990438bf7dc49ae43865
+    - name: shroomie_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 8848522c0cedd324cab0f3fce57350df
+    - name: shroomie_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: c4976c55f5711b044aa1caf13417663e
+    - name: shroomie_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: e75a2a154a4c7594790ff0dd4b30a2d8
+    - name: shroomie_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: d6b7d8a2bcf5e3c4c87d8acc9f4d5209
+    - name: shroomie_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 168945686dc9ebc439047a4a87a640f8
+    - name: shroomie_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 7954ac006988b734dbe38e8ee945a968
+    - name: shroomie_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 157c45e572379cc468a032f8638a70c4
+    - name: shroomie_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: d011cd613d935e84da7548deb1e9f274
+    - name: shroomie_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 5e9820b299de0f14eb94fdb626a3c84b
+    - name: shroomie_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 7204c0af1cc0d0f4db1907b6ab29d160
+    - name: shroomie_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: b2ee6c96f8d25d74fb59b2612ba907d5
+    - name: shroomie_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 3301b2caf2e9363429e7df11337d47d7
+    - name: shroomie_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 6d04ac67a2078f047847ef264ab99e6a
+    - name: shroomie_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 6e48680365378704581cb22f08860458
+    - name: shroomie_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 5277031377c28ad4185a442f20cf9df9
+    - name: shroomie_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: d2fdd86eb2d63d349a27f3569fa89285
+    - name: shroomie_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 57
+      spriteId: 8bb7c97c126ee8343a7074a1d0b0404c
+    - name: shroomie_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 1ef036f2451e09740a8e520259944dbd
+    - name: shroomie_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 3211756f2311f7f458976aa9ba682118
+    - name: shroomie_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 39607e2c2d6b7ee4188fd6934dc45a69
+    - name: shroomie_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 21381828827a20f4ea90d6fd498cc34e
+    - name: shroomie_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 85f11aa77d4262249a14ce819e908cc4
+    - name: shroomie_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 2f78af4702da816479967bd5ad4660fb
+    - name: shroomie_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: e5666e7a00c48cc4ba389ca868f1ffe6
+    - name: shroomie_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 18a11ef02b0961b4cbd69ed1cf77cdcf
+    - name: shroomie_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 3
+        y: 2
+        width: 58
+        height: 59
+      spriteId: 722e7864df18d364783201d2ffcffb13
     linkedCells: []
     parentIndex: -1
   platformSettings: []

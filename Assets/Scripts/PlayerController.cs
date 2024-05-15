@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     // Holds the reference to the player's Sprite Renderer component.
     private SpriteRenderer spriteRenderer;
 
-    // Holds the reference to the player's Animator component
+    // Holds the reference to the player's Running Animator component
     private Animator animator;
 
     #endregion
@@ -30,7 +31,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile;
 
     // The last direction the player was moving/facing.
-    private Direction direction;
+    [SerializeField] private Direction direction;
+
+    // The time needed to wait between attacks.
+    [SerializeField] private float attackCooldown;
+
+    // Denotes whether the player is currently attackig or not.
+    bool isAttacking = false;
+
+    // Denotes whether the player is currently running or not.
+    [SerializeField] bool isRunning = false;
+
+    // Controls the running animations.
+    [SerializeField] private AnimatorController runController;
+
+    // Controls the idle animations.
+    [SerializeField] private AnimatorController idleController;
+
+    #endregion
+
+    #region ANIMATION VARS
+
+    private bool idle_front = false;
+    private bool idle_back = false;
+    private bool idle_side = false;
+    private bool idle_quarterFront = false;
+    private bool idle_quarterBack = false;
 
     #endregion
 
@@ -40,7 +66,6 @@ public class PlayerController : MonoBehaviour
     public Direction Direction
     {
         get { return this.direction; }
-
     }
 
     #endregion
@@ -60,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Attack();
+        Animate();
     }
 
     #endregion
@@ -79,16 +105,14 @@ public class PlayerController : MonoBehaviour
         // update animation state to running if moving in either direction
         if (Mathf.Abs(x) != 0 || Mathf.Abs(y) != 0)
         {
-            animator.SetBool("Running", true);
-            animator.SetBool("Idle", false);
+            isRunning = true;
 
             // get the direction the player is facing only when moving
             this.direction = FindDir(x, y);
         }
         else
         {
-            animator.SetBool("Running", false);
-            animator.SetBool("Idle", true);
+            isRunning = false;
         }
 
         // adjust the flipX attribute of the sprite appropriately
@@ -110,23 +134,89 @@ public class PlayerController : MonoBehaviour
     // Handles the input and logistics of the attack
     private void Attack()
     {
-        // melee attack
-        if (Input.GetButtonDown("Melee"))
+        // don't attack again if already attacking
+        if (isAttacking)
         {
-            GameObject hitbox = Instantiate(this.meleeHitbox.gameObject, transform);
-            hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
-
-            hitbox.transform.position = DirToVect(this.direction) + this.transform.position;
+            return;
         }
-        else if (Input.GetButtonDown("Ranged"))
+        else
         {
-            GameObject proj = Instantiate(this.projectile.gameObject);
-            proj.transform.position = this.transform.position;
-            Projectile p = proj.GetComponent<Projectile>();
+            // melee attack
+            if (Input.GetButtonDown("Melee"))
+            {
+                GameObject hitbox = Instantiate(this.meleeHitbox.gameObject, transform);
+                hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
 
-            p.Dir = DirToVect(this.direction);
-            p.Fire();
+                hitbox.transform.position = DirToVect(this.direction) + this.transform.position;
+                _Attack();
+            }
+            else if (Input.GetButtonDown("Ranged"))
+            {
+                GameObject proj = Instantiate(this.projectile.gameObject);
+                proj.transform.position = this.transform.position;
+                Projectile p = proj.GetComponent<Projectile>();
+
+                p.Dir = DirToVect(this.direction);
+                p.Fire();
+            }
+
+            void _Attack()
+            {
+                Debug.Log("attack");
+                isAttacking = true;
+                float t = this.playerData.MovementSpeed;
+                Debug.Log(t);
+                this.playerData.MovementSpeed = 0;
+                StartCoroutine(AttackCooldown(this.attackCooldown, t));
+            }
         }
+    }
+
+    // Responsible for figuring out what animation to play
+    public void Animate()
+    {
+        ResetAnimation();
+
+        if (!isRunning)
+        {
+            animator.runtimeAnimatorController = idleController;
+        }
+        else
+        {
+            animator.runtimeAnimatorController = runController;
+        }
+
+        switch (this.direction)
+        {
+            case Direction.Left:
+                this.idle_side = true; break;
+            case Direction.Right:
+                this.idle_side = true; break;
+            case Direction.Up:
+                this.idle_back = true; break;
+            case Direction.DownLeft:
+                this.idle_quarterFront = true; break;
+            case Direction.DownRight:
+                this.idle_quarterFront = true; break;
+            case Direction.UpRight:
+                this.idle_quarterBack = true; break;
+            case Direction.UpLeft:
+                this.idle_quarterBack = true; break;
+            default:
+                this.idle_front = true; break;
+        }
+        
+
+        ApplyAnimations();
+    }
+
+    // Waits an amount of time before setting the 'isAttacking' bool to false.
+    private IEnumerator AttackCooldown(float _waitTime, float _speed)
+    {
+        yield return new WaitForSeconds(_waitTime);
+
+        isAttacking = false;
+        this.playerData.MovementSpeed = _speed;
     }
 
     #endregion
@@ -195,6 +285,28 @@ public class PlayerController : MonoBehaviour
             default:
                 return new Vector3(0, -1, 0); 
         }
+    }
+
+    // Cancels all animations.
+    private void ResetAnimation()
+    {
+        idle_back = false;
+        idle_front = false;
+        idle_quarterBack = false;
+        idle_quarterFront = false;
+        idle_side = false;
+
+        ApplyAnimations();
+    }
+
+    // Sets all animations to their corresponding boolean values.
+    private void ApplyAnimations()
+    {
+        this.animator.SetBool("Front", idle_front);
+        this.animator.SetBool("Back", idle_back);
+        this.animator.SetBool("Side", idle_side);
+        this.animator.SetBool("QuarterFront", idle_quarterFront);
+        this.animator.SetBool("QuarterBack", idle_quarterBack);
     }
 
     #endregion
