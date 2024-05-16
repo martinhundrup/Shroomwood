@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RockItem
   m_EditorClassIdentifier: 
   itemName: Rock
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 547b02d35bd107e499260e474e22d189, type: 3}
   description: A small rock.
   itemDrop: {fileID: 8248758536191478794, guid: fd91dd3a7a13a3f4fbbf8327560b5db1, type: 3}

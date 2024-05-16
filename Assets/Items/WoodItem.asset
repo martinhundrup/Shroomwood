@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WoodItem
   m_EditorClassIdentifier: 
   itemName: Wood
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: cbf60eae42637c34bbbfcac7431d7cd3, type: 3}
   description: A small piece of wood.
   itemDrop: {fileID: 8248758536191478794, guid: 38b36821c43f0f047824d82fc53edbc9, type: 3}

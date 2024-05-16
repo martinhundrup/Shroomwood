@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
+    // TODO: make it so the item is only attracted to the player if a slot is open.
+
     #region EVENTS
 
     // An event called when a hurtbox takes damage (collides with a hitbox).
@@ -80,7 +82,7 @@ public class ItemDrop : MonoBehaviour
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        // r allows the player to collect objects from a more reasonable distance
+        // r allows the player to pick up objects from a more reasonable distance
         float r = 0.1f;
         if (targetsPlayer) 
         { 
@@ -100,6 +102,7 @@ public class ItemDrop : MonoBehaviour
             // destroys this object when it arrives at the player.
             if (targetsPlayer)
             {
+                Debug.Log("destroy item");
                 OnCollect(this.itemData);
                 Destroy(this.gameObject);
             }

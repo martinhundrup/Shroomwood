@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    #region EVENTS
+
+    // An event called when a hurtbox takes damage (collides with a hitbox).
+    public delegate void CollectAction();
+
+    // The event called when this object collides with a hitbox.
+    public event CollectAction OnCollect;
+
+    #endregion
+
     #region ATTRIBUTES
 
     // Holds reference to the instantiated player script.
     private PlayerController player;
 
-    // The items and corresponding amounts currently in the main inventory.
-    private Dictionary<ItemData, int> inventory;
+    [SerializeField] private InventoryData inventory;
+
+    
 
     #endregion
 
@@ -20,7 +31,6 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         this.player = FindObjectOfType<PlayerController>();
-        this.inventory = new Dictionary<ItemData, int>();
     }
 
     // Update is called once per frame
@@ -42,16 +52,20 @@ public class InventoryManager : MonoBehaviour
     // Adds an item to the inventory when collected.
     private void ItemCollected(ItemData _item)
     {
-        if (this.inventory.ContainsKey(_item))
+        if (this.inventory.inventory.ContainsKey(_item))
         {
-            this.inventory[_item]++;
+            this.inventory.inventory[_item]++;
+            Debug.Log(_item.ItemName + " was collected: amount: " + this.inventory.inventory[_item]);
+            this.OnCollect();
+            
         }
-        else
+        else if (inventory.inventory.Count < inventory.SlotCount) // only add item if inventory is not full
         {
-            this.inventory.Add(_item, 1);
+            this.inventory.inventory.Add(_item, 1);
+            Debug.Log(_item.ItemName + " was collected: amount: " + this.inventory.inventory[_item]);
+            this.OnCollect();
         }
 
-        Debug.Log(_item.ItemName + " was collected: amount: " + this.inventory[_item]);
     }
 
     #endregion
