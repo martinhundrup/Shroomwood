@@ -11,7 +11,7 @@ public class BasicEnemy : Enemy
     [SerializeField] private float sightDistance;
 
     // The enemy layer to ignore hitting other enemies.
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask[] layerMasks;
 
     // Whether or not the enemy is currently seeking the player.
     private bool isAggro = false;
@@ -48,8 +48,16 @@ public class BasicEnemy : Enemy
     {
         if (Vector2.Distance(this.transform.position, player.transform.position) < sightDistance)
         {
+            int masks = 0;
+            for (int i = 0; i < layerMasks.Length; i++)
+            {
+                masks = masks | layerMasks[i].value;
+            }
+
+            Debug.Log(masks);
+
             Vector2 dir = player.transform.position - this.transform.position;
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, sightDistance, ~layerMask.value);
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, sightDistance, ~masks);
 
             if (hit && hit.collider.CompareTag("Player"))
             {
