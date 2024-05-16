@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ItemDrop
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -12,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

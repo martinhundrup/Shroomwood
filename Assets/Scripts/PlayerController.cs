@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -47,16 +48,6 @@ public class PlayerController : MonoBehaviour
 
     // Controls the idle animations.
     [SerializeField] private AnimatorController idleController;
-
-    #endregion
-
-    #region ANIMATION VARS
-
-    private bool idle_front = false;
-    private bool idle_back = false;
-    private bool idle_side = false;
-    private bool idle_quarterFront = false;
-    private bool idle_quarterBack = false;
 
     #endregion
 
@@ -144,7 +135,7 @@ public class PlayerController : MonoBehaviour
             // melee attack
             if (Input.GetButtonDown("Melee"))
             {
-                GameObject hitbox = Instantiate(this.meleeHitbox.gameObject, transform);
+                GameObject hitbox = Instantiate(this.meleeHitbox.gameObject);
                 hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
 
                 hitbox.transform.position = DirToVect(this.direction) + this.transform.position;
@@ -162,10 +153,8 @@ public class PlayerController : MonoBehaviour
 
             void _Attack()
             {
-                Debug.Log("attack");
                 isAttacking = true;
                 float t = this.playerData.MovementSpeed;
-                Debug.Log(t);
                 this.playerData.MovementSpeed = 0;
                 StartCoroutine(AttackCooldown(this.attackCooldown, t));
             }
@@ -175,7 +164,7 @@ public class PlayerController : MonoBehaviour
     // Responsible for figuring out what animation to play
     public void Animate()
     {
-        ResetAnimation();
+        ResetAnimations();
 
         if (!isRunning)
         {
@@ -186,28 +175,26 @@ public class PlayerController : MonoBehaviour
             animator.runtimeAnimatorController = runController;
         }
 
+        // player faces sideways when moving diagonal
         switch (this.direction)
         {
             case Direction.Left:
-                this.idle_side = true; break;
+                this.animator.SetBool("Side", true); break;
             case Direction.Right:
-                this.idle_side = true; break;
+                this.animator.SetBool("Side", true); break;
             case Direction.Up:
-                this.idle_back = true; break;
+                this.animator.SetBool("Back", true); break;
             case Direction.DownLeft:
-                this.idle_quarterFront = true; break;
+                this.animator.SetBool("Side", true); break;
             case Direction.DownRight:
-                this.idle_quarterFront = true; break;
-            case Direction.UpRight:
-                this.idle_quarterBack = true; break;
+                this.animator.SetBool("Side", true); break;
             case Direction.UpLeft:
-                this.idle_quarterBack = true; break;
+                this.animator.SetBool("Side", true); break;
+            case Direction.UpRight:
+                this.animator.SetBool("Side", true); break;
             default:
-                this.idle_front = true; break;
+                this.animator.SetBool("Front", true); break;
         }
-        
-
-        ApplyAnimations();
     }
 
     // Waits an amount of time before setting the 'isAttacking' bool to false.
@@ -288,25 +275,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // Cancels all animations.
-    private void ResetAnimation()
+    private void ResetAnimations()
     {
-        idle_back = false;
-        idle_front = false;
-        idle_quarterBack = false;
-        idle_quarterFront = false;
-        idle_side = false;
-
-        ApplyAnimations();
-    }
-
-    // Sets all animations to their corresponding boolean values.
-    private void ApplyAnimations()
-    {
-        this.animator.SetBool("Front", idle_front);
-        this.animator.SetBool("Back", idle_back);
-        this.animator.SetBool("Side", idle_side);
-        this.animator.SetBool("QuarterFront", idle_quarterFront);
-        this.animator.SetBool("QuarterBack", idle_quarterBack);
+        this.animator.SetBool("Front", false);
+        this.animator.SetBool("Back", false);
+        this.animator.SetBool("Side", false);
     }
 
     #endregion
