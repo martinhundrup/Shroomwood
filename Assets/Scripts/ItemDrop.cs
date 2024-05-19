@@ -77,6 +77,8 @@ public class ItemDrop : MonoBehaviour
     private void Awake()
     {
         FindObjectOfType<InventoryManager>().Subscribe(this);
+        targetPos = transform.position;
+        targetsPlayer = false;
     }
 
     // Called once a frame. Varies with framerate.

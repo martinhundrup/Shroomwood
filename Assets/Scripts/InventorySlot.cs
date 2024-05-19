@@ -30,7 +30,7 @@ public class InventorySlot : MonoBehaviour
         set 
         { 
             amount = value;
-            UpdateNumber();
+            UpdateTextDisplay();
         }
     }
 
@@ -47,22 +47,30 @@ public class InventorySlot : MonoBehaviour
             }
             else
             {
-                Debug.Log("set to null");
+                Debug.Log(value.Icon); 
                 item = value;
-                sprite.sprite = item.Icon;
+                sprite.sprite = value.Icon;
             }            
         }
     }
 
     // Updates the text display to the number
-    private void UpdateNumber()
+    private void UpdateTextDisplay()
     {
-        text.text = Amount.ToString();
+        if (amount == 0)
+        {
+            text.text = string.Empty;
+        }
+        else
+        {
+            text.text = Amount.ToString();
+        }
     }
 
     // Sets the text to nothing and sprite to null; used for when no item is contained.
     public void NoItem()
     {
         this.Item = null;
+        this.amount = 0;
     }
 }

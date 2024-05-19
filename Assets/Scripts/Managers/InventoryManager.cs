@@ -19,9 +19,15 @@ public class InventoryManager : MonoBehaviour
     // Holds reference to the instantiated player script.
     private PlayerController player;
 
-    [SerializeField] private InventoryData inventory;
+    // The player's inventory scriptable object.
+    private InventoryData playerInventory;
 
-    
+    // Gets or sets the player's inventory.
+    public InventoryData PlayerInventory
+    {
+        get { return this.playerInventory; }
+        set { this.playerInventory = value; }
+    }
 
     #endregion
 
@@ -31,12 +37,6 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         this.player = FindObjectOfType<PlayerController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     #endregion
@@ -52,20 +52,14 @@ public class InventoryManager : MonoBehaviour
     // Adds an item to the inventory when collected.
     private void ItemCollected(ItemData _item)
     {
-        if (this.inventory.inventory.ContainsKey(_item))
+        bool success = playerInventory.AddItem(_item, 1);
+        if (success)
         {
-            this.inventory.inventory[_item]++;
-            Debug.Log(_item.ItemName + " was collected: amount: " + this.inventory.inventory[_item]);
-            this.OnCollect();
-            
-        }
-        else if (inventory.inventory.Count < inventory.SlotCount) // only add item if inventory is not full
-        {
-            this.inventory.inventory.Add(_item, 1);
-            Debug.Log(_item.ItemName + " was collected: amount: " + this.inventory.inventory[_item]);
-            this.OnCollect();
-        }
+            Debug.Log(_item.ItemName + " was collected");
 
+            // TODO: implement some sort of UI message when a item is collected.
+            //this.OnCollect();
+        }
     }
 
     #endregion

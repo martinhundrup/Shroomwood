@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region DATA
+
+    // Ref to player inventory scriptable obj.
+    [SerializeField] private InventoryData playerInventory;
+
+    #endregion
 
     #region MICRO MANAGERS
 
@@ -34,12 +40,20 @@ public class GameManager : MonoBehaviour
     private void FindManagers()
     {
         timeManager = GetComponentInChildren<TimeManager>();
-        uiManager = GetComponent<UIManager>();
-        levelManager = GetComponent<LevelManager>();
+        uiManager = GetComponentInChildren<UIManager>();
+        levelManager = GetComponentInChildren<LevelManager>();
         inventoryManager = GetComponentInChildren<InventoryManager>();
         audioManager = GetComponentInChildren<AudioManager>();
         settingsManager = GetComponentInChildren<SettingsManager>();
         savingManager = GetComponentInChildren<SavingManager>();
+    }
+
+    // Gives the managers the information they need to do their job.
+    private void InitManagers()
+    { 
+        // give references to the player's inventory.
+        uiManager.PlayerInventory = playerInventory;
+        inventoryManager.PlayerInventory = playerInventory;
     }
 
     // Subscribes to all necessary manager events.
@@ -51,14 +65,22 @@ public class GameManager : MonoBehaviour
     // Called once when object is created.
     private void Awake()
     {
-        FindManagers();
-        SubscribeToEvents();
-
+        
     }
 
-    private void OnPause(bool pause)
+    // Called on first frame of gameplay.
+    private void Start()
     {
-        
+        FindManagers();
+        SubscribeToEvents();
+        InitManagers();        
+    }
+
+    // Called when the time manager detected the game was paused/unpaused.
+    private void OnPause()
+    {
+        Debug.Log("game paused");
+        uiManager.GamePaused(timeManager.IsPaused);
     }
 
 }

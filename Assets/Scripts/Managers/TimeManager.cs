@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour
     #region EVENTS
 
     // An event called when the game is paused or unpaused.
-    public delegate void Pause(bool _paused);
+    public delegate void Pause();
 
     // The event called when this object collides with a hitbox.
     public event Pause OnPause;
@@ -42,7 +42,10 @@ public class TimeManager : MonoBehaviour
             isPaused = true;
             Time.timeScale = 0;
         }
-
-        this.OnPause(isPaused);
+        
+        if (OnPause != null)
+        {
+            this.OnPause();
+        }
     }
 }
