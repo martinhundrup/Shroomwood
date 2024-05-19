@@ -204,13 +204,13 @@ public class PlayerController : MonoBehaviour
             case Direction.Up:
                 this.animator.SetBool("Back", true); break;
             case Direction.DownLeft:
-                this.animator.SetBool("Side", true); break;
+                this.animator.SetBool("QuarterFront", true); break;
             case Direction.DownRight:
-                this.animator.SetBool("Side", true); break;
+                this.animator.SetBool("QuarterFront", true); break;
             case Direction.UpLeft:
-                this.animator.SetBool("Side", true); break;
+                this.animator.SetBool("QuarterBack", true); break;
             case Direction.UpRight:
-                this.animator.SetBool("Side", true); break;
+                this.animator.SetBool("QuarterBack", true); break;
             default:
                 this.animator.SetBool("Front", true); break;
         }
@@ -299,6 +299,8 @@ public class PlayerController : MonoBehaviour
         this.animator.SetBool("Front", false);
         this.animator.SetBool("Back", false);
         this.animator.SetBool("Side", false);
+        this.animator.SetBool("QuarterFront", false);
+        this.animator.SetBool("QuarterBack", false);
     }
 
     #endregion

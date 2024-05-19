@@ -9,7 +9,7 @@ public class InventorySlot : MonoBehaviour
     private ItemData item;
 
     // The sprite to display
-    private Image sprite;
+    private Image image;
 
     // The digit display for the amount of items
     private TMPro.TextMeshProUGUI text;
@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour
 
     private void Awake()
     {
-        this.sprite = GetComponent<Image>();
+        this.image = GetComponent<Image>();
         this.text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
@@ -43,14 +43,14 @@ public class InventorySlot : MonoBehaviour
             if (value == null)
             {
                 item = null;
-                sprite.sprite = null;
+                image.sprite = null;
             }
             else
             {
-                Debug.Log(value.Icon); 
-                item = value;
-                sprite.sprite = value.Icon;
-            }            
+                this.item = value;
+                this.image.sprite = value.Icon;
+                Debug.Log(this.image.sprite.name);
+            }
         }
     }
 
@@ -63,7 +63,7 @@ public class InventorySlot : MonoBehaviour
         }
         else
         {
-            text.text = Amount.ToString();
+            text.text = amount.ToString();
         }
     }
 

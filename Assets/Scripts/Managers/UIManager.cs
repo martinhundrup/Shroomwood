@@ -50,8 +50,9 @@ public class UIManager : MonoBehaviour
         }
         else // game puased - enable and update inventory display
         {
-            inventoryCanvas.enabled = true;
             UpdateInventoryUI();
+            inventoryCanvas.enabled = true;
+            Canvas.ForceUpdateCanvases();
         }
     }
 
@@ -65,8 +66,10 @@ public class UIManager : MonoBehaviour
                 var tuple = playerInventory.GetItem(i, j);
                 if (tuple != null)
                 {
+                    Debug.Log("updated inventory slot");
                     slots[i, j].Item = tuple.Item1;
                     slots[i, j].Amount = tuple.Item2;
+                    Debug.Log(slots[i,j].Item.Icon);
                 }
                 else
                 {
