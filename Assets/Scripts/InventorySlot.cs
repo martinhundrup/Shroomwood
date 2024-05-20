@@ -44,6 +44,7 @@ public class InventorySlot : MonoBehaviour
             {
                 item = null;
                 image.sprite = null;
+                this.Amount = 0;
             }
             else
             {
@@ -71,6 +72,5 @@ public class InventorySlot : MonoBehaviour
     public void NoItem()
     {
         this.Item = null;
-        this.amount = 0;
     }
 }

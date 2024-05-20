@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -30,12 +31,14 @@ public class UIManager : MonoBehaviour
         inventoryCanvas.enabled = false;
         slots = new InventorySlot[3, 5];
 
+        int count = 0;
+
         // initialize the 2D array of inventory slots
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 5; j++)
             {
-                slots[i, j] = inventorySlots[i + j];
+                slots[i, j] = inventorySlots[count++];
             }
         }
     }

@@ -2439,8 +2439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 64
-  m_RefResolutionX: 1434
-  m_RefResolutionY: 806
+  m_RefResolutionX: 1024
+  m_RefResolutionY: 576
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 1
