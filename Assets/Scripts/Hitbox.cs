@@ -15,6 +15,9 @@ public class Hitbox : MonoBehaviour
     // The amount of time objects are pushed back for (tenths of seconds).
     [SerializeField] private float stunTime;
 
+    // Tags of objects to avoid collision.
+    [SerializeField] private string _tag;
+
     #endregion
 
     #region PROPERTIES
@@ -36,6 +39,13 @@ public class Hitbox : MonoBehaviour
     public float StunTime
     {
         get { return this.stunTime; }
+    }
+
+    // Gets or sets the _tag value.
+    public string Tag
+    {
+        get { return _tag; }
+        set { this._tag = value; }
     }
 
     #endregion

@@ -9,28 +9,28 @@ public class Projectile : MonoBehaviour
     // Ref to the projectile's rigidbody component.
     private Rigidbody2D rigidBody;
 
-    // The direction the projectile should move in.
-    private Vector2 dir = new Vector2(1f, 1f);
-
     // The speed at which the projecile moves.
     [SerializeField] private float speed;
+
+    // The tag attached to the owner of the shot.
+    [SerializeField] string _tag;
 
     #endregion
 
     #region PROPERTIES
-
-    // Gets or sets the dir value.
-    public Vector2 Dir
-    {
-        get { return this.dir; }
-        set { this.dir = value.normalized; }
-    }
 
     // Gets or sets the speed value.
     public float Speed
     {
         get { return this.speed; }
         set { this.speed = value; }
+    }
+
+    // Gets or sets the _tag value.
+    public string Tag
+    {
+        get { return _tag; }
+        set {  _tag = value; }
     }
 
     #endregion
@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // destroy this if it collides with anything other than the player
-        if (!collision.CompareTag("Player") && !collision.CompareTag("ItemDrop"))
+        if (!collision.CompareTag(_tag) && !collision.CompareTag("ItemDrop") && !collision.GetComponent<Hitbox>())
         {
             Destroy(this.gameObject);
         }
@@ -58,9 +58,9 @@ public class Projectile : MonoBehaviour
     #region METHODS
 
     // Starts the movement of the object.
-    public void Fire()
+    public void Fire(Vector2 _dir)
     {
-        rigidBody.velocity = (dir.normalized * speed);
+        rigidBody.velocity = (_dir.normalized * speed);
     }
 
     #endregion

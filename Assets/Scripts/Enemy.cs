@@ -32,28 +32,10 @@ public class Enemy : MonoBehaviour
         this.rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        Hitbox hitbox = collision.GetComponent<Hitbox>();
-
-        if (hitbox != null)
-        {
-            StartCoroutine(Knockback(hitbox.KnockbackForce, hitbox.StunTime, collision.transform.position));
-        }
-    }
-
     #endregion
 
     #region METHODS
     
-    protected IEnumerator Knockback(float _force, float _stunTime, Vector2 _other)
-    {
-        this.rigidBody.AddForce(_force / 100 * ((Vector2)this.transform.position - _other).normalized);
-
-        yield return new WaitForSeconds(_stunTime / 10);
-
-        this.rigidBody.velocity = Vector2.zero;
-    }
 
     #endregion
 }

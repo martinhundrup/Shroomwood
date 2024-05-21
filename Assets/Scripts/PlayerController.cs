@@ -166,8 +166,7 @@ public class PlayerController : MonoBehaviour
                 proj.transform.position = this.transform.position;
                 Projectile p = proj.GetComponent<Projectile>();
 
-                p.Dir = DirToVect(this.direction);
-                p.Fire();
+                p.Fire(DirToVect(this.direction));
             }
 
             void _Attack()

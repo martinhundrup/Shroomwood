@@ -70,21 +70,13 @@ public class Breakable : MonoBehaviour
         }
     }
 
-    //// The method called when another object with a 2D collider overlaps with this object's collider.
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    // a hitbox has collided with this
-    //    if (collision.gameObject.GetComponent<Hitbox>() != null)
-    //    {
-    //        Hurt(collision.gameObject.GetComponent<Hitbox>().Damage);
-    //    }
-    //}
-
     // The method called when another object with a 2D collider overlaps with this object's collider.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // a hitbox has collided with this
-        if (collision.gameObject.GetComponent<Hitbox>() != null)
+        var hitbox = collision.gameObject.GetComponent<Hitbox>();
+
+        // a hitbox has collided with this and did not belong to this obj
+        if (hitbox != null && !this.CompareTag(hitbox.Tag))
         {
             Debug.Log("hit");
 

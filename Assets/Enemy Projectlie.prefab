@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7460770879136516288}
   - component: {fileID: 3629401553325274459}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Enemy Projectlie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.754717, g: 0.16731933, b: 0.16731933, a: 1}
+  m_Color: {r: 0.16862744, g: 0.66218466, b: 0.7529412, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   damage: 1
   knockbackForce: 1
   stunTime: 1
-  _tag: Player
+  _tag: Enemy
 --- !u!114 &3629401553325274459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,5 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1508b2d5a3e8654da65351569ebbebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  _tag: Player
+  speed: 5
+  _tag: Enemy
