@@ -32,10 +32,31 @@ public class Enemy : MonoBehaviour
         this.rigidBody = GetComponent<Rigidbody2D>();
     }
 
+    // Called when a trigger collides with this object.
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // check if we collided with a valid hitbox
+        var hitbox = collision.GetComponent<Hitbox>();
+        if (hitbox && !CompareTag(hitbox.Tag))
+        {
+            StartCoroutine(HitStun(hitbox.StunTime));
+        }
+    }
+
     #endregion
 
     #region METHODS
-    
+
+    // Temporarily pauses the enemy when hit.
+    private IEnumerator HitStun(float _time)
+    {
+        var s = this.speed;
+        this.speed = 0;
+
+        yield return new WaitForSeconds(_time);
+
+        this.speed = s;
+    }
 
     #endregion
 }

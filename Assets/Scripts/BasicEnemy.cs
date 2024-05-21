@@ -86,7 +86,7 @@ public class BasicEnemy : Enemy
             // if the enemy has LOS, aggro onto player if not already
             if (CheckLOS())
             {
-                this.StopAllCoroutines();
+                this.StopCoroutine(IdleMovement());
                 this.isAggro = true;
                 isIdling = false;
                 this.targetPos = this.player.transform.position;

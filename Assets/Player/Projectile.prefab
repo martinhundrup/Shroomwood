@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockbackForce: 1
-  stunTime: 1
+  stunTime: 0.1
   _tag: Player
 --- !u!114 &3629401553325274459
 MonoBehaviour:
