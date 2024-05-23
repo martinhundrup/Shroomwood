@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     // Ref to player inventory scriptable obj.
     [SerializeField] private InventoryData playerInventory;
+
+    // Ref to the player data.
+    [SerializeField] private PlayerData playerData;
 
     #endregion
 
@@ -60,12 +64,13 @@ public class GameManager : MonoBehaviour
     private void SubscribeToEvents()
     {
         timeManager.OnPause += this.OnPause;
+        playerData.OnHealthChanged += this.CheckPlayerHealth;
     }
 
     // Called once when object is created.
     private void Awake()
     {
-        
+        this.playerData.ResetHealth();
     }
 
     // Called on first frame of gameplay.
@@ -81,6 +86,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("game paused");
         uiManager.GamePaused(timeManager.IsPaused);
+    }
+
+    private void CheckPlayerHealth()
+    {
+        Debug.Log("Player took damage");
+        if (playerData.CurrentHealth <= 0) // player had died
+        {
+            Debug.Log("Player has died");
+        }
     }
 
 }

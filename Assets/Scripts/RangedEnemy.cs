@@ -13,8 +13,8 @@ public class RangedEnemy : Enemy
     // The distance at which the enemy can detect the player.
     [SerializeField] private float sightDistance;
 
-    // The rate at which the enemy can fire.
-    [SerializeField] private float fireRate;
+    // The delay between projectiles shot.
+    [SerializeField] private float fireDelay;
 
     // The enemy layer to ignore hitting other enemies.
     [SerializeField] private LayerMask[] layerMasks;
@@ -39,8 +39,9 @@ public class RangedEnemy : Enemy
     }
 
     // Called once a frame.
-    private void Update()
+    new private void Update()
     {
+        base.Update();
         FindTarget();
     }
 
@@ -75,7 +76,7 @@ public class RangedEnemy : Enemy
             _p.GetComponent<Projectile>().Fire((Vector3) hit - this.transform.position);
         }
 
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(fireDelay);
 
         this.isShooting = false;
     }

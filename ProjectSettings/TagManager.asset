@@ -7,6 +7,7 @@ TagManager:
   - ItemDrop
   - Enemy
   - CameraBounder
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Enemy
   - Player
   - CameraBounder
-  - 
+  - Hitbox
   - 
   - 
   - 

@@ -47,8 +47,9 @@ public class BasicEnemy : Enemy
     }
 
     // Called once a frame.
-    private void Update()
+    new private void Update()
     {
+        base.Update();
         FindTarget();
         Movement();
     }

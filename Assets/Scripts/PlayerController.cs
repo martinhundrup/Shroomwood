@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackCooldown;
 
     // Denotes whether the player is currently attackig or not.
-    bool isAttacking = false;
+    [SerializeField] bool isAttacking = false;
 
     // Denotes whether the player is currently running or not.
     [SerializeField] bool isRunning = false;
@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
 
     // Controls the idle animations.
     [SerializeField] private AnimatorController idleController;
+
+    // Controls the attack animations.
+    [SerializeField] private AnimatorController attackController;
+
+    // Whether or not the playe is immune to taking damage.
+    private bool isInvulnerable = false;
 
     #endregion
 
@@ -84,7 +90,8 @@ public class PlayerController : MonoBehaviour
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        Movement();
+        if (!isAttacking)
+            Movement();
         Attack();
         Animate();
     }
@@ -92,9 +99,29 @@ public class PlayerController : MonoBehaviour
     // Called when this collides with a trigger collider.
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var hitbox = collision.GetComponent<Hitbox>();
+
         if (collision.CompareTag("CameraBounder"))
         {
             this.OnEnterRoom(collision.gameObject.transform);
+        }
+
+        if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
+        {
+            this.playerData.CurrentHealth -= hitbox.Damage;
+            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
+        }
+
+    }
+
+    // Called every frame that the player collides with a trigger.
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var hitbox = collision.GetComponent<Hitbox>();
+        if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
+        {
+            this.playerData.CurrentHealth -= hitbox.Damage;
+            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
         }
     }
 
@@ -117,11 +144,10 @@ public class PlayerController : MonoBehaviour
         {
             isRunning = true;
 
-            // get the direction the player is facing only when moving
+            // get the direction the player is facing only when moving            
             this.direction = FindDir(x, y);
         }
-        else
-        {
+        else {
             isRunning = false;
         }
 
@@ -131,6 +157,11 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = true;
         else if (x > 0)
             spriteRenderer.flipX = false;
+
+        // don't flip when facing up or down
+        if (this.direction == Direction.Up || this.direction == Direction.Down)
+            spriteRenderer.flipX = false;
+
 
         // create the input based movement vector; this will be normalized to achieve the final movement vector
         Vector2 movement_vector = new Vector2(x, y);
@@ -147,6 +178,7 @@ public class PlayerController : MonoBehaviour
         // don't attack again if already attacking
         if (isAttacking)
         {
+            isRunning = false;
             return;
         }
         else
@@ -157,7 +189,7 @@ public class PlayerController : MonoBehaviour
                 GameObject hitbox = Instantiate(this.meleeHitbox.gameObject);
                 hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
 
-                hitbox.transform.position = DirToVect(this.direction) + this.transform.position;
+                hitbox.transform.position = DirToVect(this.direction) * 0.6f + this.transform.position + new Vector3(0f, -0.1f, 0f);
                 _Attack();
             }
             else if (Input.GetButtonDown("Ranged"))
@@ -172,9 +204,8 @@ public class PlayerController : MonoBehaviour
             void _Attack()
             {
                 isAttacking = true;
-                float t = this.playerData.MovementSpeed;
-                this.playerData.MovementSpeed = 0;
-                StartCoroutine(AttackCooldown(this.attackCooldown, t));
+                this.rigidBody.velocity = Vector2.zero;
+                StartCoroutine(AttackCooldown(this.attackCooldown));
             }
         }
     }
@@ -184,13 +215,18 @@ public class PlayerController : MonoBehaviour
     {
         ResetAnimations();
 
-        if (!isRunning)
+        if (isRunning)
         {
-            animator.runtimeAnimatorController = idleController;
+            animator.runtimeAnimatorController = runController;
+            
+        }
+        else if (isAttacking)
+        {
+            animator.runtimeAnimatorController = attackController;
         }
         else
         {
-            animator.runtimeAnimatorController = runController;
+            animator.runtimeAnimatorController = idleController;
         }
 
         // player faces sideways when moving diagonal
@@ -216,12 +252,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Waits an amount of time before setting the 'isAttacking' bool to false.
-    private IEnumerator AttackCooldown(float _waitTime, float _speed)
+    private IEnumerator AttackCooldown(float _waitTime)
     {
         yield return new WaitForSeconds(_waitTime);
 
         isAttacking = false;
-        this.playerData.MovementSpeed = _speed;
+    }
+
+    // Makes the player invulnerable for a parameterized amount of time.
+    private IEnumerator MakeInvulnerable(float _time)
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(_time);
+        isInvulnerable = false;
     }
 
     #endregion

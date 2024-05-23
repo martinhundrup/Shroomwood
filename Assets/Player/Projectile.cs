@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // destroy this if it collides with anything other than the player
-        if (!collision.CompareTag(_tag) && !collision.CompareTag("ItemDrop") && !collision.GetComponent<Hitbox>())
+        if (!collision.CompareTag(_tag) && !collision.CompareTag("ItemDrop") && !collision.CompareTag("Hitbox"))
         {
             Destroy(this.gameObject);
         }

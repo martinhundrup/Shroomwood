@@ -9,6 +9,12 @@ public class Enemy : MonoBehaviour
     // The speed at which the enemy moves
     [SerializeField] protected float speed;
 
+    // The hitbox to spawn when overlapping with the player.
+    [SerializeField] private GameObject hitbox;
+
+    // Ref to the active spawned hitbox.
+    private GameObject spawnedHitbox;
+
     // Ref to the this object's rigidbody 2D component.
     protected Rigidbody2D rigidBody;
 
@@ -30,18 +36,32 @@ public class Enemy : MonoBehaviour
     protected void Awake()
     {
         this.rigidBody = GetComponent<Rigidbody2D>();
+        spawnedHitbox = Instantiate(this.hitbox);
+    }
+
+    // Called once a frame.
+    protected void Update()
+    {
+        spawnedHitbox.transform.position = transform.position;
+    }
+
+    // Called when this object is destroyed.
+    protected void OnDestroy()
+    {
+        Destroy(this.spawnedHitbox);
     }
 
     // Called when a trigger collides with this object.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if we collided with a valid hitbox
-        var hitbox = collision.GetComponent<Hitbox>();
-        if (hitbox && !CompareTag(hitbox.Tag))
+        var _hitbox = collision.GetComponent<Hitbox>();
+        if (_hitbox && !CompareTag(_hitbox.Tag))
         {
-            StartCoroutine(HitStun(hitbox.StunTime));
+            StartCoroutine(HitStun(_hitbox.StunTime));
         }
     }
+
 
     #endregion
 
