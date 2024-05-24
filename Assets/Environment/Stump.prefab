@@ -101,8 +101,8 @@ MonoBehaviour:
   health: 5
   dropRadius: 2
   itemList:
-  - key: {fileID: 11400000, guid: 92abe386ddfac034d88fb3a3d3635466, type: 2}
-    val: 3
+  - Item: {fileID: 11400000, guid: 92abe386ddfac034d88fb3a3d3635466, type: 2}
+    Amount: 3
 --- !u!58 &7175972534000083205
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -38,7 +38,6 @@ public class CameraFollower : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
-        player.OnEnterRoom += this.ChangeBounds;
     }
 
     // Called once a frame. Varies with framerate.    
@@ -89,7 +88,7 @@ public class CameraFollower : MonoBehaviour
     }
 
     // Called when player enters a new room
-    private void ChangeBounds(Transform _bounder)
+    public void ChangeBounds(Transform _bounder)
     {
 
         Debug.Log("change bounds");

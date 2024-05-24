@@ -7,16 +7,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    #region EVENTS
-
-    // An event called when a hurtbox takes damage (collides with a hitbox).
-    public delegate void EnteredRoomAction(Transform _room);
-
-    // The event called when this object collides with a hitbox.
-    public event EnteredRoomAction OnEnterRoom;
-
-    #endregion
-
     #region COMPONENTS
 
     // Holds the reference to the player's Rigidbody2D component.
@@ -100,11 +90,6 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<Hitbox>();
-
-        if (collision.CompareTag("CameraBounder"))
-        {
-            this.OnEnterRoom(collision.gameObject.transform);
-        }
 
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {

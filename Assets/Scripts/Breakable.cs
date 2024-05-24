@@ -21,8 +21,8 @@ public class Breakable : MonoBehaviour
     [Serializable]
     private class KeyValuePair
     {
-        public ItemData key;
-        public int val;
+        public ItemData _item;
+        public int _amount;
     }
 
     // The list to be filled in the inspector.
@@ -93,7 +93,7 @@ public class Breakable : MonoBehaviour
     {
         foreach (KeyValuePair _item in this.itemList)
         {
-            itemDrops[_item.key] = _item.val;
+            itemDrops[_item._item] = _item._amount;
         }
     }
 

@@ -4,22 +4,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using Application;
+
 [CreateAssetMenu]
 public class InventoryData : ScriptableObject
 {
-    // Self defined mutable tuple.
-    public class Pair<T1, T2>
-    { 
-        public Pair(T1 _first, T2 _second)
-        {
-            First = _first;
-            Second = _second;
-        }
-
-        public T1 First { get; set; }
-        public T2 Second { get; set; }
-    }
-
     // The items and corresponding amounts currently in the main inventory.
     private Pair<ItemData, int>[,] inventory = new Pair<ItemData, int>[3,5];
 

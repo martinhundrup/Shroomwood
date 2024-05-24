@@ -129,7 +129,7 @@ MonoBehaviour:
   hitbox: {fileID: 1743719246792225458, guid: 019afc3cd8dcf334db8d05b7781f735a, type: 3}
   projectile: {fileID: 6860993992696662399, guid: e42f98352c425eb4a8130fab0961f8e7, type: 3}
   sightDistance: 6
-  fireRate: 1
+  fireDelay: 1
   layerMasks:
   - serializedVersion: 2
     m_Bits: 832
