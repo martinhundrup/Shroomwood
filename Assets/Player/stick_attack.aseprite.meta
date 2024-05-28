@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: stick_attack_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 1.8421054, y: -2.7058823}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 58
-      height: 59
+      width: 19
+      height: 17
     spriteID: 608adeaa8e30d9c478b5e5c5c61d9d70
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: stick_attack_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.8571429}
+    pivot: {x: 1.8421054, y: -3.266667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 329
-      width: 58
-      height: 56
+      x: 4
+      y: 183
+      width: 19
+      height: 15
     spriteID: 66d4c2f203fb84f46a192d6eeedc7561
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 329}
+    uvTransform: {x: 4, y: 183}
   - name: stick_attack_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.8421053}
+    pivot: {x: 1.8421054, y: -3.266667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 4
-      width: 58
-      height: 57
+      x: 4
+      y: 206
+      width: 19
+      height: 15
     spriteID: b1c064d1a17525e43b3cd0886e39ff64
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 4}
+    uvTransform: {x: 4, y: 206}
   - name: stick_attack_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.82758623}
+    pivot: {x: 1.882353, y: -2.526316}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 138
-      width: 58
-      height: 58
+      x: 4
+      y: 29
+      width: 17
+      height: 19
     spriteID: 054aae2b352dfdd4a830a11c9cabbe4e
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 138}
+    uvTransform: {x: 4, y: 29}
   - name: stick_attack_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: -0.75, y: -3.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 71
-      width: 58
-      height: 59
+      x: 31
+      y: 4
+      width: 20
+      height: 16
     spriteID: bda6f5cce00029148a4c7508db53f299
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 71}
+    uvTransform: {x: 31, y: 4}
   - name: stick_attack_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -0.8571429}
+    pivot: {x: -0.75, y: -3.6000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 393
-      width: 58
-      height: 56
+      x: 31
+      y: 28
+      width: 20
+      height: 15
     spriteID: 6e62a4ca1a393ed4299655f0fc238be4
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 393}
+    uvTransform: {x: 31, y: 28}
   - name: stick_attack_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: -0.8421053}
+    pivot: {x: -0.75, y: -3.6000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 69
-      width: 58
-      height: 57
+      x: 31
+      y: 51
+      width: 20
+      height: 15
     spriteID: 4178b923a37533e4e92cae1441c10aad
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 69}
+    uvTransform: {x: 31, y: 51}
   - name: stick_attack_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: -0.82758623}
+    pivot: {x: -1.1428574, y: -3.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 204
-      width: 58
-      height: 58
+      x: 59
+      y: 118
+      width: 14
+      height: 15
     spriteID: 516c847aa76fc24419b3697952836886
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 204}
+    uvTransform: {x: 59, y: 118}
   - name: stick_attack_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 0.5882353, y: -2.277778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 138
-      width: 58
-      height: 59
+      y: 83
+      width: 17
+      height: 18
     spriteID: 477d64e2ff8a09047926f3df3a7f812e
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 138}
+    uvTransform: {x: 4, y: 83}
   - name: stick_attack_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: -0.8421053}
+    pivot: {x: 0.85714275, y: -2.1578948}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 134
-      width: 58
-      height: 57
+      x: 4
+      y: 229
+      width: 14
+      height: 19
     spriteID: e35186e5c50b1fe428544bd4f0a548a5
     spriteBone: []
     spriteOutline: []
@@ -320,18 +320,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 134}
+    uvTransform: {x: 4, y: 229}
   - name: stick_attack_Frame_10
     originalName: 
-    pivot: {x: 0.5, y: -0.82758623}
+    pivot: {x: 0.85714275, y: -2.1578948}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 270
-      width: 58
-      height: 58
+      x: 31
+      y: 74
+      width: 14
+      height: 19
     spriteID: 22e4ae194a85df94aa1565ef051b5c65
     spriteBone: []
     spriteOutline: []
@@ -340,18 +340,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 270}
+    uvTransform: {x: 31, y: 74}
   - name: stick_attack_Frame_11
     originalName: 
-    pivot: {x: 0.5, y: -0.81355935}
+    pivot: {x: 0.2631579, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 205
-      width: 58
-      height: 59
+      x: 31
+      y: 101
+      width: 19
+      height: 14
     spriteID: 4f786b8d3a29d1147b9734dc0c22c19f
     spriteBone: []
     spriteOutline: []
@@ -360,18 +360,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 205}
+    uvTransform: {x: 31, y: 101}
   - name: stick_attack_Frame_12
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 1.5714284, y: -2.3333333}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 272
-      width: 58
-      height: 59
+      x: 31
+      y: 233
+      width: 14
+      height: 18
     spriteID: e0cd845dd68526b41a30b745f3312fb8
     spriteBone: []
     spriteOutline: []
@@ -380,18 +380,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 272}
+    uvTransform: {x: 31, y: 233}
   - name: stick_attack_Frame_13
     originalName: 
-    pivot: {x: 0.5, y: -0.8421053}
+    pivot: {x: 1.5294118, y: -2.5882354}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 199
-      width: 58
-      height: 57
+      x: 4
+      y: 133
+      width: 17
+      height: 17
     spriteID: 4c58bf8b66d55e34eac77eeb048008ac
     spriteBone: []
     spriteOutline: []
@@ -400,18 +400,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 199}
+    uvTransform: {x: 4, y: 133}
   - name: stick_attack_Frame_14
     originalName: 
-    pivot: {x: 0.5, y: -0.82758623}
+    pivot: {x: 1.5294118, y: -2.5882354}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 336
-      width: 58
-      height: 58
+      x: 4
+      y: 158
+      width: 17
+      height: 17
     spriteID: 0090b25cd11f6564da140cf1b7f4fb05
     spriteBone: []
     spriteOutline: []
@@ -420,18 +420,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 336}
+    uvTransform: {x: 4, y: 158}
   - name: stick_attack_Frame_15
     originalName: 
-    pivot: {x: 0.5, y: -0.81355935}
+    pivot: {x: 0.68421066, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 339
-      width: 58
-      height: 59
+      x: 31
+      y: 123
+      width: 19
+      height: 14
     spriteID: bec75c673e081c14aac63cf40a81abfe
     spriteBone: []
     spriteOutline: []
@@ -440,18 +440,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 339}
+    uvTransform: {x: 31, y: 123}
   - name: stick_attack_Frame_16
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: -0.10526306, y: -2.75}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 406
-      width: 58
-      height: 59
+      y: 109
+      width: 19
+      height: 16
     spriteID: 8a6faea8ac0760846ac3d09605bf92af
     spriteBone: []
     spriteOutline: []
@@ -460,18 +460,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 406}
+    uvTransform: {x: 4, y: 109}
   - name: stick_attack_Frame_17
     originalName: 
-    pivot: {x: 0.5, y: -0.87500006}
+    pivot: {x: -0.08333365, y: -2.1052632}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 268
-      y: 4
-      width: 58
-      height: 56
+      x: 59
+      y: 64
+      width: 12
+      height: 19
     spriteID: b781d2d1690920c4f80f33d0443fb7ab
     spriteBone: []
     spriteOutline: []
@@ -480,18 +480,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 4}
+    uvTransform: {x: 59, y: 64}
   - name: stick_attack_Frame_18
     originalName: 
-    pivot: {x: 0.5, y: -0.8596491}
+    pivot: {x: -0.08333365, y: -2.1052632}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 202
-      y: 264
-      width: 58
-      height: 57
+      x: 59
+      y: 91
+      width: 12
+      height: 19
     spriteID: 4b1d7e822a957c64286291d59b663591
     spriteBone: []
     spriteOutline: []
@@ -500,18 +500,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 202, y: 264}
+    uvTransform: {x: 59, y: 91}
   - name: stick_attack_Frame_19
     originalName: 
-    pivot: {x: 0.5, y: -0.8448276}
+    pivot: {x: -0.099999905, y: -4.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 402
-      width: 58
-      height: 58
+      x: 59
+      y: 4
+      width: 20
+      height: 12
     spriteID: 6ea6524f5b12bc141a673fe726056bc2
     spriteBone: []
     spriteOutline: []
@@ -520,18 +520,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 402}
+    uvTransform: {x: 59, y: 4}
   - name: stick_attack_Frame_20
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 1.882353, y: -2.526316}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 4
-      width: 58
-      height: 59
+      x: 4
+      y: 56
+      width: 17
+      height: 19
     spriteID: 8a8376abf2f803f40b30705b5b39a0b8
     spriteBone: []
     spriteOutline: []
@@ -540,18 +540,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 4}
+    uvTransform: {x: 4, y: 56}
   - name: stick_attack_Frame_21
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 0.68421066, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 71
-      width: 58
-      height: 59
+      x: 31
+      y: 145
+      width: 19
+      height: 14
     spriteID: f039d9329c09ffc499bff800d63f09fe
     spriteBone: []
     spriteOutline: []
@@ -560,18 +560,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 71}
+    uvTransform: {x: 31, y: 145}
   - name: stick_attack_Frame_22
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 0.2631579, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 138
-      width: 58
-      height: 59
+      x: 31
+      y: 167
+      width: 19
+      height: 14
     spriteID: 5af2f19ea57bf814c8af5af2f7a3ca40
     spriteBone: []
     spriteOutline: []
@@ -580,18 +580,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 138}
+    uvTransform: {x: 31, y: 167}
   - name: stick_attack_Frame_23
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: -0.099999905, y: -4.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 205
-      width: 58
-      height: 59
+      x: 59
+      y: 24
+      width: 20
+      height: 12
     spriteID: 799f9e2d94e85fa4d8abf3e9775dfada
     spriteBone: []
     spriteOutline: []
@@ -600,18 +600,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 205}
+    uvTransform: {x: 59, y: 24}
   - name: stick_attack_Frame_24
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: -1.1428574, y: -3.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 272
-      width: 58
-      height: 59
+      x: 59
+      y: 141
+      width: 14
+      height: 15
     spriteID: 2d6c2e9e4c1e90c4fa576c75405331c8
     spriteBone: []
     spriteOutline: []
@@ -620,18 +620,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 272}
+    uvTransform: {x: 59, y: 141}
   - name: stick_attack_Frame_25
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 1.0999999, y: -4.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 339
-      width: 58
-      height: 59
+      x: 59
+      y: 44
+      width: 20
+      height: 12
     spriteID: 1a317fd4eb761ec48b36f391c0446fe3
     spriteBone: []
     spriteOutline: []
@@ -640,18 +640,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 339}
+    uvTransform: {x: 59, y: 44}
   - name: stick_attack_Frame_26
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 0.73684216, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 70
-      y: 406
-      width: 58
-      height: 59
+      x: 31
+      y: 189
+      width: 19
+      height: 14
     spriteID: efe2702e599f72f438abcb231fe94db1
     spriteBone: []
     spriteOutline: []
@@ -660,18 +660,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 70, y: 406}
+    uvTransform: {x: 31, y: 189}
   - name: stick_attack_Frame_27
     originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
+    pivot: {x: 0.31578943, y: -3.4285717}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 136
-      y: 4
-      width: 58
-      height: 59
+      x: 31
+      y: 211
+      width: 19
+      height: 14
     spriteID: 93c6d0f951ab76f4ebc2ccd73ec5ebce
     spriteBone: []
     spriteOutline: []
@@ -680,27 +680,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 136, y: 4}
-  - name: stick_attack_Frame_28
-    originalName: 
-    pivot: {x: 0.5, y: -0.84745765}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 136
-      y: 71
-      width: 58
-      height: 59
-    spriteID: b5b3b7d38412e7e468c564da9f23c78f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 136, y: 71}
+    uvTransform: {x: 31, y: 211}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -710,238 +690,230 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: stick_attack_Frame_0
-      frameIndex: 0
-      cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 608adeaa8e30d9c478b5e5c5c61d9d70
     - name: stick_attack_Frame_1
       frameIndex: 1
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 56
-      spriteId: 66d4c2f203fb84f46a192d6eeedc7561
+        x: 45
+        y: 46
+        width: 19
+        height: 17
+      spriteId: 608adeaa8e30d9c478b5e5c5c61d9d70
     - name: stick_attack_Frame_2
       frameIndex: 2
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 57
-      spriteId: b1c064d1a17525e43b3cd0886e39ff64
+        x: 45
+        y: 49
+        width: 19
+        height: 15
+      spriteId: 66d4c2f203fb84f46a192d6eeedc7561
     - name: stick_attack_Frame_3
       frameIndex: 3
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 58
-      spriteId: 054aae2b352dfdd4a830a11c9cabbe4e
+        x: 45
+        y: 49
+        width: 19
+        height: 15
+      spriteId: b1c064d1a17525e43b3cd0886e39ff64
     - name: stick_attack_Frame_4
       frameIndex: 4
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: bda6f5cce00029148a4c7508db53f299
+        x: 48
+        y: 48
+        width: 17
+        height: 19
+      spriteId: 054aae2b352dfdd4a830a11c9cabbe4e
     - name: stick_attack_Frame_5
       frameIndex: 5
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 56
-      spriteId: 6e62a4ca1a393ed4299655f0fc238be4
+        x: 95
+        y: 55
+        width: 20
+        height: 16
+      spriteId: bda6f5cce00029148a4c7508db53f299
     - name: stick_attack_Frame_6
       frameIndex: 6
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 57
-      spriteId: 4178b923a37533e4e92cae1441c10aad
+        x: 95
+        y: 54
+        width: 20
+        height: 15
+      spriteId: 6e62a4ca1a393ed4299655f0fc238be4
     - name: stick_attack_Frame_7
       frameIndex: 7
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 58
-      spriteId: 516c847aa76fc24419b3697952836886
+        x: 95
+        y: 54
+        width: 20
+        height: 15
+      spriteId: 4178b923a37533e4e92cae1441c10aad
     - name: stick_attack_Frame_8
       frameIndex: 8
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 477d64e2ff8a09047926f3df3a7f812e
+        x: 96
+        y: 51
+        width: 14
+        height: 15
+      spriteId: 516c847aa76fc24419b3697952836886
     - name: stick_attack_Frame_9
       frameIndex: 9
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 57
-      spriteId: e35186e5c50b1fe428544bd4f0a548a5
+        x: 70
+        y: 41
+        width: 17
+        height: 18
+      spriteId: 477d64e2ff8a09047926f3df3a7f812e
     - name: stick_attack_Frame_10
       frameIndex: 10
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 58
-      spriteId: 22e4ae194a85df94aa1565ef051b5c65
+        x: 68
+        y: 41
+        width: 14
+        height: 19
+      spriteId: e35186e5c50b1fe428544bd4f0a548a5
     - name: stick_attack_Frame_11
       frameIndex: 11
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 59
-      spriteId: 4f786b8d3a29d1147b9734dc0c22c19f
+        x: 68
+        y: 41
+        width: 14
+        height: 19
+      spriteId: 22e4ae194a85df94aa1565ef051b5c65
     - name: stick_attack_Frame_12
       frameIndex: 12
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: e0cd845dd68526b41a30b745f3312fb8
+        x: 75
+        y: 48
+        width: 19
+        height: 14
+      spriteId: 4f786b8d3a29d1147b9734dc0c22c19f
     - name: stick_attack_Frame_13
       frameIndex: 13
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 57
-      spriteId: 4c58bf8b66d55e34eac77eeb048008ac
+        x: 58
+        y: 42
+        width: 14
+        height: 18
+      spriteId: e0cd845dd68526b41a30b745f3312fb8
     - name: stick_attack_Frame_14
       frameIndex: 14
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 58
-      spriteId: 0090b25cd11f6564da140cf1b7f4fb05
+        x: 54
+        y: 44
+        width: 17
+        height: 17
+      spriteId: 4c58bf8b66d55e34eac77eeb048008ac
     - name: stick_attack_Frame_15
       frameIndex: 15
       cellRect:
-        x: 51
-        y: 48
-        width: 58
-        height: 59
-      spriteId: bec75c673e081c14aac63cf40a81abfe
+        x: 54
+        y: 44
+        width: 17
+        height: 17
+      spriteId: 0090b25cd11f6564da140cf1b7f4fb05
     - name: stick_attack_Frame_16
       frameIndex: 16
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 8a6faea8ac0760846ac3d09605bf92af
+        x: 67
+        y: 48
+        width: 19
+        height: 14
+      spriteId: bec75c673e081c14aac63cf40a81abfe
     - name: stick_attack_Frame_17
       frameIndex: 17
       cellRect:
-        x: 51
-        y: 49
-        width: 58
-        height: 56
-      spriteId: b781d2d1690920c4f80f33d0443fb7ab
+        x: 82
+        y: 44
+        width: 19
+        height: 16
+      spriteId: 8a6faea8ac0760846ac3d09605bf92af
     - name: stick_attack_Frame_18
       frameIndex: 18
       cellRect:
-        x: 51
-        y: 49
-        width: 58
-        height: 57
-      spriteId: 4b1d7e822a957c64286291d59b663591
+        x: 81
+        y: 40
+        width: 12
+        height: 19
+      spriteId: b781d2d1690920c4f80f33d0443fb7ab
     - name: stick_attack_Frame_19
       frameIndex: 19
       cellRect:
-        x: 51
-        y: 49
-        width: 58
-        height: 58
-      spriteId: 6ea6524f5b12bc141a673fe726056bc2
+        x: 81
+        y: 40
+        width: 12
+        height: 19
+      spriteId: 4b1d7e822a957c64286291d59b663591
     - name: stick_attack_Frame_20
       frameIndex: 20
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 8a8376abf2f803f40b30705b5b39a0b8
+        x: 82
+        y: 51
+        width: 20
+        height: 12
+      spriteId: 6ea6524f5b12bc141a673fe726056bc2
     - name: stick_attack_Frame_21
       frameIndex: 21
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: f039d9329c09ffc499bff800d63f09fe
+        x: 48
+        y: 48
+        width: 17
+        height: 19
+      spriteId: 8a8376abf2f803f40b30705b5b39a0b8
     - name: stick_attack_Frame_22
       frameIndex: 22
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 5af2f19ea57bf814c8af5af2f7a3ca40
+        x: 67
+        y: 48
+        width: 19
+        height: 14
+      spriteId: f039d9329c09ffc499bff800d63f09fe
     - name: stick_attack_Frame_23
       frameIndex: 23
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 799f9e2d94e85fa4d8abf3e9775dfada
+        x: 75
+        y: 48
+        width: 19
+        height: 14
+      spriteId: 5af2f19ea57bf814c8af5af2f7a3ca40
     - name: stick_attack_Frame_24
       frameIndex: 24
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 2d6c2e9e4c1e90c4fa576c75405331c8
+        x: 82
+        y: 51
+        width: 20
+        height: 12
+      spriteId: 799f9e2d94e85fa4d8abf3e9775dfada
     - name: stick_attack_Frame_25
       frameIndex: 25
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 1a317fd4eb761ec48b36f391c0446fe3
+        x: 96
+        y: 51
+        width: 14
+        height: 15
+      spriteId: 2d6c2e9e4c1e90c4fa576c75405331c8
     - name: stick_attack_Frame_26
       frameIndex: 26
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: efe2702e599f72f438abcb231fe94db1
+        x: 58
+        y: 51
+        width: 20
+        height: 12
+      spriteId: 1a317fd4eb761ec48b36f391c0446fe3
     - name: stick_attack_Frame_27
       frameIndex: 27
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: 93c6d0f951ab76f4ebc2ccd73ec5ebce
+        x: 66
+        y: 48
+        width: 19
+        height: 14
+      spriteId: efe2702e599f72f438abcb231fe94db1
     - name: stick_attack_Frame_28
       frameIndex: 28
       cellRect:
-        x: 51
-        y: 50
-        width: 58
-        height: 59
-      spriteId: b5b3b7d38412e7e468c564da9f23c78f
+        x: 74
+        y: 48
+        width: 19
+        height: 14
+      spriteId: 93c6d0f951ab76f4ebc2ccd73ec5ebce
     linkedCells: []
     parentIndex: -1
   platformSettings: []

@@ -240,6 +240,7 @@ public class PlayerController : MonoBehaviour
                     _anim.SetBool("Side", false);
                     _anim.SetBool("QuarterFront", false);
                     _anim.SetBool("QuarterBack", false);
+                    _anim.SetBool("Idle", false);
 
                     switch (this.direction)
                     {
@@ -260,6 +261,7 @@ public class PlayerController : MonoBehaviour
                         default:
                             _anim.SetBool("Front", true); break;
                     }
+
                 }
             }
 
@@ -337,9 +339,26 @@ public class PlayerController : MonoBehaviour
     {
         isAttackCooldownDone = false;
 
+        
+
         yield return new WaitForSeconds(this.weaponData.Cooldown * this.weaponModifiers.AttackCooldownModifier);
 
         isAttackCooldownDone = true;
+
+        // reset attack animators
+        this.weaponAnimator.SetBool("Idle", true);
+        this.weaponAnimator.SetBool("Front", false);
+        this.weaponAnimator.SetBool("Side", false);
+        this.weaponAnimator.SetBool("Back", false);
+        this.weaponAnimator.SetBool("QuarterFront", false);
+        this.weaponAnimator.SetBool("QuarterBack", false);
+
+        this.attackEffectAnimator.SetBool("Idle", true);
+        this.attackEffectAnimator.SetBool("Front", false);
+        this.attackEffectAnimator.SetBool("Side", false);
+        this.attackEffectAnimator.SetBool("Back", false);
+        this.attackEffectAnimator.SetBool("QuarterFront", false);
+        this.attackEffectAnimator.SetBool("QuarterBack", false);
     }
 
     // Makes the player invulnerable for a parameterized amount of time.
