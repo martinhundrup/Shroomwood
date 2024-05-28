@@ -58,7 +58,7 @@ public class BasicEnemy : Enemy
     private void Movement()
     {
         // if the enemy reaches it's target, it is no longer aggro'd and stops moving
-        if (Vector2.Distance(this.transform.position, this.targetPos) < 0.1)
+        if (Vector2.Distance(this.transform.position, this.targetPos) < 0.5)
         {
             // ensure no crashes when overlapping with player
             if (Vector2.Distance(player.transform.position, this.targetPos) < 0.6)

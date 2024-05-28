@@ -15,8 +15,14 @@ public class PlayerController : MonoBehaviour
     // Holds the reference to the player's Sprite Renderer component.
     private SpriteRenderer spriteRenderer;
 
-    // Holds the reference to the player's Running Animator component
+    // Holds the reference to the player's Running Animator component.
     private Animator animator;
+
+    // Holds reference to the animator for the weapon animation.
+    [SerializeField] Animator weaponAnimator;
+
+    // Holds reference to the animator for the weapon attack effect.
+    [SerializeField] Animator attackEffectAnimator;
 
     #endregion
 
@@ -25,20 +31,17 @@ public class PlayerController : MonoBehaviour
     // Contains the scriptable object that contains the player's stats.
     [SerializeField] private PlayerData playerData;
 
-    // The player's melee hitbox.
-    [SerializeField] private GameObject meleeHitbox;
-
     // The player's ranged attack projectile.
     [SerializeField] private GameObject projectile;
 
     // The last direction the player was moving/facing.
     [SerializeField] private Direction direction;
 
-    // The time needed to wait between attacks.
-    [SerializeField] private float attackCooldown;
-
     // Denotes whether the player is currently attackig or not.
-    [SerializeField] bool isAttacking = false;
+    [SerializeField] private bool isAttacking = false;
+
+    // Whether the attack cooldown amount of time has been waited since last attack.
+    [SerializeField] private bool isAttackCooldownDone = true;
 
     // Denotes whether the player is currently running or not.
     [SerializeField] bool isRunning = false;
@@ -55,6 +58,9 @@ public class PlayerController : MonoBehaviour
     // Whether or not the playe is immune to taking damage.
     private bool isInvulnerable = false;
 
+    private WeaponModifiers weaponModifiers = new WeaponModifiers();
+    [SerializeField] private WeaponData weaponData;
+
     #endregion
 
     #region PROPERTIES    
@@ -69,12 +75,16 @@ public class PlayerController : MonoBehaviour
 
     #region UNITY CALLBACKS
 
-    // Called once at beginning of scene.
-    private void Start()
+
+
+    // Called once when object is created.
+    private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+
+        this.isAttackCooldownDone = true;
     }
 
     // Called once a frame. Varies with framerate.
@@ -84,12 +94,20 @@ public class PlayerController : MonoBehaviour
             Movement();
         Attack();
         Animate();
+
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log($"weapon duration modifier: {this.weaponModifiers.AttackDurationModifier}");
+        }
     }
 
     // Called when this collides with a trigger collider.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<Hitbox>();
+        var weapon = collision.GetComponent<Weapon>();
 
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {
@@ -97,6 +115,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
         }
 
+
+        else if (weapon)
+        {
+            this.weaponData = weapon.WeaponData;
+            this.weaponModifiers = weapon.Modifiers;
+            this.weaponAnimator.runtimeAnimatorController = this.weaponData.WeaponAnimator;
+            this.attackEffectAnimator.runtimeAnimatorController = this.weaponData.EffectAnimator;
+        }
     }
 
     // Called every frame that the player collides with a trigger.
@@ -166,12 +192,14 @@ public class PlayerController : MonoBehaviour
             isRunning = false;
             return;
         }
-        else
+        else if (this.isAttackCooldownDone && this.weaponData != null) // only allow attacking if a weapon has been collected
         {
+
+
             // melee attack
             if (Input.GetButtonDown("Melee"))
             {
-                GameObject hitbox = Instantiate(this.meleeHitbox.gameObject);
+                GameObject hitbox = Instantiate(this.weaponData.Hitbox.gameObject);
                 hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
 
                 hitbox.transform.position = DirToVect(this.direction) * 0.6f + this.transform.position + new Vector3(0f, -0.1f, 0f);
@@ -189,8 +217,67 @@ public class PlayerController : MonoBehaviour
             void _Attack()
             {
                 isAttacking = true;
+                this.isAttackCooldownDone = false;
+
+                // enable the attacking animators
+                _AnimateAttack(this.weaponAnimator);
+                _AnimateAttack(this.attackEffectAnimator);
+
+
                 this.rigidBody.velocity = Vector2.zero;
-                StartCoroutine(AttackCooldown(this.attackCooldown));
+                StartCoroutine(AttackDuration());
+
+
+                void _AnimateAttack(Animator _anim)
+                {
+                    //_anim.enabled = true;
+                    _anim.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _anim.gameObject.GetComponent<SpriteRenderer>().flipX = this.spriteRenderer.flipX;
+
+                    // reset any bools
+                    _anim.SetBool("Front", false);
+                    _anim.SetBool("Back", false);
+                    _anim.SetBool("Side", false);
+                    _anim.SetBool("QuarterFront", false);
+                    _anim.SetBool("QuarterBack", false);
+
+                    switch (this.direction)
+                    {
+                        case Direction.Left:
+                            _anim.SetBool("Side", true); break;
+                        case Direction.Right:
+                            _anim.SetBool("Side", true); break;
+                        case Direction.Up:
+                            _anim.SetBool("Back", true); break;
+                        case Direction.DownLeft:
+                            _anim.SetBool("QuarterFront", true); break;
+                        case Direction.DownRight:
+                            _anim.SetBool("QuarterFront", true); break;
+                        case Direction.UpLeft:
+                            _anim.SetBool("QuarterBack", true); break;
+                        case Direction.UpRight:
+                            _anim.SetBool("QuarterBack", true); break;
+                        default:
+                            _anim.SetBool("Front", true); break;
+                    }
+                }
+            }
+
+        }
+        else // not attacking
+        {
+            // disable weapon animations
+
+            if (this.weaponAnimator)
+            {
+                //this.weaponAnimator.enabled = false;
+                this.weaponAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+            if (this.attackEffectAnimator)
+            {
+                //this.attackEffectAnimator.enabled = false;
+                this.attackEffectAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }
@@ -214,7 +301,6 @@ public class PlayerController : MonoBehaviour
             animator.runtimeAnimatorController = idleController;
         }
 
-        // player faces sideways when moving diagonal
         switch (this.direction)
         {
             case Direction.Left:
@@ -237,11 +323,23 @@ public class PlayerController : MonoBehaviour
     }
 
     // Waits an amount of time before setting the 'isAttacking' bool to false.
-    private IEnumerator AttackCooldown(float _waitTime)
+    private IEnumerator AttackDuration()
     {
-        yield return new WaitForSeconds(_waitTime);
+        yield return new WaitForSeconds(this.weaponData.Duration * this.weaponModifiers.AttackDurationModifier);
 
         isAttacking = false;
+
+        StartCoroutine(AttackCooldown());
+    }
+
+    // Waits for the attack cooldown duration.
+    private IEnumerator AttackCooldown()
+    {
+        isAttackCooldownDone = false;
+
+        yield return new WaitForSeconds(this.weaponData.Cooldown * this.weaponModifiers.AttackCooldownModifier);
+
+        isAttackCooldownDone = true;
     }
 
     // Makes the player invulnerable for a parameterized amount of time.

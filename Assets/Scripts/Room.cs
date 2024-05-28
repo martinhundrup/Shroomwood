@@ -14,6 +14,9 @@ public class Room : MonoBehaviour
     // Reference to camera.
     private CameraFollower cameraFollower;
 
+    // Whether or not the enemies have been spawned already.
+    private bool hasSpawnedEnemies;
+
     // Contains a key value for filling the values in the inspector.
     [Serializable]
     private class KeyValuePair
@@ -38,7 +41,12 @@ public class Room : MonoBehaviour
     private void PlayerEnter()
     {
         this.cameraFollower.ChangeBounds(cameraBounder.transform);
-        this.SpawnEnemies();
+
+        if (!hasSpawnedEnemies)
+        {
+            this.SpawnEnemies();
+            hasSpawnedEnemies = true;
+        }
     }
 
     // Spawns all enemies.

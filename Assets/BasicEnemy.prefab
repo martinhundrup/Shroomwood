@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8008fd801dcb140b04f5686035c009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   dropRadius: 0
   itemList: []
 --- !u!114 &6692821894927088118
