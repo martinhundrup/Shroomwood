@@ -9,7 +9,7 @@ public class ItemDrop : MonoBehaviour
     #region EVENTS
 
     // An event called when a hurtbox takes damage (collides with a hitbox).
-    public delegate void CollectAction(ItemData _item);
+    public delegate void CollectAction(ItemDrop _item);
 
     // The event called when this object collides with a hitbox.
     public event CollectAction OnCollect;
@@ -19,7 +19,7 @@ public class ItemDrop : MonoBehaviour
     #region ATTRIBUTES
 
     // The item data that represents this object
-    [SerializeField] private ItemData itemData;
+    [SerializeField] protected ItemData itemData;
 
     // The transform of the game object we will target.
     [SerializeField] private Transform targetTrans;
@@ -74,7 +74,7 @@ public class ItemDrop : MonoBehaviour
     #region UNITY CALLBACKS
 
     // Called when this object enters the scene.
-    private void Awake()
+    protected void Awake()
     {
         FindObjectOfType<InventoryManager>().Subscribe(this);
         targetPos = transform.position;
@@ -105,7 +105,7 @@ public class ItemDrop : MonoBehaviour
             if (targetsPlayer)
             {
                 Debug.Log("destroy item");
-                OnCollect(this.itemData);
+                OnCollect(this);
                 Destroy(this.gameObject);
             }
         }

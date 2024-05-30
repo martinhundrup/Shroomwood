@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     // Holds the reference to the player's Sprite Renderer component.
     private SpriteRenderer spriteRenderer;
 
-    // Holds the reference to the player's Running Animator component.
+    // Holds the reference to the player's Animator component.
     private Animator animator;
 
     // Holds reference to the animator for the weapon animation.
@@ -46,20 +46,37 @@ public class PlayerController : MonoBehaviour
     // Denotes whether the player is currently running or not.
     [SerializeField] bool isRunning = false;
 
-    // Controls the running animations.
-    [SerializeField] private AnimatorController runController;
-
-    // Controls the idle animations.
-    [SerializeField] private AnimatorController idleController;
-
-    // Controls the attack animations.
-    [SerializeField] private AnimatorController attackController;
-
     // Whether or not the playe is immune to taking damage.
     private bool isInvulnerable = false;
 
     private WeaponModifiers weaponModifiers = new WeaponModifiers();
     [SerializeField] private WeaponData weaponData;
+
+    // the current animation being played.
+    [SerializeField] private string current_anim = string.Empty;
+    [SerializeField] private string current_weapon_anim = string.Empty;
+    [SerializeField] private string current_effect_anim = string.Empty;
+
+    // idles
+    private const string IDLE_F = "Idle_Front";
+    private const string IDLE_B = "Idle_Back";
+    private const string IDLE_S = "Idle_Side";
+    private const string IDLE_QF = "Idle_QuarterFront";
+    private const string IDLE_QB = "Idle_QuarterBack";
+
+    // running
+    private const string RUN_F = "Run_Front";
+    private const string RUN_B = "Run_Back";
+    private const string RUN_S = "Run_Side";
+    private const string RUN_QF = "Run_QuarterFront";
+    private const string RUN_QB = "Run_QuarterBack";
+
+    // attacking
+    private const string ATTACK_F = "Attack_Front";
+    private const string ATTACK_B = "Attack_Back";
+    private const string ATTACK_S = "Attack_Side";
+    private const string ATTACK_QF = "Attack_QuarterFront";
+    private const string ATTACK_QB = "Attack_QuarterBack";
 
     #endregion
 
@@ -74,8 +91,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region UNITY CALLBACKS
-
-
 
     // Called once when object is created.
     private void Awake()
@@ -95,8 +110,6 @@ public class PlayerController : MonoBehaviour
         Attack();
         Animate();
 
-
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log($"weapon duration modifier: {this.weaponModifiers.AttackDurationModifier}");
@@ -107,21 +120,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<Hitbox>();
-        var weapon = collision.GetComponent<Weapon>();
 
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {
             this.playerData.CurrentHealth -= hitbox.Damage;
             StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
-        }
-
-
-        else if (weapon)
-        {
-            this.weaponData = weapon.WeaponData;
-            this.weaponModifiers = weapon.Modifiers;
-            this.weaponAnimator.runtimeAnimatorController = this.weaponData.WeaponAnimator;
-            this.attackEffectAnimator.runtimeAnimatorController = this.weaponData.EffectAnimator;
         }
     }
 
@@ -195,7 +198,6 @@ public class PlayerController : MonoBehaviour
         else if (this.isAttackCooldownDone && this.weaponData != null) // only allow attacking if a weapon has been collected
         {
 
-
             // melee attack
             if (Input.GetButtonDown("Melee"))
             {
@@ -203,7 +205,10 @@ public class PlayerController : MonoBehaviour
                 hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
 
                 hitbox.transform.position = DirToVect(this.direction) * 0.6f + this.transform.position + new Vector3(0f, -0.1f, 0f);
-                _Attack();
+                isAttacking = true;
+                this.isAttackCooldownDone = false;
+                this.rigidBody.velocity = Vector2.zero;
+                StartCoroutine(AttackDuration());
             }
             else if (Input.GetButtonDown("Ranged"))
             {
@@ -213,115 +218,157 @@ public class PlayerController : MonoBehaviour
 
                 p.Fire(DirToVect(this.direction));
             }
-
-            void _Attack()
-            {
-                isAttacking = true;
-                this.isAttackCooldownDone = false;
-
-                // enable the attacking animators
-                _AnimateAttack(this.weaponAnimator);
-                _AnimateAttack(this.attackEffectAnimator);
-
-
-                this.rigidBody.velocity = Vector2.zero;
-                StartCoroutine(AttackDuration());
-
-
-                void _AnimateAttack(Animator _anim)
-                {
-                    //_anim.enabled = true;
-                    _anim.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _anim.gameObject.GetComponent<SpriteRenderer>().flipX = this.spriteRenderer.flipX;
-
-                    // reset any bools
-                    _anim.SetBool("Front", false);
-                    _anim.SetBool("Back", false);
-                    _anim.SetBool("Side", false);
-                    _anim.SetBool("QuarterFront", false);
-                    _anim.SetBool("QuarterBack", false);
-                    _anim.SetBool("Idle", false);
-
-                    switch (this.direction)
-                    {
-                        case Direction.Left:
-                            _anim.SetBool("Side", true); break;
-                        case Direction.Right:
-                            _anim.SetBool("Side", true); break;
-                        case Direction.Up:
-                            _anim.SetBool("Back", true); break;
-                        case Direction.DownLeft:
-                            _anim.SetBool("QuarterFront", true); break;
-                        case Direction.DownRight:
-                            _anim.SetBool("QuarterFront", true); break;
-                        case Direction.UpLeft:
-                            _anim.SetBool("QuarterBack", true); break;
-                        case Direction.UpRight:
-                            _anim.SetBool("QuarterBack", true); break;
-                        default:
-                            _anim.SetBool("Front", true); break;
-                    }
-
-                }
-            }
-
-        }
-        else // not attacking
-        {
-            // disable weapon animations
-
-            if (this.weaponAnimator)
-            {
-                //this.weaponAnimator.enabled = false;
-                this.weaponAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            }
-
-            if (this.attackEffectAnimator)
-            {
-                //this.attackEffectAnimator.enabled = false;
-                this.attackEffectAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            }
         }
     }
 
     // Responsible for figuring out what animation to play
     public void Animate()
     {
-        ResetAnimations();
+        // the anim to play
+        string _anim = string.Empty;
 
         if (isRunning)
         {
-            animator.runtimeAnimatorController = runController;
-            
+            _Enable_Animator(weaponAnimator, false);
+            _Enable_Animator(attackEffectAnimator, false);
+
+            switch (this.direction)
+            {
+                case Direction.Left:
+                    _anim = RUN_S; break;
+                case Direction.Right:
+                    _anim = RUN_S; break;
+                case Direction.Up:
+                    _anim = RUN_B; break;
+                case Direction.DownLeft:
+                    _anim = RUN_QF; break;
+                case Direction.DownRight:
+                    _anim = RUN_QF; break;
+                case Direction.UpLeft:
+                    _anim = RUN_QB; break;
+                case Direction.UpRight:
+                    _anim = RUN_QB; break;
+                default:
+                    _anim = RUN_F; break;
+            }
         }
         else if (isAttacking)
         {
-            animator.runtimeAnimatorController = attackController;
+
+            _Enable_Animator(weaponAnimator, true);
+            _Enable_Animator(attackEffectAnimator, true);
+
+            string _dir = string.Empty;
+
+            // animate shroomie
+            switch (this.direction)
+            {
+                case Direction.Left:
+                    _anim = ATTACK_S;
+                    _dir = "_Side";
+                    break;
+                case Direction.Right:
+                    _anim = ATTACK_S;
+                    _dir = "_Side";
+                    break;
+                case Direction.Up:
+                    _anim = ATTACK_B;
+                    _dir = "_Back";
+                    break;
+                case Direction.DownLeft:
+                    _anim = ATTACK_QF;
+                    _dir = "_QuarterFront";
+                    break;
+                case Direction.DownRight:
+                    _anim = ATTACK_QF;
+                    _dir = "_QuarterFront";
+                    break;
+                case Direction.UpLeft:
+                    _anim = ATTACK_QB;
+                    _dir = "_QuarterBack";
+                    break;
+                case Direction.UpRight:
+                    _anim = ATTACK_QB;
+                    _dir = "_QuarterBack";
+                    break;
+                default:
+                    _anim = ATTACK_F;
+                    _dir = "_Front";
+                    break;
+            }
+
+            string _weapon = weaponData.ItemName + _dir;
+
+            // animate weapon
+            if (current_weapon_anim != _weapon)
+            {
+                Debug.Log(_weapon);
+                this.weaponAnimator.Play(_weapon);
+                this.current_weapon_anim = _weapon;
+            }
+
+            string _effect = weaponData.EffectName + _dir;
+
+            // animate effect
+            if (current_effect_anim != _effect)
+            {
+                Debug.Log(_effect);
+                this.attackEffectAnimator.Play(_effect);
+                this.current_effect_anim = _effect;
+            }
         }
-        else
+        else // idle
         {
-            animator.runtimeAnimatorController = idleController;
+
+            _Enable_Animator(weaponAnimator, false);
+            _Enable_Animator(attackEffectAnimator, false);
+
+            switch (this.direction)
+            {
+                case Direction.Left:
+                    _anim = IDLE_S; break;
+                case Direction.Right:
+                    _anim = IDLE_S; break;
+                case Direction.Up:
+                    _anim = IDLE_B; break;
+                case Direction.DownLeft:
+                    _anim = IDLE_QF; break;
+                case Direction.DownRight:
+                    _anim = IDLE_QF; break;
+                case Direction.UpLeft:
+                    _anim = IDLE_QB; break;
+                case Direction.UpRight:
+                    _anim = IDLE_QB; break;
+                default:
+                    _anim = IDLE_F; break;
+            }
         }
 
-        switch (this.direction)
+        if (current_anim != _anim)
         {
-            case Direction.Left:
-                this.animator.SetBool("Side", true); break;
-            case Direction.Right:
-                this.animator.SetBool("Side", true); break;
-            case Direction.Up:
-                this.animator.SetBool("Back", true); break;
-            case Direction.DownLeft:
-                this.animator.SetBool("QuarterFront", true); break;
-            case Direction.DownRight:
-                this.animator.SetBool("QuarterFront", true); break;
-            case Direction.UpLeft:
-                this.animator.SetBool("QuarterBack", true); break;
-            case Direction.UpRight:
-                this.animator.SetBool("QuarterBack", true); break;
-            default:
-                this.animator.SetBool("Front", true); break;
+            this.animator.Play(_anim);
+            this.current_anim = _anim;
         }
+
+        // enables or disables the animator and sprite renderer.
+        void _Enable_Animator(Animator _anim, bool _bool)
+        {
+            _anim.GetComponent<SpriteRenderer>().enabled = _bool;
+            _anim.GetComponent<SpriteRenderer>().flipX = this.spriteRenderer.flipX;
+
+            if (!_bool)
+                _anim.Play("null");
+
+            this.current_weapon_anim = string.Empty;
+            this.current_effect_anim = string.Empty;
+        }
+    }
+
+    // Called by inventory manager when a new weapon is picked up.
+    public void EquipWeapon(WeaponDrop _weapon)
+    {
+        this.weaponData = (WeaponData)_weapon.ItemData;
+        this.weaponModifiers = _weapon.Modifiers;
     }
 
     // Waits an amount of time before setting the 'isAttacking' bool to false.
@@ -338,27 +385,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator AttackCooldown()
     {
         isAttackCooldownDone = false;
-
         
-
         yield return new WaitForSeconds(this.weaponData.Cooldown * this.weaponModifiers.AttackCooldownModifier);
 
         isAttackCooldownDone = true;
-
-        // reset attack animators
-        this.weaponAnimator.SetBool("Idle", true);
-        this.weaponAnimator.SetBool("Front", false);
-        this.weaponAnimator.SetBool("Side", false);
-        this.weaponAnimator.SetBool("Back", false);
-        this.weaponAnimator.SetBool("QuarterFront", false);
-        this.weaponAnimator.SetBool("QuarterBack", false);
-
-        this.attackEffectAnimator.SetBool("Idle", true);
-        this.attackEffectAnimator.SetBool("Front", false);
-        this.attackEffectAnimator.SetBool("Side", false);
-        this.attackEffectAnimator.SetBool("Back", false);
-        this.attackEffectAnimator.SetBool("QuarterFront", false);
-        this.attackEffectAnimator.SetBool("QuarterBack", false);
     }
 
     // Makes the player invulnerable for a parameterized amount of time.
@@ -376,8 +406,6 @@ public class PlayerController : MonoBehaviour
     // Finds the direction something is facing based on x and y coords.
     private Direction FindDir(float _x, float _y)
     {
-
-        //Debug.Log("x: " + _x + "\ny: " + _y);
 
         if (_x == 0 && _y > 0) // up
         {
@@ -435,16 +463,6 @@ public class PlayerController : MonoBehaviour
             default:
                 return new Vector3(0, -1, 0); 
         }
-    }
-
-    // Cancels all animations.
-    private void ResetAnimations()
-    {
-        this.animator.SetBool("Front", false);
-        this.animator.SetBool("Back", false);
-        this.animator.SetBool("Side", false);
-        this.animator.SetBool("QuarterFront", false);
-        this.animator.SetBool("QuarterBack", false);
     }
 
     #endregion

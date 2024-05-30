@@ -1,0 +1,7 @@
+This asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+A. background.png
+CC0 License
+License for Everyone.
+
+You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
+

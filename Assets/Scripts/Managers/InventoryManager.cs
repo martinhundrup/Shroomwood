@@ -50,12 +50,22 @@ public class InventoryManager : MonoBehaviour
     }
 
     // Adds an item to the inventory when collected.
-    private void ItemCollected(ItemData _item)
+    private void ItemCollected(ItemDrop _item)
     {
-        bool success = playerInventory.AddItem(_item, 1);
+        // check if weapon
+        if (_item is WeaponDrop weapon)
+        {
+            // _item is indeed a WeaponData
+            Debug.Log("Collected a weapon: " + weapon.ItemData.ItemName);
+
+            player.EquipWeapon((WeaponDrop)_item);
+        }
+
+
+        bool success = playerInventory.AddItem(_item.ItemData, 1);
         if (success)
         {
-            Debug.Log(_item.ItemName + " was collected");
+            Debug.Log(_item.ItemData.ItemName + " was collected");
 
             // TODO: implement some sort of UI message when a item is collected.
             //this.OnCollect();
