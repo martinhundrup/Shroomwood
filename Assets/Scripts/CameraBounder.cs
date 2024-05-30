@@ -15,7 +15,8 @@ public class CameraBounder : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            this.OnPlayerEnter();
+            if (OnPlayerEnter != null)
+                this.OnPlayerEnter();
         }
     }
 }

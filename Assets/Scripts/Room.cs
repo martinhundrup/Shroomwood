@@ -17,16 +17,13 @@ public class Room : MonoBehaviour
     // Whether or not the enemies have been spawned already.
     private bool hasSpawnedEnemies;
 
-    // Contains a key value for filling the values in the inspector.
-    [Serializable]
-    private class KeyValuePair
-    {
-        public GameObject _enemy;
-        public Vector2 _pos;
-    }
+    // The amount of enemies in the room.
+    [SerializeField] private int enemyCount = 0;
 
-    // The list to be filled in the inspector.
-    [SerializeField] private List<KeyValuePair> enemyList = new List<KeyValuePair>();
+    // Refs to the doors to close when player enters.
+    private Doorway[] doors;
+
+    private Enemy[] enemies;
 
     // Called when object is created.
     private void Awake()
@@ -34,7 +31,12 @@ public class Room : MonoBehaviour
         this.cameraFollower = FindObjectOfType<CameraFollower>();
 
         this.cameraBounder = GetComponentInChildren<CameraBounder>();
-        this.cameraBounder.OnPlayerEnter += this.PlayerEnter; 
+        this.cameraBounder.OnPlayerEnter += this.PlayerEnter;
+
+        this.doors = GetComponentsInChildren<Doorway>();
+        this.InitEnemies();
+
+        this.ActivateDoors(false);
     }
 
     // Called when this room's camera bounder has been entered.
@@ -42,21 +44,53 @@ public class Room : MonoBehaviour
     {
         this.cameraFollower.ChangeBounds(cameraBounder.transform);
 
-        if (!hasSpawnedEnemies)
+        if (!hasSpawnedEnemies && enemyCount > 0)
         {
-            this.SpawnEnemies();
+            this.ActivateEnemies(true);
+            this.ActivateDoors(true);
             hasSpawnedEnemies = true;
         }
     }
 
-    // Spawns all enemies.
-    private void SpawnEnemies()
+    // Initailizes enemies at scene start.
+    private void InitEnemies()
     {
-        foreach (var pair in  enemyList)
+        this.enemies = GetComponentsInChildren<Enemy>();
+        this.enemyCount = this.enemies.Length;
+
+        foreach (var _enemy in this.enemies)
         {
-            GameObject _e = Instantiate(pair._enemy);
-            _e.transform.position = pair._pos + (Vector2)this.transform.position;
+            _enemy.gameObject.SetActive(false);
+            _enemy.OnDeath += this.EnemyDeath;
         }
+    }
+
+    // Activates or deactives all doors in the room.
+    private void ActivateDoors(bool _bool)
+    {
+        foreach (var _door in this.doors)
+        {
+            _door.gameObject.SetActive(_bool);
+        }
+    }
+
+    // Spawns all enemies.
+    private void ActivateEnemies(bool _bool)
+    {
+        foreach (var _enemy in this.enemies)
+        {
+            _enemy.gameObject.SetActive(_bool);
+        }
+    }
+
+    // Called when an enemy of the room is killed.
+    private void EnemyDeath()
+    {
+        Debug.Log("enemy died");
+        enemyCount--;
+
+        if (enemyCount <= 0)
+            ActivateDoors(false);
     }
 
 }

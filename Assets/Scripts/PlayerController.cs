@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     // Denotes whether the player is currently running or not.
     [SerializeField] bool isRunning = false;
 
+    // The time in between weapon blinks
+    [SerializeField] float blinkTime;
+
     // Whether or not the playe is immune to taking damage.
     private bool isInvulnerable = false;
 
@@ -120,7 +123,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<Hitbox>();
-
+       
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {
             this.playerData.CurrentHealth -= hitbox.Damage;
@@ -302,7 +305,6 @@ public class PlayerController : MonoBehaviour
             // animate weapon
             if (current_weapon_anim != _weapon)
             {
-                Debug.Log(_weapon);
                 this.weaponAnimator.Play(_weapon);
                 this.current_weapon_anim = _weapon;
             }
@@ -312,7 +314,6 @@ public class PlayerController : MonoBehaviour
             // animate effect
             if (current_effect_anim != _effect)
             {
-                Debug.Log(_effect);
                 this.attackEffectAnimator.Play(_effect);
                 this.current_effect_anim = _effect;
             }
@@ -395,8 +396,24 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MakeInvulnerable(float _time)
     {
         isInvulnerable = true;
+        StartCoroutine(Blink());                                
         yield return new WaitForSeconds(_time);
         isInvulnerable = false;
+    }
+
+    // Blinks the player's prite renderer until they are no longer invulnerable.
+    private IEnumerator Blink()
+    {       
+        while (isInvulnerable)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(blinkTime);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(blinkTime);
+        }
+        
+        spriteRenderer.enabled = true;
+        yield return null;
     }
 
     #endregion

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - CameraBounder
   - Hitbox
+  - Doorway
   layers:
   - Default
   - TransparentFX

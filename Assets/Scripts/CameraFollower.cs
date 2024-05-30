@@ -99,8 +99,8 @@ public class CameraFollower : MonoBehaviour
 
         float max_x = x - 8 + width / 2;
         float min_x = x + 8 - width / 2;
-        float max_y = y - 4 + height / 2;
-        float min_y = y + 4 - height / 2;
+        float max_y = y - 5 + height / 2;
+        float min_y = y + 5 - height / 2;
 
         if (max_x <= min_x)
         {

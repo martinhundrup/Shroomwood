@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    #region EVENTS
+
+    // called when the enemy dies.
+    public delegate void OnDeathEvent();
+    public event OnDeathEvent OnDeath;
+
+    #endregion
+
+
+
     #region ATTRIBUTES
 
     // The speed at which the enemy moves
@@ -48,6 +58,11 @@ public class Enemy : MonoBehaviour
     // Called when this object is destroyed.
     protected void OnDestroy()
     {
+        if (this.OnDeath != null)
+        {
+            this.OnDeath();
+        }
+
         Destroy(this.spawnedHitbox);
     }
 
