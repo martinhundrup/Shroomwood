@@ -97,8 +97,8 @@ public class CameraFollower : MonoBehaviour
         float width = _bounder.localScale.x;
         float height = _bounder.localScale.y;
 
-        float max_x = x - 8 + width / 2;
-        float min_x = x + 8 - width / 2;
+        float max_x = x - 9 + width / 2;
+        float min_x = x + 9 - width / 2;
         float max_y = y - 5 + height / 2;
         float min_y = y + 5 - height / 2;
 

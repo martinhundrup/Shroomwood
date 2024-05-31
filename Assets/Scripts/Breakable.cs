@@ -53,6 +53,7 @@ public class Breakable : MonoBehaviour
     // Called when this object/script is destroyed.
     private void OnDestroy()
     {
+        if (itemDrops == null || this.itemDrops.Count == 0) return;
         foreach (ItemData _item in this.itemDrops.Keys)
         {
             for (int i = 0; i < this.itemDrops[_item]; i++)

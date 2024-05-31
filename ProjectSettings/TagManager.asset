@@ -9,6 +9,7 @@ TagManager:
   - CameraBounder
   - Hitbox
   - Doorway
+  - Wall
   layers:
   - Default
   - TransparentFX

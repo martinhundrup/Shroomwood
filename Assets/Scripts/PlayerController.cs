@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
        
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {
+            Debug.Log(collision.gameObject);
             this.playerData.CurrentHealth -= hitbox.Damage;
             StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
         }
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
         var hitbox = collision.GetComponent<Hitbox>();
         if (!isInvulnerable && hitbox && !CompareTag(hitbox.Tag)) // player collided with an enemy hitbox
         {
+            Debug.Log("player hit");
             this.playerData.CurrentHealth -= hitbox.Damage;
             StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
         }
