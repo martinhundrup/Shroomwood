@@ -38,10 +38,10 @@ public class RangedEnemy : Enemy
         }
     }
 
-    // Called once a frame.
-    new private void Update()
+    // Called once a physics frame.
+    new private void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         FindTarget();
     }
 

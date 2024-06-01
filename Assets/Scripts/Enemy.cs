@@ -22,6 +22,29 @@ public class Enemy : MonoBehaviour
     // Ref to the active spawned hitbox.
     private GameObject spawnedHitbox;
 
+    // Ref to the this object's rigidbody 2D component.
+    protected Rigidbody2D rigidBody;
+
+    protected SpriteRenderer spriteRenderer;
+
+    // The speed at which the enemy moves
+    [SerializeField] protected float speed;
+
+    [SerializeField] protected bool hasHitstun = false;
+
+
+    // Gets the speed attribute.
+    public float Speed
+    {
+        get { return this.speed; }
+    }
+
+    // Gets the has histstun attribute.
+    public bool HasHitstun
+    {
+        get { return this.hasHitstun; }
+    }
+
     #endregion
 
     #region UNITY CALLBACKS
@@ -29,12 +52,15 @@ public class Enemy : MonoBehaviour
     // Called when object is loaded.
     protected void Awake()
     {
+        this.rigidBody = GetComponent<Rigidbody2D>();
+        this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
         spawnedHitbox = Instantiate(this.hitbox);
         spawnedHitbox.transform.position = transform.position;
     }
 
-    // Called once a frame.
-    protected void Update()
+    // Called once a physics frame.
+    protected void FixedUpdate()
     {
         spawnedHitbox.transform.position = transform.position;
     }
@@ -51,4 +77,46 @@ public class Enemy : MonoBehaviour
     }
 
     #endregion
+
+    // Called when a trigger collides with this object.
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // check if we collided with a valid hitbox
+        var _hitbox = collision.GetComponent<Hitbox>();
+        if (_hitbox && !CompareTag(_hitbox.Tag))
+        {
+            StartCoroutine(HitStun(_hitbox.StunTime));
+            StopCoroutine(Blink());
+            StartCoroutine(Blink());
+        }
+    } 
+
+    // Temporarily pauses the enemy when hit.
+    private IEnumerator HitStun(float _time)
+    {
+        var s = this.speed;
+        this.speed = 0;
+
+        yield return new WaitForSeconds(_time);
+
+        this.speed = s;
+    }
+
+    // Blinks the player's prite renderer until they are no longer invulnerable.
+    private IEnumerator Blink()
+    {
+        int _count = 3;
+
+        while (_count > 0)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+            _count--;
+        }
+
+        spriteRenderer.enabled = true;
+        yield return null;
+    }
 }

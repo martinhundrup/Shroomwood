@@ -20,12 +20,6 @@ public class BasicEnemy : Enemy
     // The enemy layer to ignore hitting other enemies.
     [SerializeField] private LayerMask[] layerMasks;
 
-    // The speed at which the enemy moves
-    [SerializeField] protected float speed;
-
-    // Ref to the this object's rigidbody 2D component.
-    protected Rigidbody2D rigidBody;
-
     // The layer masks to be used by raycasts.
     private int masks = 0;
 
@@ -38,11 +32,6 @@ public class BasicEnemy : Enemy
 
     private bool isIdling = false;
 
-    // Gets the speed attribute.
-    public float Speed
-    {
-        get { return this.speed; }
-    }
 
     // Called when the object is created.
     new private void Awake()
@@ -50,7 +39,6 @@ public class BasicEnemy : Enemy
         base.Awake();
         targetPos = transform.position;
         player = FindObjectOfType<PlayerController>();
-        this.rigidBody = GetComponent<Rigidbody2D>();
 
         // init masks
         for (int i = 0; i < layerMasks.Length; i++)
@@ -59,10 +47,10 @@ public class BasicEnemy : Enemy
         }
     }
 
-    // Called once a frame.
-    new private void Update()
+    // Called once a physics frame.
+    new private void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         FindTarget();
         Movement();
     }
