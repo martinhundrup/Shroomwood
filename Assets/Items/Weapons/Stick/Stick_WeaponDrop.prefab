@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7498098733224516705}
   - component: {fileID: 1367055913507993346}
   - component: {fileID: 4171039067127629451}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stick_WeaponDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

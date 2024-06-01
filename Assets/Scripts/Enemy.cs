@@ -55,14 +55,20 @@ public class Enemy : MonoBehaviour
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        spawnedHitbox = Instantiate(this.hitbox);
-        spawnedHitbox.transform.position = transform.position;
+        if (this.hitbox != null)
+        {
+            spawnedHitbox = Instantiate(this.hitbox);
+            spawnedHitbox.transform.position = transform.position;
+        }
     }
 
     // Called once a physics frame.
     protected void FixedUpdate()
     {
-        spawnedHitbox.transform.position = transform.position;
+        if (this.spawnedHitbox != null)
+        {
+            spawnedHitbox.transform.position = transform.position;
+        }
     }
 
     // Called when this object is destroyed.
