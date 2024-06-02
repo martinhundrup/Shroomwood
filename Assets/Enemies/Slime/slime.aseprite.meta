@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -88,7 +88,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638527664690410222
+  platformSettingsDirtyTick: 638528683179766167
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: slime
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: slime_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 196}
   - name: slime_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.29268292}
+    pivot: {x: 0.5, y: 0.48780486}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 140, y: 196}
   - name: slime_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 196}
   - name: slime_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 4}
   - name: slime_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 148, y: 4}
   - name: slime_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 52}
   - name: slime_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 52}
   - name: slime_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 148, y: 52}
   - name: slime_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 100}
   - name: slime_Frame_10
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 100}
   - name: slime_Frame_11
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 148, y: 100}
   - name: slime_Frame_12
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 148}
   - name: slime_Frame_13
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 76, y: 148}
   - name: slime_Frame_14
     originalName: 
-    pivot: {x: 0.5, y: -0.3}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
