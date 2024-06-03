@@ -23,10 +23,10 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float movementSpeed;
 
     // The maximum amount of health the player can have.
-    [SerializeField] private int maxHealth;
+    [SerializeField] private float maxHealth;
 
     // The current health of the player.
-    [SerializeField] private int currentHealth;
+    [SerializeField] private float currentHealth;
 
     // The amount of time the player is invulnerable after taking damage.
     [SerializeField] private float damageBoostDuration;
@@ -43,7 +43,7 @@ public class PlayerData : ScriptableObject
     }
 
     // Gets or sets the current health value.
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get { return this.currentHealth; }
         set 
@@ -65,7 +65,7 @@ public class PlayerData : ScriptableObject
     }
 
     // Gets or sets the max health value.
-    public int MaxHealth
+    public float MaxHealth
     {
         get { return this.maxHealth; }
         set { this.maxHealth = value; }

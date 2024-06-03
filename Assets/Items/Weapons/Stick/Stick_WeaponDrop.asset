@@ -20,4 +20,7 @@ MonoBehaviour:
   damage: 1
   cooldown: 0.2
   duration: 0.2
+  knockback: 0.2
+  stunTime: 0.2
+  sizeModifier: 1
   hitbox: {fileID: 1104272908595059409, guid: a309f76c4290163478df8da1e3eb46e9, type: 3}

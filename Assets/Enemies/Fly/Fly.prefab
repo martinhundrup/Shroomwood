@@ -199,6 +199,7 @@ MonoBehaviour:
   hitbox: {fileID: 6116104606022559173, guid: c641a33d802fff54badd0b6c014df94d, type: 3}
   speed: 2
   hasHitstun: 1
+  isInHitstun: 0
 --- !u!114 &3810249671230299660
 MonoBehaviour:
   m_ObjectHideFlags: 0

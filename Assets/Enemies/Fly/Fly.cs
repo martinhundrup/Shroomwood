@@ -21,13 +21,19 @@ public class Fly : MonoBehaviour
         this.enemy = GetComponent<Enemy>();
     }
 
-    // Called every physics update frame.
+    //private void OnEnable()
+    //{
+    //    rigidBody.AddForce(dir * enemy.Speed / 100);
+    //}
+
+    //Called every physics update frame.
     private void FixedUpdate()
     {
-        rigidBody.velocity = dir * enemy.Speed;
+        if (!this.enemy.IsInHitstun)
+            rigidBody.velocity = dir * enemy.Speed;
     }
 
-    // Called when a collider contacts this object.
+    //Called when a collider contacts this object.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float _x = collision.contacts[0].point.x - this.transform.position.x;

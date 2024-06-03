@@ -31,7 +31,14 @@ public class Slime : MonoBehaviour
     // Called every physics frame.
     private void FixedUpdate()
     {
-        rigidBody.velocity = rigidBody.velocity * speedDecay;
+        if (!this.enemy.IsInHitstun)
+        {
+            rigidBody.velocity = rigidBody.velocity * speedDecay;
+        }
+        else
+        {
+            Debug.Log("open for knockback");
+        }
     }
 
     // Continuously jump at semi random intervals.

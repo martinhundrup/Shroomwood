@@ -7,7 +7,7 @@ public class Hitbox : MonoBehaviour
     #region ATTRIBUTES
 
     // The damage this object deals.
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
 
     // The force of which objects are pushed back.
     [SerializeField] private float knockbackForce;
@@ -18,12 +18,15 @@ public class Hitbox : MonoBehaviour
     // Tags of objects to avoid collision.
     [SerializeField] private string _tag;
 
+    // The duration the hitbox stays active.
+    [SerializeField] private float duration;
+
     #endregion
 
     #region PROPERTIES
 
     // Gets or sets the damage this object deals.
-    public int Damage
+    public float Damage
     {
         get { return this.damage; }
         set { this.damage = value; }
@@ -53,9 +56,9 @@ public class Hitbox : MonoBehaviour
     #region METHODS
 
     // Starts the destroy timer.
-    public void StartTimer(float _time)
+    public void StartTimer()
     {
-        StartCoroutine(Decay(_time));
+        StartCoroutine(Decay(this.duration));
     }
 
     // Waits an amount of time then destroys this game object.
@@ -64,6 +67,16 @@ public class Hitbox : MonoBehaviour
         yield return new WaitForSeconds(_time);
 
         Destroy(this.gameObject);
+    }
+
+    // Initializes hitbox values based on the weapon being used.
+    public void InitValues(WeaponData _weaponData)
+    {
+        this.damage = _weaponData.Damage;
+        this.knockbackForce = _weaponData.Knockback;
+        this.stunTime = _weaponData.StunTime;
+        this.duration = _weaponData.Duration;
+        this.transform.localScale = Vector2.one * _weaponData.SizeModifier;
     }
 
     #endregion

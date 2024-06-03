@@ -2409,6 +2409,7 @@ MonoBehaviour:
   hitbox: {fileID: 0}
   speed: 0
   hasHitstun: 0
+  isInHitstun: 0
 --- !u!114 &842966832
 MonoBehaviour:
   m_ObjectHideFlags: 0

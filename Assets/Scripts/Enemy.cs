@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected bool hasHitstun = false;
 
+    [SerializeField] protected bool isInHitstun = false;
 
     // Gets the speed attribute.
     public float Speed
@@ -43,6 +44,12 @@ public class Enemy : MonoBehaviour
     public bool HasHitstun
     {
         get { return this.hasHitstun; }
+    }
+
+    // Gets the isInHitstun state
+    public bool IsInHitstun
+    {
+        get { return this.isInHitstun;}
     }
 
     #endregion
@@ -91,21 +98,29 @@ public class Enemy : MonoBehaviour
         var _hitbox = collision.GetComponent<Hitbox>();
         if (_hitbox && !CompareTag(_hitbox.Tag))
         {
-            StartCoroutine(HitStun(_hitbox.StunTime));
+            StartCoroutine(HitStun(_hitbox, (Vector2)collision.gameObject.transform.position));
             StopCoroutine(Blink());
             StartCoroutine(Blink());
         }
     } 
 
     // Temporarily pauses the enemy when hit.
-    private IEnumerator HitStun(float _time)
+    private IEnumerator HitStun(Hitbox _hitbox, Vector2 _position_of_collision)
     {
+        this.isInHitstun = true;
         var s = this.speed;
         this.speed = 0;
+        this.rigidBody.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(_time);
+        yield return new WaitForSeconds(0.01f); // add delay for knockback force
+
+        Debug.Log("add knockback force");
+        this.rigidBody.AddForce(_hitbox.KnockbackForce / 10 * ((Vector2)this.transform.position - _position_of_collision).normalized);
+
+        yield return new WaitForSeconds(_hitbox.StunTime);
 
         this.speed = s;
+        this.isInHitstun = false;
     }
 
     // Blinks the player's prite renderer until they are no longer invulnerable.

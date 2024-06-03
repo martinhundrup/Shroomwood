@@ -10,7 +10,7 @@ public class Hurtbox : MonoBehaviour
     #region EVENTS
 
     // An event called when a hurtbox takes damage (collides with a hitbox).
-    public delegate void HurtAction(int damage);
+    public delegate void HurtAction(float damage);
 
     // The event called when this object collides with a hitbox.
     public event HurtAction OnHurt;

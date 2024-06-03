@@ -207,7 +207,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Melee"))
             {
                 GameObject hitbox = Instantiate(this.weaponData.Hitbox.gameObject);
-                hitbox.GetComponent<Hitbox>().StartTimer(0.2f);
+                hitbox.GetComponent<Hitbox>().InitValues(this.weaponData);
+                hitbox.GetComponent<Hitbox>().StartTimer();
 
                 hitbox.transform.position = DirToVect(this.direction) * 0.6f + this.transform.position + new Vector3(0f, -0.1f, 0f);
                 isAttacking = true;

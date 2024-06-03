@@ -9,7 +9,7 @@ public class Breakable : MonoBehaviour
     #region ATTRIBUTES
 
     // The current amount of damage this object can take before it is destroyed.
-    [SerializeField] private int health;
+    [SerializeField] private float health;
 
     // Holds reference to all the items and amounts to be dropped when this object is destroyed. 
     private Dictionary<ItemData, int> itemDrops;
@@ -33,7 +33,7 @@ public class Breakable : MonoBehaviour
     #region PROPERTIES
 
     // Gets the amount of damage this object can take before it is destroyed.
-    public int Health
+    public float Health
     {
         get { return health; }
     }
@@ -108,7 +108,7 @@ public class Breakable : MonoBehaviour
     }
 
     // The method called when the hurtbox is hit.
-    private void Hurt(int _damage)
+    private void Hurt(float _damage)
     {
         health -= _damage;
         CheckHealth();
