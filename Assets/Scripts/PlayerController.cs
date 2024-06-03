@@ -210,7 +210,11 @@ public class PlayerController : MonoBehaviour
                 hitbox.GetComponent<Hitbox>().InitValues(this.weaponData);
                 hitbox.GetComponent<Hitbox>().StartTimer();
 
-                hitbox.transform.position = DirToVect(this.direction) * 0.6f + this.transform.position + new Vector3(0f, -0.1f, 0f);
+                // rotate to the correct direction;
+                hitbox.transform.position = this.transform.position + 
+                    (DirToVect(this.direction).normalized * weaponData.HitBoxDistanceOffset);
+                hitbox.transform.rotation = DirToQuaternion(this.direction);
+                
                 isAttacking = true;
                 this.isAttackCooldownDone = false;
                 this.rigidBody.velocity = Vector2.zero;
@@ -483,6 +487,15 @@ public class PlayerController : MonoBehaviour
             default:
                 return new Vector3(0, -1, 0); 
         }
+    }
+
+    private Quaternion DirToQuaternion(Direction _dir)
+    {
+        var _vect = DirToVect(_dir).normalized;
+
+        float angle = Mathf.Atan2(_vect.y, _vect.x) * Mathf.Rad2Deg + 270f;
+
+        return Quaternion.Euler(0, 0, angle);
     }
 
     #endregion

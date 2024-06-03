@@ -30,6 +30,8 @@ public class WeaponData : ItemData
     // The hitbox of the weapon.
     [SerializeField] private GameObject hitbox;
 
+    [SerializeField] private float hitboxDistanceOffset;
+
   
 
     // Gets the effect name.
@@ -77,5 +79,10 @@ public class WeaponData : ItemData
     public float SizeModifier
     {
         get { return this.sizeModifier; }
+    }
+
+    public float HitBoxDistanceOffset
+    {
+        get { return this.hitboxDistanceOffset; }
     }
 }

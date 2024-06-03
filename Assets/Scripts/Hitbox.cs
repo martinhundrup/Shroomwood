@@ -76,7 +76,7 @@ public class Hitbox : MonoBehaviour
         this.knockbackForce = _weaponData.Knockback;
         this.stunTime = _weaponData.StunTime;
         this.duration = _weaponData.Duration;
-        this.transform.localScale = Vector2.one * _weaponData.SizeModifier;
+        this.transform.localScale = this.transform.localScale * _weaponData.SizeModifier;
     }
 
     #endregion

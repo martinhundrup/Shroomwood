@@ -23,4 +23,5 @@ MonoBehaviour:
   knockback: 0.2
   stunTime: 0.2
   sizeModifier: 1
-  hitbox: {fileID: 1104272908595059409, guid: a309f76c4290163478df8da1e3eb46e9, type: 3}
+  hitbox: {fileID: 8998547367846042716, guid: 24caad6141069ac489df9fd845fe85c8, type: 3}
+  hitboxDistanceOffset: 0.5
