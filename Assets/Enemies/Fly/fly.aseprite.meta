@@ -128,8 +128,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 58
-      y: 4
+      x: 64
+      y: 120
       width: 58
       height: 23
     spriteID: b1f7c0724d4484b45b4ee8d5da2806b2
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 58, y: 4}
+    uvTransform: {x: 64, y: 120}
   - name: fly_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.2777778}
@@ -148,7 +148,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 74
       y: 4
       width: 46
       height: 36
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 74, y: 4}
   - name: fly_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0.39130434}
@@ -168,8 +168,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 58
-      y: 35
+      x: 64
+      y: 151
       width: 58
       height: 23
     spriteID: 55bec1f8ed7c66b499fef3b602f10c25
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 58, y: 35}
+    uvTransform: {x: 64, y: 151}
   - name: fly_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0.2777778}
@@ -188,8 +188,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 48
+      x: 74
+      y: 62
       width: 46
       height: 36
     spriteID: 707a7baae49df8846ba4f72cb8f3b9ed
@@ -200,7 +200,87 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 48}
+    uvTransform: {x: 74, y: 62}
+  - name: fly_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.53999996}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 62
+      height: 50
+    spriteID: 2fddc32ba0120984898929e25bf65067
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: fly_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.46428573}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 120
+      width: 52
+      height: 56
+    spriteID: cb1734181dc0f79429b28c3c91a10050
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 120}
+  - name: fly_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 62
+      width: 62
+      height: 50
+    spriteID: e63030364fcf27f4b9ffe7a2221c4a4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 62}
+  - name: fly_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.46428573}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 184
+      width: 52
+      height: 56
+    spriteID: 14883231f60af8443adb36df191829a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 184}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -242,6 +322,38 @@ ScriptedImporter:
         width: 46
         height: 36
       spriteId: 707a7baae49df8846ba4f72cb8f3b9ed
+    - name: fly_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 1
+        y: 5
+        width: 62
+        height: 50
+      spriteId: 2fddc32ba0120984898929e25bf65067
+    - name: fly_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 6
+        y: 6
+        width: 52
+        height: 56
+      spriteId: cb1734181dc0f79429b28c3c91a10050
+    - name: fly_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 1
+        y: 7
+        width: 62
+        height: 50
+      spriteId: e63030364fcf27f4b9ffe7a2221c4a4f
+    - name: fly_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 6
+        y: 6
+        width: 52
+        height: 56
+      spriteId: 14883231f60af8443adb36df191829a3
     linkedCells: []
     parentIndex: -1
   platformSettings:

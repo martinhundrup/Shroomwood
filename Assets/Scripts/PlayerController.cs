@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     // Denotes whether the player is currently running or not.
     [SerializeField] bool isRunning = false;
 
+    // Denotes whether the player is currently rolling or not.
+    [SerializeField] private bool isRolling = false;
+
     // The time in between weapon blinks
     [SerializeField] float blinkTime;
 
@@ -116,6 +119,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log($"weapon duration modifier: {this.weaponModifiers.AttackDurationModifier}");
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isRolling = true;
+            //TODO: implement rolling
+            // should be similar to attacking
+            // player can roll if not attacking
+            // add force to rigidbody
+            // make invulnerable
+            // start roll timer
+            // make not rolling
         }
     }
 
@@ -324,6 +338,10 @@ public class PlayerController : MonoBehaviour
                 this.attackEffectAnimator.Play(_effect);
                 this.current_effect_anim = _effect;
             }
+        }
+        else if (isRolling)
+        {
+
         }
         else // idle
         {

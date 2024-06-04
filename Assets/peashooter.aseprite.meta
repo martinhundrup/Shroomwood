@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7aeb737e6d1d3b84b8835c74bded7b58
+guid: a4092a22656e49240afc6a1e6ba3d32f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,16 +123,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: peashooter_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.05555556}
+    pivot: {x: 0.5, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 80
-      height: 72
-    spriteID: e9e6147ff4974ef4795712e2d28463a9
+      width: 66
+      height: 74
+    spriteID: 75bd9d25014db3a4794fde0a29e7561e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,6 +141,26 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: peashooter_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.05405405}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 86
+      width: 66
+      height: 74
+    spriteID: 16db1ce87104f324595c04c2d1c810ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 86}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -150,14 +170,22 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: peashooter
+    - name: peashooter_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 7
         y: 4
-        width: 80
-        height: 72
-      spriteId: e9e6147ff4974ef4795712e2d28463a9
+        width: 66
+        height: 74
+      spriteId: 75bd9d25014db3a4794fde0a29e7561e
+    - name: peashooter_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 7
+        y: 4
+        width: 66
+        height: 74
+      spriteId: 16db1ce87104f324595c04c2d1c810ef
     linkedCells: []
     parentIndex: -1
   platformSettings: []

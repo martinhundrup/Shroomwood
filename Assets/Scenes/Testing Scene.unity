@@ -4943,6 +4943,10 @@ PrefabInstance:
       propertyPath: roomPrefab
       value: 
       objectReference: {fileID: 8445190867575157398, guid: be4af1a204f18fd419f781d5f0159c75, type: 3}
+    - target: {fileID: 4764969496405508692, guid: 379dbb1ac31c87d4c992b90b7f08eb5a, type: 3}
+      propertyPath: numberOfRooms
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4995156397394296320, guid: 379dbb1ac31c87d4c992b90b7f08eb5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
