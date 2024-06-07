@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     // Whether or not the playe is immune to taking damage.
     private bool isInvulnerable = false;
 
+    private bool isRollCooldownDone = true;
+
     private WeaponModifiers weaponModifiers = new WeaponModifiers();
     [SerializeField] private WeaponData weaponData;
 
@@ -84,6 +86,13 @@ public class PlayerController : MonoBehaviour
     private const string ATTACK_QF = "Attack_QuarterFront";
     private const string ATTACK_QB = "Attack_QuarterBack";
 
+    // rolling
+    private const string ROLL_F = "Roll_Front";
+    private const string ROLL_B = "Roll_Back";
+    private const string ROLL_S = "Roll_Side";
+    private const string ROLL_QF = "Roll_QuarterFront";
+    private const string ROLL_QB = "Roll_QuarterBack";
+
     #endregion
 
     #region PROPERTIES    
@@ -111,25 +120,16 @@ public class PlayerController : MonoBehaviour
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        if (!isAttacking)
+        if (!isAttacking && !isRolling)
             Movement();
-        Attack();
+        if (!isRolling)
+            Attack();
+        Roll();
         Animate();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log($"weapon duration modifier: {this.weaponModifiers.AttackDurationModifier}");
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isRolling = true;
-            //TODO: implement rolling
-            // should be similar to attacking
-            // player can roll if not attacking
-            // add force to rigidbody
-            // make invulnerable
-            // start roll timer
-            // make not rolling
         }
     }
 
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(collision.gameObject);
             this.playerData.CurrentHealth -= hitbox.Damage;
-            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
+            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration, true));
         }
     }
 
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("player hit");
             this.playerData.CurrentHealth -= hitbox.Damage;
-            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration));
+            StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration, true));
         }
     }
 
@@ -205,13 +205,15 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = movement_vector * this.playerData.MovementSpeed;
     }
 
+   
+
     // Handles the input and logistics of the attack
     private void Attack()
     {
         // don't attack again if already attacking
         if (isAttacking)
         {
-            isRunning = false;
+            isRunning = false; // takes priority over running
             return;
         }
         else if (this.isAttackCooldownDone && this.weaponData != null) // only allow attacking if a weapon has been collected
@@ -341,7 +343,27 @@ public class PlayerController : MonoBehaviour
         }
         else if (isRolling)
         {
-
+            _Enable_Animator(weaponAnimator, false);
+            _Enable_Animator(attackEffectAnimator, false);
+            switch (this.direction)
+            {
+                case Direction.Left:
+                    _anim = ROLL_S; break;
+                case Direction.Right:
+                    _anim = ROLL_S; break;
+                case Direction.Up:
+                    _anim = ROLL_B; break;
+                case Direction.DownLeft:
+                    _anim = ROLL_QF; break;
+                case Direction.DownRight:
+                    _anim = ROLL_QF; break;
+                case Direction.UpLeft:
+                    _anim = ROLL_QB; break;
+                case Direction.UpRight:
+                    _anim = ROLL_QB; break;
+                default:
+                    _anim = ROLL_F; break;
+            }
         }
         else // idle
         {
@@ -390,6 +412,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Handles the input and logistics of the roll
+    private void Roll()
+    {
+        if (isRolling) // takes priority over attacking
+        {
+            isAttacking = isRunning = false;
+            return;
+        }
+        else if (isRollCooldownDone)
+        {
+            if (Input.GetButtonDown("Action"))
+            {
+                isRolling = true;
+                this.rigidBody.velocity = DirToVect(this.direction) * playerData.RollSpeed;
+                //this.rigidBody.AddForce(DirToVect(this.direction) * playerData.RollForce);
+
+                StartCoroutine(MakeInvulnerable(this.playerData.RollDuration, false));
+                StartCoroutine(RollDuration());
+            }
+        }
+    }
+
     // Called by inventory manager when a new weapon is picked up.
     public void EquipWeapon(WeaponDrop _weapon)
     {
@@ -417,11 +461,30 @@ public class PlayerController : MonoBehaviour
         isAttackCooldownDone = true;
     }
 
+    private IEnumerator RollDuration()
+    {
+        yield return new WaitForSeconds(this.playerData.RollDuration);
+
+        isRolling = false;
+        rigidBody.velocity = Vector2.zero;
+
+        StartCoroutine(RollCooldown());
+    }
+
+    private IEnumerator RollCooldown()
+    {
+        isRollCooldownDone = false;
+
+        yield return new WaitForSeconds(playerData.RollCooldownDuration);
+
+        isRollCooldownDone = true;
+    }
+
     // Makes the player invulnerable for a parameterized amount of time.
-    private IEnumerator MakeInvulnerable(float _time)
+    private IEnumerator MakeInvulnerable(float _time, bool _blink)
     {
         isInvulnerable = true;
-        StartCoroutine(Blink());                                
+         if (_blink) StartCoroutine(Blink());                                
         yield return new WaitForSeconds(_time);
         isInvulnerable = false;
     }

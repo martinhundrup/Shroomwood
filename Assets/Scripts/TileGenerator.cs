@@ -15,8 +15,15 @@ public class TileGenerator : MonoBehaviour
         //DrawTiles();
     }
 
+    private void OnEnable()
+    {
+        //DrawTiles();
+    }
+
     public void DrawTiles()
     {
+        if (this.tilemap == null) this.tilemap = FindObjectOfType<Tilemap>();
+
         //Debug.Log("draw tiles");
         Vector3 position = transform.position;
         Vector3 scale = transform.localScale;

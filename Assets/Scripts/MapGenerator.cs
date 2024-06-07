@@ -18,7 +18,7 @@ public class MapGenerator : MonoBehaviour
 
     //}
 
-    public GameObject roomPrefab; // The prefab for the rooms
+    public List<GameObject> roomPrefabs; // The prefab for the rooms
     public int numberOfRooms = 10; // Number of rooms to generate
     public int roomWidth = 1; // Size of each room (assumed to be square)
     [SerializeField] private int roomHeight = 1;
@@ -70,7 +70,7 @@ public class MapGenerator : MonoBehaviour
         roomPositions.Add(startPosition);
         occupiedPositions.Add(startPosition);
         availableRooms.Enqueue(startPosition);
-        InstantiateRoom(startPosition);
+        InstantiateStartRoom(startPosition);
 
         // Generate remaining rooms
         for (int i = 1; i < numberOfRooms; i++)
@@ -122,11 +122,36 @@ public class MapGenerator : MonoBehaviour
     void InstantiateRoom(Vector2Int position)
     {
         Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
-        GameObject room = Instantiate(roomPrefab, worldPosition, Quaternion.identity, transform);
+
+
+        GameObject room = Instantiate(GetRandomItem(roomPrefabs), worldPosition, Quaternion.identity, transform);
         
         //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
         instantiatedRooms.Add(room);
         roomMap[position] = room;
+    }
+
+    void InstantiateStartRoom(Vector2Int position)
+    {
+        Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
+
+        GameObject room = Instantiate(roomPrefabs[0], worldPosition, Quaternion.identity, transform);
+
+        //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
+        instantiatedRooms.Add(room);
+        roomMap[position] = room;
+    }
+
+    public GameObject GetRandomItem(List<GameObject> itemList)
+    {
+        if (itemList == null || itemList.Count == 0)
+        {
+            Debug.LogWarning("Item list is empty or null.");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, itemList.Count);
+        return itemList[randomIndex];
     }
 
     private void DrawRoomTiles()

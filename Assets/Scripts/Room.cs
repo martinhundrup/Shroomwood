@@ -39,9 +39,19 @@ public class Room : MonoBehaviour
         this.cameraBounder = GetComponentInChildren<CameraBounder>();
         this.cameraBounder.OnPlayerEnter += this.PlayerEnter;
 
+        InitWallTiles();
         
         this.InitEnemies();
         
+    }
+
+    private void InitWallTiles()
+    {
+        if (GetComponentsInChildren<TileGenerator>() != null)
+            foreach (var wall in GetComponentsInChildren<TileGenerator>())
+            {
+                wall.DrawTiles();
+            }
     }
 
     // Generates either a solid wall, or a wall with a door depending on what's next to it.

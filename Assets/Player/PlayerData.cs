@@ -31,9 +31,37 @@ public class PlayerData : ScriptableObject
     // The amount of time the player is invulnerable after taking damage.
     [SerializeField] private float damageBoostDuration;
 
+    [SerializeField] private float rollDuration;
+    [SerializeField] private float rollSpeed; // the speed the player moves at while rolling
+    [SerializeField] private float rollCoolDownDuration; // minimum amount of time in between rolls
+
+
     #endregion
 
     #region PROPERTIES
+
+    // Gets or sets the roll duration
+    public float RollDuration
+    {
+        get { return this.rollDuration; }
+        set
+        {
+            this.rollDuration = value;
+        }
+    }
+    // Gets or sets the roll force
+    public float RollSpeed
+    {
+        get { return this.rollSpeed; }
+        set { this.rollSpeed = value; }
+    }
+
+    // Gets or sets the roll cooldown duration
+    public float RollCooldownDuration
+    {
+        get { return this.rollCoolDownDuration; }
+        set { this.rollCoolDownDuration = value; }
+    }
     
     // Gets or sets the movement speed.
     public float MovementSpeed

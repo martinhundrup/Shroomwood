@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5541217275932762774}
   - component: {fileID: 969127380169188381}
   m_Layer: 0
-  m_Name: Auto Room
+  m_Name: AutoRoom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
