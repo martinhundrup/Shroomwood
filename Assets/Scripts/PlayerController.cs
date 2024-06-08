@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine.Animations;
 using UnityEngine;
+using Application;
 
 public class PlayerController : MonoBehaviour
 {
@@ -143,6 +144,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log(collision.gameObject);
             this.playerData.CurrentHealth -= hitbox.Damage;
             StartCoroutine(MakeInvulnerable(this.playerData.DamageBoostDuration, true));
+        }
+        else if (collision.CompareTag("End of Level"))
+        {
+            FindObjectOfType<GameManager>().NextLevel();
         }
     }
 

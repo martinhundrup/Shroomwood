@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342bfc48c70ffd4495e641b55baffc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 20
-  height: 12
+  width: 16
+  height: 10
   wall: {fileID: 7403462101014048706, guid: 1a3ec6c58dc36764a9e051422bf893c2, type: 3}
   door: {fileID: 6057933295521312713, guid: 0d80acd2746d7ac4784b1f857697605f, type: 3}
 --- !u!1001 &3367436251999023254
@@ -220,8 +220,12 @@ PrefabInstance:
       value: CameraBounder
       objectReference: {fileID: 0}
     - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 13.999716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.999795
+      value: 7.999935
       objectReference: {fileID: 0}
     - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_LocalPosition.x

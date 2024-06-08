@@ -44,7 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed07919ffb781274fa4cee18a90ecf2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 8445190867575157398, guid: 9f20cb1a18c9e2b4fbabe8e154ebf033, type: 3}
+  roomPrefabs:
+  - {fileID: 8445190867575157398, guid: be4af1a204f18fd419f781d5f0159c75, type: 3}
+  - {fileID: 8445190867575157398, guid: 722f0b34bd8cb4c4c926ad0ce6cb7fae, type: 3}
+  - {fileID: 8445190867575157398, guid: a8788a95d6c857745a0582d4941f1a18, type: 3}
+  - {fileID: 8445190867575157398, guid: 47cd2f1db99634f45bd006c56a1a1f1d, type: 3}
   numberOfRooms: 6
   roomWidth: 20
   roomHeight: 11
+  tilemap: {fileID: 0}
+  ruleTile: {fileID: 0}

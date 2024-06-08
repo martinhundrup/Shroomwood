@@ -1,3 +1,4 @@
+using Application;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class MapGenerator : MonoBehaviour
     {
         ClearMap();
         GenerateMap();
-        DrawRoomTiles();
+        GenerateWalls();
         furthestRoom = FindFurthestRoom(Vector2Int.zero);
         //GameObject furthestRoomTile = GetRoomTile(furthestRoom);
         //furthestRoomTile.GetComponent<SpriteRenderer>().color = Color.red;
@@ -46,6 +47,8 @@ public class MapGenerator : MonoBehaviour
     }
     void Start()
     {
+        tilemap = FindObjectOfType<Tilemap>();
+        numberOfRooms = 4 + FindObjectOfType<GameManager>().GameLevel * 2;
         Draw();
     }
 
@@ -124,25 +127,26 @@ public class MapGenerator : MonoBehaviour
         Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
 
 
-        GameObject room = Instantiate(GetRandomItem(roomPrefabs), worldPosition, Quaternion.identity, transform);
+        GameObject room = Instantiate(GetRandomRoom(roomPrefabs), worldPosition, Quaternion.identity);
         
         //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
         instantiatedRooms.Add(room);
         roomMap[position] = room;
+        room.GetComponent<Room>().InitWallTiles();
     }
 
     void InstantiateStartRoom(Vector2Int position)
     {
         Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
 
-        GameObject room = Instantiate(roomPrefabs[0], worldPosition, Quaternion.identity, transform);
+        GameObject room = Instantiate(roomPrefabs[0], worldPosition, Quaternion.identity);
 
         //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
         instantiatedRooms.Add(room);
         roomMap[position] = room;
     }
 
-    public GameObject GetRandomItem(List<GameObject> itemList)
+    public GameObject GetRandomRoom(List<GameObject> itemList)
     {
         if (itemList == null || itemList.Count == 0)
         {
@@ -154,7 +158,7 @@ public class MapGenerator : MonoBehaviour
         return itemList[randomIndex];
     }
 
-    private void DrawRoomTiles()
+    private void GenerateWalls()
     {
         foreach (var position in roomPositions)
         {

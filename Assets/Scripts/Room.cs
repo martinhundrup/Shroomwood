@@ -34,18 +34,23 @@ public class Room : MonoBehaviour
     // Called when object is created.
     private void Awake()
     {
+        
+        
+    }
+
+    private void OnEnable()
+    {
         this.cameraFollower = FindObjectOfType<CameraFollower>();
 
         this.cameraBounder = GetComponentInChildren<CameraBounder>();
         this.cameraBounder.OnPlayerEnter += this.PlayerEnter;
 
         InitWallTiles();
-        
+
         this.InitEnemies();
-        
     }
 
-    private void InitWallTiles()
+    public void InitWallTiles()
     {
         if (GetComponentsInChildren<TileGenerator>() != null)
             foreach (var wall in GetComponentsInChildren<TileGenerator>())
@@ -110,12 +115,12 @@ public class Room : MonoBehaviour
         if (_left) {
 
             GameObject _t = Instantiate(wall, this.transform);
-            _t.transform.localPosition = new Vector3(-width / 2 + 0.5f, height / 4 + 0.5f, 0f);
+            _t.transform.localPosition = new Vector3(-width / 2 + 0.5f, height / 4, 0f);
             _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
             _t.GetComponent<TileGenerator>().DrawTiles();
 
             GameObject _b = Instantiate(wall, this.transform);
-            _b.transform.localPosition = new Vector3(-width / 2 + 0.5f, -height / 4 - 0.5f, 0f);
+            _b.transform.localPosition = new Vector3(-width / 2 + 0.5f, -height / 4 - 1f, 0f);
             _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
             _b.GetComponent<TileGenerator>().DrawTiles();
 
@@ -133,12 +138,12 @@ public class Room : MonoBehaviour
 
         if (_right) {
             GameObject _t = Instantiate(wall, this.transform);
-            _t.transform.localPosition = new Vector3(width / 2 - 0.5f, height / 4 + 0.5f, 0f);
+            _t.transform.localPosition = new Vector3(width / 2 - 0.5f, height / 4, 0f);
             _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
             _t.GetComponent<TileGenerator>().DrawTiles();
 
             GameObject _b = Instantiate(wall, this.transform);
-            _b.transform.localPosition = new Vector3(width / 2 - 0.5f, -height / 4 - 0.5f, 0f);
+            _b.transform.localPosition = new Vector3(width / 2 - 0.5f, -height / 4 - 1f, 0f);
             _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
             _b.GetComponent<TileGenerator>().DrawTiles();
 
@@ -187,6 +192,7 @@ public class Room : MonoBehaviour
     // Activates or deactives all doors in the room.
     private void ActivateDoors(bool _bool)
     {
+        if (doors == null) return;
         foreach (var _door in this.doors)
         {
             _door.gameObject.SetActive(_bool);

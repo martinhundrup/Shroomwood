@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Application
 {
@@ -25,7 +26,6 @@ namespace Application
 
     public class GameManager : MonoBehaviour
     {
-        
 
         #region DATA
 
@@ -34,6 +34,8 @@ namespace Application
 
         // Ref to the player data.
         [SerializeField] private PlayerData playerData;
+
+        [SerializeField] private int gameLevel; // used as a seed for random generation - increases with every floor.
 
         #endregion
 
@@ -62,6 +64,11 @@ namespace Application
 
         #endregion
 
+        public int GameLevel
+        {
+            get { return this.gameLevel; }
+        }
+
         // Initializes all child manager components.
         private void FindManagers()
         {
@@ -73,6 +80,8 @@ namespace Application
             settingsManager = GetComponentInChildren<SettingsManager>();
             savingManager = GetComponentInChildren<SavingManager>();
         }
+
+
 
         // Gives the managers the information they need to do their job.
         private void InitManagers()
@@ -92,7 +101,29 @@ namespace Application
         // Called once when object is created.
         private void Awake()
         {
+            // singleton
+            GameManager[] objs = FindObjectsOfType<GameManager>();
+            if (objs.Length > 1)
+            {
+                Destroy(this.gameObject);
+            }
+
+            DontDestroyOnLoad(this.gameObject);
+
             this.playerData.ResetHealth();
+        }
+
+        // loads the game from the start
+        public void LoadGame()
+        {
+            this.gameLevel = 0;
+            SceneManager.LoadScene(1);
+        }
+
+        public void NextLevel()
+        {
+            this.gameLevel++;
+            SceneManager.LoadScene(1);
         }
 
         // Called on first frame of gameplay.

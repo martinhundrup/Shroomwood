@@ -36,12 +36,17 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.player = FindObjectOfType<PlayerController>();
+        
     }
 
     #endregion
 
     #region METHODS
+
+    private void FindPlayer()
+    {
+        if (this.player == null) { this.player = FindObjectOfType<PlayerController>(); }
+    }
 
     // Subscribes to an ItemDrops OnCollect event.
     public void Subscribe(ItemDrop _item)
@@ -52,6 +57,7 @@ public class InventoryManager : MonoBehaviour
     // Adds an item to the inventory when collected.
     private void ItemCollected(ItemDrop _item)
     {
+        FindPlayer();
         // check if weapon
         if (_item is WeaponDrop weapon)
         {
