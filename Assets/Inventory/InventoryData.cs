@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-using Application;
+using Application; 
 
 [CreateAssetMenu]
 public class InventoryData : ScriptableObject

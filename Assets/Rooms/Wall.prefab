@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d9e15f11882ad4a9ee3b5e4e63bf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 5890330227941177490, guid: 347a74c9c2782ce48a0f4cc78d0b6b1e, type: 3}
   ruleTile: {fileID: 11400000, guid: 69c028880d5d3054193a24f1ded0d151, type: 2}
 --- !u!61 &-8813250327076494666
 BoxCollider2D:
@@ -107,7 +106,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7403462101014048706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

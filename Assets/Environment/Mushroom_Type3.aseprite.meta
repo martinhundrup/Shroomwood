@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e8148dd286d4401449c8c7553e92fe14
+guid: 56a92fc7994f23e42844167e3784d79f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 64
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -88,7 +88,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638534583058777064
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: env
+  - name: Mushroom_Type3_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.06666667}
+    pivot: {x: 0.5, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 512
-      height: 480
-    spriteID: abf484f228cac0043894be4653a78210
+      width: 60
+      height: 62
+    spriteID: 81fd10799e5cfa9409bd7e6ccc6395f1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,18 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: env_Frame_1
+  - name: Mushroom_Type3_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.1851852}
+    pivot: {x: 0.5, y: 0.52459013}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 492
-      width: 512
-      height: 432
-    spriteID: 131ca445977292340a89aed6f6e2e96d
+      y: 144
+      width: 60
+      height: 61
+    spriteID: 1774b7361b696d24b83fbdca8d666fbe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,19 +160,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 492}
-  - name: env_Frame_2
+    uvTransform: {x: 2, y: 144}
+  - name: Mushroom_Type3_Frame_2
     originalName: 
-    pivot: {x: 0.5925926, y: -1.909091}
+    pivot: {x: 0.5, y: 0.52459013}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 524
+      x: 72
       y: 4
-      width: 432
-      height: 176
-    spriteID: 97e7458a05980d542a1ce124079ac1ce
+      width: 60
+      height: 61
+    spriteID: ad1ab5deb9723a24392eb47e65a66de9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,44 +180,120 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 524, y: 4}
+    uvTransform: {x: 72, y: 4}
+  - name: Mushroom_Type3_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.516129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 74
+      width: 60
+      height: 62
+    spriteID: f24d07f955b823e4a894e8cf10cff220
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 74}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1503883031
-    name: env
+    guid: 953738062
+    name: Mushroom_Type3
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: env_Frame_0
+    - name: Mushroom_Type3_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 32
-        width: 512
-        height: 480
-      spriteId: abf484f228cac0043894be4653a78210
-    - name: env_Frame_1
+        x: 2
+        y: 0
+        width: 60
+        height: 62
+      spriteId: 81fd10799e5cfa9409bd7e6ccc6395f1
+    - name: Mushroom_Type3_Frame_1
       frameIndex: 1
       cellRect:
         x: 0
-        y: 80
-        width: 512
-        height: 432
-      spriteId: 131ca445977292340a89aed6f6e2e96d
-    - name: env_Frame_2
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 1774b7361b696d24b83fbdca8d666fbe
+    - name: Mushroom_Type3_Frame_2
       frameIndex: 2
       cellRect:
-        x: 0
-        y: 336
-        width: 432
-        height: 176
-      spriteId: 97e7458a05980d542a1ce124079ac1ce
+        x: 2
+        y: 0
+        width: 60
+        height: 61
+      spriteId: ad1ab5deb9723a24392eb47e65a66de9
+    - name: Mushroom_Type3_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 2
+        y: 0
+        width: 60
+        height: 62
+      spriteId: f24d07f955b823e4a894e8cf10cff220
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 512, y: 512}
+  canvasSize: {x: 64, y: 64}
