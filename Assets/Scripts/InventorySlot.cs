@@ -1,76 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour
-{   
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
+    public delegate void InventorySlotClickedHandler(int slotID);
+    public InventorySlotClickedHandler OnInventorySlotClicked;
+
+    [SerializeField] private int index;
+    [SerializeField] private Color nuetral;
+    [SerializeField] private Color hover;
+
+    [SerializeField] private Image itemDisplay;
+    private TMPro.TextMeshProUGUI amountText;
+
     // The current item type being stored in this slot.
-    private ItemData item;
-
-    // The sprite to display
-    private Image image;
-
-    // The digit display for the amount of items
-    private TMPro.TextMeshProUGUI text;
+    private ItemData itemData;
+    private bool isHovered;
 
     // The amount of whatever item stored.
     private int amount;
 
-    private void Awake()
+    public ItemData ItemData
     {
-        this.image = GetComponent<Image>();
-        this.text = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        get { return this.itemData; }
+        set { this.itemData = value; this.Refresh(); }
     }
-
-    // Gets or sets the item amount.
     public int Amount
     {
-        get { return amount; }
-        set 
-        { 
-            amount = value;
-            UpdateTextDisplay();
+        get { return this.amount; }
+        set { this.amount = value; this.Refresh(); }
+    } 
+    public int Index
+    {
+        get { return this.index; }
+    }
+
+    private void Awake()
+    {
+        FindObjectOfType<InventoryManager>().SubscribeToInventorySlot(this);
+        amountText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        this.Refresh();
+    }
+
+    private void Update()
+    {
+        if (isHovered && Input.GetMouseButtonDown(0))
+        {
+            if (OnInventorySlotClicked != null)
+                OnInventorySlotClicked(this.index);
         }
     }
 
-    // Gets or sets the item being stored.
-    public ItemData Item
+    // This method is called when the cursor enters the UI element
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        get { return item; }
-        set 
-        {
-            if (value == null)
-            {
-                item = null;
-                image.sprite = null;
-                this.Amount = 0;
-            }
-            else
-            {
-                this.item = value;
-                this.image.sprite = value.Icon;
-                Debug.Log(this.image.sprite.name);
-            }
-        }
+        GetComponent<Image>().color = hover;
+        isHovered = true;
     }
 
-    // Updates the text display to the number
-    private void UpdateTextDisplay()
+    // This method is called when the cursor exits the UI element
+    public void OnPointerExit(PointerEventData eventData)
     {
-        if (amount == 0)
+        GetComponent<Image>().color = nuetral;
+        isHovered = false;
+    }
+    
+    public void Refresh()
+    {
+        if (itemData == null)
         {
-            text.text = string.Empty;
+            itemDisplay.sprite = null;
+            itemDisplay.enabled = false;
+            amountText.text = string.Empty;
         }
         else
         {
-            text.text = amount.ToString();
-        }
-    }
 
-    // Sets the text to nothing and sprite to null; used for when no item is contained.
-    public void NoItem()
-    {
-        this.Item = null;
+            itemDisplay.sprite = itemData.Icon;
+            itemDisplay.enabled = true;
+            if (amount < 1)
+                amountText.text = string.Empty;
+            else
+                amountText.text = amount.ToString();
+        }
     }
 }

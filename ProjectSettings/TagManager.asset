@@ -11,6 +11,7 @@ TagManager:
   - Doorway
   - Wall
   - End of Level
+  - Inventory Canvas
   layers:
   - Default
   - TransparentFX

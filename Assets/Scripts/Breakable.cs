@@ -12,16 +12,13 @@ public class Breakable : MonoBehaviour
     [SerializeField] private float health;
 
     // Holds reference to all the items and amounts to be dropped when this object is destroyed. 
-    private Dictionary<ItemData, int> itemDrops;
-
-    // The size of the area items are dropped in.
-    [SerializeField] private float dropRadius;
+    private Dictionary<GameObject, int> itemDrops;
 
     // Contains a key value for intstantiating the dictionary, as dictionaries cannot be serialized in the inspector.
     [Serializable]
     private class KeyValuePair
     {
-        public ItemData _item;
+        public GameObject _item;
         public int _amount;
     }
 
@@ -45,28 +42,20 @@ public class Breakable : MonoBehaviour
     // Called once at beginning of scene.
     private void Start()
     {
-        itemDrops = new Dictionary<ItemData, int>();
+        itemDrops = new Dictionary<GameObject, int>();
 
         LoadDictionary();
     }
 
-    // Called when this object/script is destroyed.
-    private void OnDestroy()
+    private void SpawnItems()
     {
         if (itemDrops == null || this.itemDrops.Count == 0) return;
-        foreach (ItemData _item in this.itemDrops.Keys)
+        foreach (var _item in this.itemDrops.Keys)
         {
             for (int i = 0; i < this.itemDrops[_item]; i++)
             {
-                // generate a random position in the drop area
-                Vector2 pos = transform.position;
-                pos.x += dropRadius * UnityEngine.Random.value - dropRadius / 2; // Random.value returns a number between 0 and 1 inclusive
-                pos.y += dropRadius * UnityEngine.Random.value - dropRadius / 2;
-
-                // instantiate the drop and place it in the random area
-                ItemDrop item = Instantiate(_item.ItemDrop.GetComponent<ItemDrop>());
-                item.transform.position = transform.position;
-                item.TargetPos = pos;
+                var obj = Instantiate(_item);
+                obj.transform.position = this.transform.position;
             }
         }
     }
@@ -103,6 +92,7 @@ public class Breakable : MonoBehaviour
     {
         if (health <= 0)
         {
+            SpawnItems();
             Destroy(this.gameObject);
         }
     }

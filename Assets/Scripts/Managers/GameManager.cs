@@ -26,6 +26,12 @@ namespace Application
 
     public class GameManager : MonoBehaviour
     {
+        public delegate void GamePausedEvent(bool _isPaused);
+        public GamePausedEvent OnGamePaused;
+
+        public delegate void SceneLoadedEvent(int _gameLevel);
+        public SceneLoadedEvent OnSceneLoaded;
+
 
         #region DATA
 
@@ -87,7 +93,7 @@ namespace Application
         private void InitManagers()
         {
             // give references to the player's inventory.
-            uiManager.PlayerInventory = playerInventory;
+            //uiManager.PlayerInventory = playerInventory;
             inventoryManager.PlayerInventory = playerInventory;
         }
 
@@ -118,12 +124,16 @@ namespace Application
         {
             this.gameLevel = 0;
             SceneManager.LoadScene(1);
+            if (this.OnSceneLoaded != null)
+                this.OnSceneLoaded(gameLevel);
         }
 
         public void NextLevel()
         {
             this.gameLevel++;
             SceneManager.LoadScene(1);
+            if (this.OnSceneLoaded != null)
+                this.OnSceneLoaded(gameLevel);
         }
 
         // Called on first frame of gameplay.
@@ -138,7 +148,8 @@ namespace Application
         private void OnPause()
         {
             Debug.Log("game paused");
-            uiManager.GamePaused(timeManager.IsPaused);
+            if (this.OnGamePaused != null)
+                this.OnGamePaused(this.timeManager.IsPaused);
         }
 
         private void CheckPlayerHealth()
