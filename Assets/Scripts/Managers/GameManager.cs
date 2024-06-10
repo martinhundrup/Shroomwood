@@ -114,34 +114,53 @@ namespace Application
                 Destroy(this.gameObject);
             }
 
+            SceneManager.sceneLoaded += OnSceneLoadedCallback;
             DontDestroyOnLoad(this.gameObject);
 
             this.playerData.ResetHealth();
+
+            FindManagers();
+            SubscribeToEvents();
+            InitManagers();
         }
 
         // loads the game from the start
+        //public void LoadGame()
+        //{
+        //    this.gameLevel = 0;
+        //    SceneManager.LoadScene(1);
+        //    if (this.OnSceneLoaded != null)
+        //        this.OnSceneLoaded(gameLevel);
+        //}
+
+        //public void NextLevel()
+        //{
+        //    this.gameLevel++;
+        //    SceneManager.LoadScene(1);
+        //    if (this.OnSceneLoaded != null)
+        //        this.OnSceneLoaded(gameLevel);
+        //}
+
         public void LoadGame()
         {
             this.gameLevel = 0;
             SceneManager.LoadScene(1);
-            if (this.OnSceneLoaded != null)
-                this.OnSceneLoaded(gameLevel);
         }
 
         public void NextLevel()
         {
             this.gameLevel++;
-            SceneManager.LoadScene(1);
-            if (this.OnSceneLoaded != null)
-                this.OnSceneLoaded(gameLevel);
+            SceneManager.LoadScene(1);            
         }
 
-        // Called on first frame of gameplay.
-        private void Start()
-        {
-            FindManagers();
-            SubscribeToEvents();
-            InitManagers();
+        private void OnSceneLoadedCallback(Scene scene, LoadSceneMode mode)
+        { 
+            //FindManagers();
+            //SubscribeToEvents();
+            //InitManagers();
+
+            if (this.OnSceneLoaded != null)
+                this.OnSceneLoaded(gameLevel);
         }
 
         // Called when the time manager detected the game was paused/unpaused.

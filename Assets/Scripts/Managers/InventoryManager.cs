@@ -36,6 +36,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] GameObject movingItemDisplay;
     GameObject activeMovingItem;
 
+    private int initCounter = 0;
+
     // Gets or sets the player's inventory.
     public InventoryData PlayerInventory
     {
@@ -56,8 +58,8 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         GetComponentInParent<GameManager>().OnGamePaused += this.GamePaused;
-        GetComponentInParent<GameManager>().OnSceneLoaded += this.OnSceneReload;
-        OnSceneReload(1);
+        //GetComponentInParent<GameManager>().OnSceneLoaded += this.OnSceneReload;
+        initCounter = 0;
         GamePaused(false);
     }
 
@@ -69,6 +71,25 @@ public class InventoryManager : MonoBehaviour
     {
         this.player = FindObjectOfType<PlayerController>();
         this.inventoryCanvas = GameObject.FindGameObjectWithTag("Inventory Canvas").GetComponent<Canvas>();
+
+        //Invoke("RefreshAllSlots", 0.1f);
+        RefreshAllSlots();
+    }
+
+    // resets all inventory slots
+    // ensures they are displaying up-to-date information
+    private void RefreshAllSlots()
+    {
+        if (inventoryCanvas == null || playerInventory == null) return;
+        for (int i = 0; i < 17; i++)
+        {
+            var data = playerInventory.GetItem(i);
+            if (data != null)
+            {
+                inventorySlots[i].ItemData = data.Item1;
+                inventorySlots[i].Amount = data.Item2;
+            }
+        }
     }
 
 
@@ -121,6 +142,7 @@ public class InventoryManager : MonoBehaviour
 
     private void OnInventorySlotPressed(int _index)
     {
+        bool changedWeapons = false;
         if (movingItemPair == null) // no active item, so pick up whatever is in slot
         {
             movingItemPair = playerInventory.EmptySlot(_index); // attempt to empty the slot
@@ -143,6 +165,10 @@ public class InventoryManager : MonoBehaviour
                     {
                         return; // not a weapon, don't put it in
                     }
+                    else // player weapons were modified
+                    {
+                        changedWeapons = true;
+                    }
                 }
 
                 playerInventory.SetSlot(_index, movingItemPair);
@@ -153,15 +179,37 @@ public class InventoryManager : MonoBehaviour
                 movingItemPair = null;
                 Destroy(activeMovingItem);
                 activeMovingItem = null;
+
+                if (changedWeapons)
+                    UpdatePlayerWeapons();
             }
         }
     }
 
+    private void UpdatePlayerWeapons()
+    {
+        var t = playerInventory.GetItem(15);
+        if (t != null) player.EquipWeapon(t.Item1 as WeaponData);
+        else player.EquipWeapon(null);
+    }
+
     public void GamePaused(bool _isPaused)
     {
+        if (initCounter > 0) // ensure it doesn't init every pause
+        {
+            OnSceneReload(1);
+        }
+
+
+        if (inventoryCanvas == null)
+            inventoryCanvas = this.inventoryCanvas = GameObject.FindGameObjectWithTag("Inventory Canvas").GetComponent<Canvas>();
         movingItemPair = null;
         Destroy(activeMovingItem);
         inventoryCanvas.enabled = _isPaused;
+        initCounter++;
+
+        if (player && !_isPaused)
+            UpdatePlayerWeapons();
     }
 
     #endregion

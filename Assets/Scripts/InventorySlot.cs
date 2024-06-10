@@ -42,6 +42,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Awake()
     {
         FindObjectOfType<InventoryManager>().SubscribeToInventorySlot(this);
+        Debug.Log("subscribed to inventory manager");
         amountText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         this.Refresh();
     }

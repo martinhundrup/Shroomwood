@@ -8,6 +8,12 @@ using Application;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private bool isPaused = false;
+
+
+    //TODO:
+    // - fix but where if user pauses while attacking the game crashes
+
     #region COMPONENTS
 
     // Holds the reference to the player's Rigidbody2D component.
@@ -116,17 +122,26 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         this.isAttackCooldownDone = true;
+        FindObjectOfType<GameManager>().OnGamePaused += SetIsPaused;
+    }
+
+    private void SetIsPaused(bool _paused)
+    {
+        this.isPaused  = _paused;
     }
 
     // Called once a frame. Varies with framerate.
     private void Update()
     {
-        if (!isAttacking && !isRolling)
-            Movement();
-        if (!isRolling)
-            Attack();
-        Roll();
-        Animate();
+        if (!this.isPaused)
+        {
+            if (!isAttacking && !isRolling)
+                Movement();
+            if (!isRolling)
+                Attack();
+            Roll();
+            Animate();
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -439,11 +454,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Called by inventory manager when a new weapon is picked up.
-    public void EquipWeapon(WeaponDrop _weapon)
+    // used to reset attacking related bools and coroutines
+    // when equiped weapon is modified
+    private void ResetWeapons()
     {
-        this.weaponData = (WeaponData)_weapon.ItemData;
-        this.weaponModifiers = _weapon.Modifiers;
+        StopCoroutine(AttackDuration());
+        isAttacking = false;
+        StopCoroutine(AttackCooldown());
+        isAttackCooldownDone = true;
+    }
+
+    // Called by inventory manager when a new weapon is picked up.
+    public void EquipWeapon(WeaponData _weapon)
+    {
+        this.weaponData = _weapon;
+        this.weaponModifiers = new WeaponModifiers();
+
+       
+        ResetWeapons();
     }
 
     // Waits an amount of time before setting the 'isAttacking' bool to false.
