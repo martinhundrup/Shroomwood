@@ -368,6 +368,8 @@ MonoBehaviour:
   index: 12
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1975897816}
 --- !u!114 &239376962
 MonoBehaviour:
@@ -671,6 +673,8 @@ MonoBehaviour:
   index: 2
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1112269640}
 --- !u!114 &316511950
 MonoBehaviour:
@@ -765,6 +769,8 @@ MonoBehaviour:
   index: 16
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1493430381}
 --- !u!114 &324125132
 MonoBehaviour:
@@ -1207,6 +1213,8 @@ MonoBehaviour:
   index: 0
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1211818566}
 --- !u!114 &464846618
 MonoBehaviour:
@@ -1606,6 +1614,8 @@ MonoBehaviour:
   index: 6
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 299822392}
 --- !u!114 &545345328
 MonoBehaviour:
@@ -1700,6 +1710,8 @@ MonoBehaviour:
   index: 4
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 838899853}
 --- !u!114 &577290946
 MonoBehaviour:
@@ -1794,6 +1806,8 @@ MonoBehaviour:
   index: 15
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1700503550}
 --- !u!114 &597535639
 MonoBehaviour:
@@ -2022,6 +2036,8 @@ MonoBehaviour:
   index: 5
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1104819266}
 --- !u!114 &655083027
 MonoBehaviour:
@@ -2116,6 +2132,8 @@ MonoBehaviour:
   index: 3
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 509199361}
 --- !u!114 &673956994
 MonoBehaviour:
@@ -2895,6 +2913,8 @@ MonoBehaviour:
   index: 1
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1051852898}
 --- !u!114 &942091985
 MonoBehaviour:
@@ -3419,6 +3439,8 @@ MonoBehaviour:
   index: 10
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 691881494}
 --- !u!114 &1113232316
 MonoBehaviour:
@@ -3915,6 +3937,8 @@ MonoBehaviour:
   index: 8
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 513167165}
 --- !u!114 &1189472169
 MonoBehaviour:
@@ -4143,6 +4167,8 @@ MonoBehaviour:
   index: 14
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 2003067142}
 --- !u!114 &1210945904
 MonoBehaviour:
@@ -4590,6 +4616,8 @@ MonoBehaviour:
   index: 9
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 401205345}
 --- !u!114 &1420235091
 MonoBehaviour:
@@ -5234,6 +5262,8 @@ MonoBehaviour:
   index: 11
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 946502856}
 --- !u!114 &1661118054
 MonoBehaviour:
@@ -5403,6 +5433,8 @@ MonoBehaviour:
   index: 13
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 850999395}
 --- !u!114 &1719735158
 MonoBehaviour:
@@ -5998,6 +6030,8 @@ MonoBehaviour:
   index: 7
   nuetral: {r: 1, g: 1, b: 1, a: 1}
   hover: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  tooltipDisplay: {fileID: 3285970429397860330, guid: ac977fd58e0b2ab4a8ea4af384cc4913, type: 3}
+  weapontipDisplay: {fileID: 3285970429397860330, guid: b6c3e6a1637c6e1429ed0f1c365f152b, type: 3}
   itemDisplay: {fileID: 1553837696}
 --- !u!114 &1885265220
 MonoBehaviour:

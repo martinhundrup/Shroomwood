@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class CursorFollower : MonoBehaviour
 {
     private RectTransform rectTransform;
@@ -13,15 +14,7 @@ public class CursorFollower : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
 
         rectTransform.position = Input.mousePosition;
-
-        if (canvasGroup != null)
-        {
-            canvasGroup.blocksRaycasts = false; // Make sure the image ignores raycasts
-        }
-        else
-        {
-            Debug.LogWarning("CanvasGroup component missing on CursorFollowerImage.");
-        }
+        canvasGroup.blocksRaycasts = false; // Make sure the image ignores raycasts      
     }
 
     void Update()

@@ -13,6 +13,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private int index;
     [SerializeField] private Color nuetral;
     [SerializeField] private Color hover;
+    [SerializeField] private GameObject tooltipDisplay;
+    [SerializeField] private GameObject weapontipDisplay;
+    private GameObject activeTooltip;
 
     [SerializeField] private Image itemDisplay;
     private TMPro.TextMeshProUGUI amountText;
@@ -60,6 +63,28 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Image>().color = hover;
+
+        if (this.itemData != null)
+        {
+            // show a weapon
+            if (this.itemData.GetType() == typeof(WeaponData))
+            {
+                activeTooltip = Instantiate(weapontipDisplay, GetComponentInParent<Canvas>().transform);
+                activeTooltip.GetComponent<RectTransform>().position = this.GetComponent<RectTransform>().position;
+                activeTooltip.GetComponent<Weapontip>().Init(this.itemData);
+            }
+            else // default dipsplay
+            {
+                activeTooltip = Instantiate(tooltipDisplay, GetComponentInParent<Canvas>().transform);
+                activeTooltip.GetComponent<RectTransform>().position = this.GetComponent<RectTransform>().position;
+                activeTooltip.GetComponent<Tooltip>().Init(this.itemData);
+            }
+            
+            activeTooltip.GetComponent<RectTransform>().position = this.GetComponent<RectTransform>().position; 
+            activeTooltip.GetComponent<Tooltip>().Init(this.itemData);
+        }
+
+        
         isHovered = true;
     }
 
@@ -67,6 +92,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         GetComponent<Image>().color = nuetral;
+        Destroy(activeTooltip);
         isHovered = false;
     }
     
