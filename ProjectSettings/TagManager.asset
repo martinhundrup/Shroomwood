@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - End of Level
   - Inventory Canvas
+  - Meadow Tilemap
   layers:
   - Default
   - TransparentFX

@@ -45,7 +45,7 @@ public class Room : MonoBehaviour
         this.cameraBounder = GetComponentInChildren<CameraBounder>();
         this.cameraBounder.OnPlayerEnter += this.PlayerEnter;
 
-        InitWallTiles();
+        //InitWallTiles();
 
         this.InitEnemies();
     }

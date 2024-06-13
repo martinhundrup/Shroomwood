@@ -1,231 +1,142 @@
-using Application;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class MapGenerator : MonoBehaviour
 {
-    //[SerializeField] private GameObject roomPrefab; // The prefab for the rooms
-    //[SerializeField] private int numberOfRooms = 10; // Number of rooms to generate
+    [SerializeField] private int mapSize;
+    [SerializeField] private int numberOfTiles = 6;
+    [SerializeField] private int roomWidth;
+    [SerializeField] private int roomHeight;
+    [SerializeField] private GameObject roomPrefab;
 
-    //private void Start()
-    //{
+    private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
+    private List<int> roomTilesList; // Stores indices of all tiles that have been chosen to become rooms
 
-    //}
-
-    //private void PlaceRoom()
-    //{
-
-    //}
-
-    public List<GameObject> roomPrefabs; // The prefab for the rooms
-    public int numberOfRooms = 10; // Number of rooms to generate
-    public int roomWidth = 1; // Size of each room (assumed to be square)
-    [SerializeField] private int roomHeight = 1;
-
-    private List<Vector2Int> roomPositions = new List<Vector2Int>();
-    private HashSet<Vector2Int> occupiedPositions = new HashSet<Vector2Int>();
-    private List<GameObject> instantiatedRooms = new List<GameObject>();
-    private Queue<Vector2Int> availableRooms = new Queue<Vector2Int>();
-    private Dictionary<Vector2Int, GameObject> roomMap = new Dictionary<Vector2Int, GameObject>();
-    private Vector2Int furthestRoom;
-
-    [SerializeField] Tilemap tilemap;
-    [SerializeField] RuleTile ruleTile;
-
-
-    private void Draw()
+    private void Awake()
     {
-        ClearMap();
-        GenerateMap();
-        GenerateWalls();
-        furthestRoom = FindFurthestRoom(Vector2Int.zero);
-        //GameObject furthestRoomTile = GetRoomTile(furthestRoom);
-        //furthestRoomTile.GetComponent<SpriteRenderer>().color = Color.red;
-        //GetRoomTile(Vector2Int.zero).GetComponent<SpriteRenderer>().color = Color.green;
-    }
-    void Start()
-    {
-        tilemap = FindObjectOfType<Tilemap>();
-        numberOfRooms = 4 + FindObjectOfType<GameManager>().GameLevel * 2;
-        Draw();
+        this.roomTiles = new int[mapSize * mapSize];
+        roomTilesList = new List<int>();
+
+        if (numberOfTiles > mapSize * mapSize) return; // Ensure numberOfTiles is valid
+        InitRoomTiles();
+        DrawRoomTiles();
     }
 
-    void Update()
+    private void InitRoomTiles()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        int placedTileCount = 0;
+
+        int startingRoomIndex = this.Convert2DTo1DIndex(mapSize / 2, mapSize / 2);
+        roomTiles[startingRoomIndex] = 1;
+        roomTilesList.Add(startingRoomIndex);
+        placedTileCount++;
+
+        while (placedTileCount < numberOfTiles) // Change to < to ensure we place the correct number of tiles
         {
-            Draw();
+            PlaceRandomTile();
+            placedTileCount++;
         }
     }
 
-    void GenerateMap()
+    private void PlaceRandomTile()
     {
-        // Clear previous room positions
-        roomPositions.Clear();
-        occupiedPositions.Clear();
-        availableRooms.Clear();
-        roomMap.Clear();
+        bool success = false;
 
-        // Place the starting room at (0, 0)
-        Vector2Int startPosition = Vector2Int.zero;
-        roomPositions.Add(startPosition);
-        occupiedPositions.Add(startPosition);
-        availableRooms.Enqueue(startPosition);
-        InstantiateStartRoom(startPosition);
-
-        // Generate remaining rooms
-        for (int i = 1; i < numberOfRooms; i++)
+        while (!success && roomTilesList.Count > 0)
         {
-            if (availableRooms.Count > 0)
+            // First, pick a random tile in the list of placed tiles
+            int existingTile = roomTilesList[UnityEngine.Random.Range(0, roomTilesList.Count)];
+
+            // Choose a random direction to go in
+            int[] directions = new int[] { 0, 1, 2, 3 };
+            ShuffleArray(directions); // Shuffle directions to ensure randomness
+
+            foreach (int dir in directions)
             {
-                PlaceAdjacentRoom();
-            }
-        }
-    }
-
-    void PlaceAdjacentRoom()
-    {
-        // Randomly select an existing room from the queue
-        Vector2Int currentRoom = availableRooms.Dequeue();
-
-        // Find all possible adjacent positions
-        List<Vector2Int> possiblePositions = new List<Vector2Int>
-        {
-            currentRoom + Vector2Int.up,
-            currentRoom + Vector2Int.down,
-            currentRoom + Vector2Int.left,
-            currentRoom + Vector2Int.right
-        };
-
-        // Shuffle the possible positions to randomize placement
-        for (int i = 0; i < possiblePositions.Count; i++)
-        {
-            Vector2Int temp = possiblePositions[i];
-            int randomIndex = Random.Range(i, possiblePositions.Count);
-            possiblePositions[i] = possiblePositions[randomIndex];
-            possiblePositions[randomIndex] = temp;
-        }
-
-        // Place the room in the first available position
-        foreach (var position in possiblePositions)
-        {
-            if (!occupiedPositions.Contains(position))
-            {
-                roomPositions.Add(position);
-                occupiedPositions.Add(position);
-                availableRooms.Enqueue(position);
-                InstantiateRoom(position);
-                break;
-            }
-        }
-    }
-
-    void InstantiateRoom(Vector2Int position)
-    {
-        Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
-
-
-        GameObject room = Instantiate(GetRandomRoom(roomPrefabs), worldPosition, Quaternion.identity);
-        
-        //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
-        instantiatedRooms.Add(room);
-        roomMap[position] = room;
-        room.GetComponent<Room>().InitWallTiles();
-    }
-
-    void InstantiateStartRoom(Vector2Int position)
-    {
-        Vector3 worldPosition = new Vector3(position.x * roomWidth, position.y * roomHeight, 0);
-
-        GameObject room = Instantiate(roomPrefabs[0], worldPosition, Quaternion.identity);
-
-        //tilemap.SetTile(new Vector3Int(position.x, position.y, 0), ruleTile);
-        instantiatedRooms.Add(room);
-        roomMap[position] = room;
-    }
-
-    public GameObject GetRandomRoom(List<GameObject> itemList)
-    {
-        if (itemList == null || itemList.Count == 0)
-        {
-            Debug.LogWarning("Item list is empty or null.");
-            return null;
-        }
-
-        int randomIndex = Random.Range(0, itemList.Count);
-        return itemList[randomIndex];
-    }
-
-    private void GenerateWalls()
-    {
-        foreach (var position in roomPositions)
-        {
-            bool up = roomMap.ContainsKey(position + Vector2Int.up);
-            bool down = roomMap.ContainsKey(position + Vector2Int.down);
-            bool left = roomMap.ContainsKey(position + Vector2Int.left);
-            bool right = roomMap.ContainsKey(position + Vector2Int.right);
-            roomMap[position].GetComponent<Room>().GenerateWalls(up, down, left, right);
-        }
-    }
-
-    void ClearMap()
-    {
-        //tilemap.ClearAllTiles();
-        foreach (GameObject room in instantiatedRooms)
-        {
-            Destroy(room);
-        }
-        instantiatedRooms.Clear();
-    }
-
-    Vector2Int FindFurthestRoom(Vector2Int start)
-    {
-        Queue<Vector2Int> queue = new Queue<Vector2Int>();
-        Dictionary<Vector2Int, int> distances = new Dictionary<Vector2Int, int>();
-
-        queue.Enqueue(start);
-        distances[start] = 0;
-
-        Vector2Int furthestRoom = start;
-        int maxDistance = 0;
-
-        while (queue.Count > 0)
-        {
-            Vector2Int current = queue.Dequeue();
-            int currentDistance = distances[current];
-
-            List<Vector2Int> possiblePositions = new List<Vector2Int>
-            {
-                current + Vector2Int.up,
-                current + Vector2Int.down,
-                current + Vector2Int.left,
-                current + Vector2Int.right
-            };
-
-            foreach (var position in possiblePositions)
-            {
-                if (occupiedPositions.Contains(position) && !distances.ContainsKey(position))
+                int newRoom = -1;
+                switch (dir)
                 {
-                    distances[position] = currentDistance + 1;
-                    queue.Enqueue(position);
+                    case 0: // Check up
+                        newRoom = existingTile - mapSize;
+                        break;
+                    case 1: // Check down
+                        newRoom = existingTile + mapSize;
+                        break;
+                    case 2: // Check left
+                        newRoom = existingTile - 1;
+                        // Check for left boundary
+                        if (existingTile % mapSize == 0)
+                            newRoom = -1;
+                        break;
+                    case 3: // Check right
+                        newRoom = existingTile + 1;
+                        // Check for right boundary
+                        if (existingTile % mapSize == mapSize - 1)
+                            newRoom = -1;
+                        break;
+                }
 
-                    if (distances[position] > maxDistance)
-                    {
-                        maxDistance = distances[position];
-                        furthestRoom = position;
-                    }
+                if (newRoom >= 0 && newRoom < mapSize * mapSize && roomTiles[newRoom] == 0)
+                {
+                    roomTiles[newRoom] = 1;
+                    roomTilesList.Add(newRoom);
+                    success = true;
+                    break;
                 }
             }
         }
-
-        return furthestRoom;
     }
 
-    GameObject GetRoomTile(Vector2Int position)
+
+
+    private void DrawRoomTiles()
     {
-        roomMap.TryGetValue(position, out GameObject room);
-        return room;
+        foreach (var room in roomTilesList)
+        {
+            var x = Instantiate(roomPrefab, this.transform);
+            x.transform.position = ConvertToWorldPosition(room);
+            x.GetComponent<DungeonGenerator>().Generate();
+        }
     }
+
+    #region UTILITY
+
+    private int Convert2DTo1DIndex(int row, int column)
+    {
+        return row * this.mapSize + column;
+    }
+
+    private Vector2 Convert1DTo2DIndex(int index)
+    {
+        int row = index / mapSize;
+        int column = index % mapSize;
+        return new Vector2(row, column);
+    }
+
+    private Vector2 ConvertToWorldPosition(int index)
+    {
+        Vector2 gridPosition = Convert1DTo2DIndex(index);
+        float x = roomWidth *  (gridPosition.y - mapSize / 2f);
+        float y = roomHeight * (gridPosition.x - mapSize / 2f);
+        return new Vector2(x, y);
+    }
+
+    // Utility function to shuffle an array
+    private void ShuffleArray(int[] array)
+    {
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    #endregion
 }

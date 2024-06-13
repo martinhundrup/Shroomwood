@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public delegate void InventorySlotClickedHandler(int slotID);
     public InventorySlotClickedHandler OnInventorySlotClicked;
@@ -50,13 +49,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         this.Refresh();
     }
 
-    private void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (isHovered && Input.GetMouseButtonDown(0))
-        {
-            if (OnInventorySlotClicked != null)
-                OnInventorySlotClicked(this.index);
-        }
+        if (OnInventorySlotClicked != null)
+            OnInventorySlotClicked(this.index);
     }
 
     // This method is called when the cursor enters the UI element
