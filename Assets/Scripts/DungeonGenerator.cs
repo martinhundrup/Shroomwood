@@ -14,22 +14,25 @@ public class DungeonGenerator : MonoBehaviour
 
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
     private List<int> roomTilesList; // Stores indices of all tiles that have been chosen to become rooms
+    [SerializeField] private GameObject dungeonExit;
 
     private void Awake()
     {
         this.tilemap = GameObject.FindGameObjectWithTag("Meadow Tilemap").GetComponent<Tilemap>();
         this.roomTiles = new int[mapWidth * mapHeight];
-        roomTilesList = new List<int>();        
+        roomTilesList = new List<int>();
     }
 
-    public void Generate()
+    public void Generate(int _numTiles, bool up, bool down, bool left, bool right)
     {
+        this.numberOfTiles = _numTiles;
         if (numberOfTiles > (mapWidth - 2) * (mapHeight - 2)) return; // Ensure numberOfTiles is valid
         InitRoomTiles();
-        SetTopDoorway();
-        SetRightDoorway();
-        SetBottomDoorway();
-        SetLeftDoorway();
+
+        if (up) SetBottomDoorway();
+        if (right) SetRightDoorway();
+        if (down) SetTopDoorway();
+        if (left) SetLeftDoorway();
         DrawRoomTiles();
     }
 
@@ -59,7 +62,7 @@ public class DungeonGenerator : MonoBehaviour
             roomTiles[index] = 1;
             index += mapWidth;
             //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] == 1;
+            done = roomTiles[index] != 0;
         }
     }
 
@@ -73,7 +76,7 @@ public class DungeonGenerator : MonoBehaviour
             roomTiles[index] = 1;
             index -= mapWidth;
             //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] == 1;
+            done = roomTiles[index] != 0;
         }
     }
 
@@ -87,7 +90,7 @@ public class DungeonGenerator : MonoBehaviour
             roomTiles[index] = 1;
             index++;
             //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] == 1;
+            done = roomTiles[index] != 0;
         }
     }
 
@@ -101,8 +104,13 @@ public class DungeonGenerator : MonoBehaviour
             roomTiles[index] = 1;
             index--;
             //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] == 1;
+            done = roomTiles[index] != 0;
         }
+    }
+
+    public void PlaceExit()
+    {
+        Instantiate(dungeonExit, this.transform);
     }
 
     private void PlaceRandomTile()
@@ -172,14 +180,6 @@ public class DungeonGenerator : MonoBehaviour
 
     private void DrawRoomTiles()
     {
-        //foreach (var index in roomTilesList)
-        //{
-        //    var x = Instantiate(tile, this.transform);
-        //    x.transform.position = ConvertToWorldPosition(index);
-        //    roomDictionary[index] = x;
-        //}
-
-        // invert
         for (int i = 0; i < roomTiles.Length; i++)
         {
             if (roomTiles[i] == 0)
