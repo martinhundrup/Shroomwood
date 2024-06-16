@@ -43,6 +43,7 @@ public class Room : MonoBehaviour
         this.cameraFollower = FindObjectOfType<CameraFollower>();
 
         this.cameraBounder = GetComponentInChildren<CameraBounder>();
+        this.cameraBounder.transform.localScale = new Vector2(width - 1, height - 1);
         this.cameraBounder.OnPlayerEnter += this.PlayerEnter;
 
         //InitWallTiles();
@@ -50,118 +51,118 @@ public class Room : MonoBehaviour
         this.InitEnemies();
     }
 
-    public void InitWallTiles()
-    {
-        if (GetComponentsInChildren<TileGenerator>() != null)
-            foreach (var wall in GetComponentsInChildren<TileGenerator>())
-            {
-                wall.DrawTiles();
-            }
-    }
+    //public void InitWallTiles()
+    //{
+    //    if (GetComponentsInChildren<TileGenerator>() != null)
+    //        foreach (var wall in GetComponentsInChildren<TileGenerator>())
+    //        {
+    //            wall.DrawTiles();
+    //        }
+    //}
 
-    // Generates either a solid wall, or a wall with a door depending on what's next to it.
-    public void GenerateWalls(bool _up, bool _down, bool _left, bool _right) // which directions to generate rooms, rest are walls
-    {
+    //// Generates either a solid wall, or a wall with a door depending on what's next to it.
+    //public void GenerateWalls(bool _up, bool _down, bool _left, bool _right) // which directions to generate rooms, rest are walls
+    //{
         
 
-        if (_up)
-        {
-            GameObject _l = Instantiate(wall, this.transform);
-            _l.transform.localPosition = new Vector3(-width / 4, height / 2 - 0.5f, 0f);
-            _l.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
-            _l.GetComponent<TileGenerator>().DrawTiles();
+    //    if (_up)
+    //    {
+    //        GameObject _l = Instantiate(wall, this.transform);
+    //        _l.transform.localPosition = new Vector3(-width / 4, height / 2 - 0.5f, 0f);
+    //        _l.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
+    //        _l.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _r = Instantiate(wall, this.transform);
-            _r.transform.localPosition = new Vector3(width / 4, height / 2 - 0.5f, 0f);
-            _r.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
-            _r.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _r = Instantiate(wall, this.transform);
+    //        _r.transform.localPosition = new Vector3(width / 4, height / 2 - 0.5f, 0f);
+    //        _r.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
+    //        _r.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _d = Instantiate(door, this.transform);
-            _d.transform.localPosition = new Vector3(0f, height / 2 - 0.5f, 0f);
-            _d.transform.localScale = new Vector3(2f, 1f, 1f);
-        }
-        else
-        {
-            GameObject _w = Instantiate(wall, this.transform);
-            _w.transform.localPosition = new Vector3(0f, height / 2 - 0.5f, 0f);
-            _w.transform.localScale = new Vector3(width, 1f, 1f);
-            _w.GetComponent<TileGenerator>().DrawTiles();
-        }
+    //        GameObject _d = Instantiate(door, this.transform);
+    //        _d.transform.localPosition = new Vector3(0f, height / 2 - 0.5f, 0f);
+    //        _d.transform.localScale = new Vector3(2f, 1f, 1f);
+    //    }
+    //    else
+    //    {
+    //        GameObject _w = Instantiate(wall, this.transform);
+    //        _w.transform.localPosition = new Vector3(0f, height / 2 - 0.5f, 0f);
+    //        _w.transform.localScale = new Vector3(width, 1f, 1f);
+    //        _w.GetComponent<TileGenerator>().DrawTiles();
+    //    }
 
-        if (_down) {
+    //    if (_down) {
 
-            GameObject _l = Instantiate(wall, this.transform);
-            _l.transform.localPosition = new Vector3(-width / 4, -height / 2 + 0.5f, 0f);
-            _l.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
-            _l.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _l = Instantiate(wall, this.transform);
+    //        _l.transform.localPosition = new Vector3(-width / 4, -height / 2 + 0.5f, 0f);
+    //        _l.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
+    //        _l.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _r = Instantiate(wall, this.transform);
-            _r.transform.localPosition = new Vector3(width / 4, -height / 2 + 0.5f, 0f);
-            _r.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
-            _r.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _r = Instantiate(wall, this.transform);
+    //        _r.transform.localPosition = new Vector3(width / 4, -height / 2 + 0.5f, 0f);
+    //        _r.transform.localScale = new Vector3(width / 2 - 2, 1f, 1f);
+    //        _r.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _d = Instantiate(door, this.transform);
-            _d.transform.localPosition = new Vector3(0f, -height / 2 + 0.5f, 0f);
-            _d.transform.localScale = new Vector3(2f, 1f, 1f);
-        }
-        else
-        {
-            GameObject _w = Instantiate(wall, this.transform);
-            _w.transform.localPosition = new Vector3(0f, -height / 2 + 0.5f, 0f);
-            _w.transform.localScale = new Vector3(width, 1f, 1f);
-            _w.GetComponent<TileGenerator>().DrawTiles();
-        }
+    //        GameObject _d = Instantiate(door, this.transform);
+    //        _d.transform.localPosition = new Vector3(0f, -height / 2 + 0.5f, 0f);
+    //        _d.transform.localScale = new Vector3(2f, 1f, 1f);
+    //    }
+    //    else
+    //    {
+    //        GameObject _w = Instantiate(wall, this.transform);
+    //        _w.transform.localPosition = new Vector3(0f, -height / 2 + 0.5f, 0f);
+    //        _w.transform.localScale = new Vector3(width, 1f, 1f);
+    //        _w.GetComponent<TileGenerator>().DrawTiles();
+    //    }
 
-        if (_left) {
+    //    if (_left) {
 
-            GameObject _t = Instantiate(wall, this.transform);
-            _t.transform.localPosition = new Vector3(-width / 2 + 0.5f, height / 4, 0f);
-            _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
-            _t.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _t = Instantiate(wall, this.transform);
+    //        _t.transform.localPosition = new Vector3(-width / 2 + 0.5f, height / 4, 0f);
+    //        _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
+    //        _t.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _b = Instantiate(wall, this.transform);
-            _b.transform.localPosition = new Vector3(-width / 2 + 0.5f, -height / 4 - 1f, 0f);
-            _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
-            _b.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _b = Instantiate(wall, this.transform);
+    //        _b.transform.localPosition = new Vector3(-width / 2 + 0.5f, -height / 4 - 1f, 0f);
+    //        _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
+    //        _b.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _d = Instantiate(door, this.transform);
-            _d.transform.localPosition = new Vector3(-width / 2 + 0.5f, 0f, 0f);
-            _d.transform.localScale = new Vector3(1f, 2f, 1f);
-        }
-        else
-        {
-            GameObject _w = Instantiate(wall, this.transform);
-            _w.transform.localPosition = new Vector3(-width / 2 + 0.5f, 0f, 0f);
-            _w.transform.localScale = new Vector3(1f, height, 1f);
-            _w.GetComponent<TileGenerator>().DrawTiles();
-        }
+    //        GameObject _d = Instantiate(door, this.transform);
+    //        _d.transform.localPosition = new Vector3(-width / 2 + 0.5f, 0f, 0f);
+    //        _d.transform.localScale = new Vector3(1f, 2f, 1f);
+    //    }
+    //    else
+    //    {
+    //        GameObject _w = Instantiate(wall, this.transform);
+    //        _w.transform.localPosition = new Vector3(-width / 2 + 0.5f, 0f, 0f);
+    //        _w.transform.localScale = new Vector3(1f, height, 1f);
+    //        _w.GetComponent<TileGenerator>().DrawTiles();
+    //    }
 
-        if (_right) {
-            GameObject _t = Instantiate(wall, this.transform);
-            _t.transform.localPosition = new Vector3(width / 2 - 0.5f, height / 4, 0f);
-            _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
-            _t.GetComponent<TileGenerator>().DrawTiles();
+    //    if (_right) {
+    //        GameObject _t = Instantiate(wall, this.transform);
+    //        _t.transform.localPosition = new Vector3(width / 2 - 0.5f, height / 4, 0f);
+    //        _t.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
+    //        _t.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _b = Instantiate(wall, this.transform);
-            _b.transform.localPosition = new Vector3(width / 2 - 0.5f, -height / 4 - 1f, 0f);
-            _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
-            _b.GetComponent<TileGenerator>().DrawTiles();
+    //        GameObject _b = Instantiate(wall, this.transform);
+    //        _b.transform.localPosition = new Vector3(width / 2 - 0.5f, -height / 4 - 1f, 0f);
+    //        _b.transform.localScale = new Vector3(1f, height / 2 - 1, 1f);
+    //        _b.GetComponent<TileGenerator>().DrawTiles();
 
-            GameObject _d = Instantiate(door, this.transform);
-            _d.transform.localPosition = new Vector3(width / 2 - 0.5f, 0f, 0f);
-            _d.transform.localScale = new Vector3(1f, 2f, 1f);
-        }
-        else
-        {
-            GameObject _w = Instantiate(wall, this.transform);
-            _w.transform.localPosition = new Vector3(width / 2 - 0.5f, 0f, 0f);
-            _w.transform.localScale = new Vector3(1f, height, 1f);
-            _w.GetComponent<TileGenerator>().DrawTiles();
-        }
+    //        GameObject _d = Instantiate(door, this.transform);
+    //        _d.transform.localPosition = new Vector3(width / 2 - 0.5f, 0f, 0f);
+    //        _d.transform.localScale = new Vector3(1f, 2f, 1f);
+    //    }
+    //    else
+    //    {
+    //        GameObject _w = Instantiate(wall, this.transform);
+    //        _w.transform.localPosition = new Vector3(width / 2 - 0.5f, 0f, 0f);
+    //        _w.transform.localScale = new Vector3(1f, height, 1f);
+    //        _w.GetComponent<TileGenerator>().DrawTiles();
+    //    }
 
-        this.doors = GetComponentsInChildren<Doorway>();
-        this.ActivateDoors(false);
-    }
+    //    this.doors = GetComponentsInChildren<Doorway>();
+    //    this.ActivateDoors(false);
+    //}
 
     // Called when this room's camera bounder has been entered.
     private void PlayerEnter()

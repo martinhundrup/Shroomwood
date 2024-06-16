@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f688ab8fd4888d54496fe1da4766ec7a, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  movementSpeed: 3.5
+  movementSpeed: 4
   maxHealth: 5
-  currentHealth: 3
+  currentHealth: 5
   damageBoostDuration: 0.7
   rollDuration: 0.3
   rollSpeed: 8

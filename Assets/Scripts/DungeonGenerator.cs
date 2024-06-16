@@ -29,10 +29,10 @@ public class DungeonGenerator : MonoBehaviour
         if (numberOfTiles > (mapWidth - 2) * (mapHeight - 2)) return; // Ensure numberOfTiles is valid
         InitRoomTiles();
 
-        if (up) SetBottomDoorway();
-        if (right) SetRightDoorway();
-        if (down) SetTopDoorway();
-        if (left) SetLeftDoorway();
+        SetTopDoorway(up);
+        SetRightDoorway(right);
+        SetBottomDoorway(down);
+        SetLeftDoorway(left);
         DrawRoomTiles();
     }
 
@@ -52,59 +52,115 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    private void SetBottomDoorway()
+    private void SetTopDoorway(bool doorway)
     {
-        bool done = false;
-        int index = mapWidth / 2;
-        while (!done)
+        if (doorway)
         {
-            if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            roomTiles[index] = 1;
-            index += mapWidth;
-            //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] != 0;
+            bool done = false;
+            int index = mapWidth / 2;
+            while (!done)
+            {
+                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                roomTiles[index] = 1;
+                index += mapWidth;
+                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                done = roomTiles[index] != 0;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < mapWidth; i++)
+            {
+                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x;
+                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y - 1;
+
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                tilemap.SetTile(tilePosition, ruleTile);
+            }
         }
     }
 
-    private void SetTopDoorway()
+    private void SetBottomDoorway(bool doorway)
     {
-        bool done = false;
-        int index = roomTiles.Length - 1 - mapWidth / 2;
-        while (!done)
+        if (doorway)
         {
-            if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            roomTiles[index] = 1;
-            index -= mapWidth;
-            //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] != 0;
+            bool done = false;
+            int index = roomTiles.Length - 1 - mapWidth / 2;
+            while (!done)
+            {
+                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                roomTiles[index] = 1;
+                index -= mapWidth;
+                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                done = roomTiles[index] != 0;
+            }
+        }
+        else
+        {
+            for (int i = (mapWidth * mapHeight - mapWidth); i < mapWidth * mapHeight; i++)
+            {
+                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x;
+                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y + 1;
+
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                tilemap.SetTile(tilePosition, ruleTile);
+            }
         }
     }
 
-    private void SetLeftDoorway()
+    private void SetLeftDoorway(bool doorway)
     {
-        bool done = false;
-        int index = mapWidth * (mapHeight / 2);
-        while (!done)
+        if (doorway)
         {
-            if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            roomTiles[index] = 1;
-            index++;
-            //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] != 0;
+            bool done = false;
+            int index = mapWidth * (mapHeight / 2);
+            while (!done)
+            {
+                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                roomTiles[index] = 1;
+                index++;
+                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                done = roomTiles[index] != 0;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < mapHeight * mapWidth; i += mapWidth)
+            {
+                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x - 1;
+                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y;
+
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                tilemap.SetTile(tilePosition, ruleTile);
+            }
         }
     }
 
-    private void SetRightDoorway()
+    private void SetRightDoorway(bool doorway)
     {
-        bool done = false;
-        int index = mapWidth * (1 + mapHeight / 2) - 1;
-        while (!done)
+        if (doorway)
         {
-            if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            roomTiles[index] = 1;
-            index--;
-            //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-            done = roomTiles[index] != 0;
+            bool done = false;
+            int index = mapWidth * (1 + mapHeight / 2) - 1;
+            while (!done)
+            {
+                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                roomTiles[index] = 1;
+                index--;
+                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
+                done = roomTiles[index] != 0;
+            }
+        }
+        else
+        {
+            for (int i = mapWidth - 1; i < mapHeight * mapWidth; i += mapWidth)
+            {
+                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x + 1;
+                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y;
+
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                tilemap.SetTile(tilePosition, ruleTile);
+            }
         }
     }
 

@@ -17,6 +17,9 @@ public class CameraFollower : MonoBehaviour
     
     // The damping value to follow the target with. Smaller values result in closer following.    
     [SerializeField] private float smoothness;
+
+    [SerializeField] private int roomWidth;
+    [SerializeField] private int roomHeight;
     
     // The 3D zero vector as a variable.    
     private Vector3 zeroVector = Vector3.zero;
@@ -97,10 +100,10 @@ public class CameraFollower : MonoBehaviour
         float width = _bounder.localScale.x;
         float height = _bounder.localScale.y;
 
-        float max_x = x - 9 + width / 2;
-        float min_x = x + 9 - width / 2;
-        float max_y = y - 5 + height / 2;
-        float min_y = y + 5 - height / 2;
+        float max_x = x - ((roomWidth + 2 )/ 2) + width / 2;
+        float min_x = x + ((roomWidth + 2 )/ 2) - width / 2;
+        float max_y = y - ((roomHeight + 2) / 2) + height / 2;
+        float min_y = y + ((roomHeight + 2) / 2) - height / 2;
 
         if (max_x <= min_x)
         {

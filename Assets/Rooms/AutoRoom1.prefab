@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342bfc48c70ffd4495e641b55baffc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 16
-  height: 10
+  width: 17
+  height: 9
   wall: {fileID: 7403462101014048706, guid: 1a3ec6c58dc36764a9e051422bf893c2, type: 3}
   door: {fileID: 6057933295521312713, guid: 0d80acd2746d7ac4784b1f857697605f, type: 3}
 --- !u!114 &-7600778587698029858
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapWidth: 17
-  mapHeight: 11
+  mapHeight: 9
   numberOfTiles: 40
   ruleTile: {fileID: 11400000, guid: 69c028880d5d3054193a24f1ded0d151, type: 2}
   dungeonExit: {fileID: 692800777325627983, guid: 84ec6ddb2adeee94d8560eeffba15800, type: 3}
@@ -109,7 +109,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7591486937936687331, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8372433475229624782, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_Name
@@ -125,11 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8479434799468161353, guid: 4d6fd5a8ca022574395797ca805d3d54, type: 3}
       propertyPath: m_LocalPosition.z

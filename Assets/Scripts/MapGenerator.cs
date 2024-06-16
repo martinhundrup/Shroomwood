@@ -154,8 +154,10 @@ public class MapGenerator : MonoBehaviour
             bool left = room - 1 > 0 && roomTiles[room - 1] != 0;
             bool right = room + 1 < roomTiles.Length && roomTiles[room + 1] != 0;
 
+            int numTiles = roomWidth * roomHeight - (roomHeight * 2 + roomWidth * 2);
+
             x.GetComponent<DungeonGenerator>().
-                Generate(UnityEngine.Random.Range(60,80), up, down, left, right);
+                Generate(UnityEngine.Random.Range((int)(numTiles * 0.6f), (int)(numTiles * 0.8f)), up, down, left, right);
 
             if (room == furthestRoomIndex)
             {
