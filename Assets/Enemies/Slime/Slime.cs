@@ -1,27 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class Slime : MonoBehaviour
+public class Slime : Enemy
 {
-    // Ref to the this object's rigidbody 2D component.
-    protected Rigidbody2D rigidBody;
-
     [SerializeField] protected float jumpInterval; // the base time between jumps.
     [SerializeField] protected float intervalMargin; // the +/- time the interval is randomized to.
     [SerializeField, Range(0f, 1f)] protected float speedDecay;
     private bool isJumping;
 
-    // Reference to this objects enemy component.
-    private Enemy enemy;
-
-    // Ran when the object is created.
-    private void Awake()
-    {
-        this.rigidBody = GetComponent<Rigidbody2D>();
-        this.enemy = GetComponent<Enemy>();
-    }
 
     private void OnEnable()
     {
@@ -31,13 +19,9 @@ public class Slime : MonoBehaviour
     // Called every physics frame.
     private void FixedUpdate()
     {
-        if (!this.enemy.IsInHitstun)
+        if (!isInHitstun)
         {
-            rigidBody.velocity = rigidBody.velocity * speedDecay;
-        }
-        else
-        {
-            Debug.Log("open for knockback");
+            rb.velocity = rb.velocity * speedDecay;
         }
     }
 
@@ -45,18 +29,21 @@ public class Slime : MonoBehaviour
     private IEnumerator JumpTimer()
     {
         while (true)
-        {            
+        {
             var dir = FindDirection();
 
             yield return new WaitForSeconds(jumpInterval + Random.Range(-intervalMargin, intervalMargin));
 
-            rigidBody.AddForce(dir * enemy.Speed / 100);
+            rb.AddForce(dir * speed * 10);
         }
     }
 
-    // chooses a random direction to move in
+    // chooses a random direction to move in, 50% to target player
     private Vector2 FindDirection()
     {
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        if (Random.Range(0,2) == 0)
+            return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        else
+            return (player.transform.position - transform.position).normalized;
     }
 }

@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - ItemDrop
-  - Enemy
-  - CameraBounder
-  - Hitbox
-  - Doorway
-  - Wall
-  - End of Level
-  - Inventory Canvas
-  - Meadow Tilemap
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -20,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Enemy
-  - Player
-  - CameraBounder
-  - Hitbox
-  - ItemDrops
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -50,9 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Tilemap
-    uniqueID: 3356028665
-    locked: 0
   - name: Entities
-    uniqueID: 1943877983
+    uniqueID: 2593833187
     locked: 0

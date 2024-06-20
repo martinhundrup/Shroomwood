@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3dde0765166c1404cb3bbb0e15aa7810
+guid: e377832b49d13ae40910d250dd4bc7f3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 64
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638528683512731363
+  platformSettingsDirtyTick: 638542412875122443
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,98 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: fly_Frame_0
+  - name: Fly_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0.47619048}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 120
-      y: 60
-      width: 56
-      height: 21
-    spriteID: b1f7c0724d4484b45b4ee8d5da2806b2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 120, y: 60}
-  - name: fly_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0.2647059}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 140
-      y: 4
-      width: 44
-      height: 34
-    spriteID: 09be19afcc376d5429d6bb7b2c64c269
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 140, y: 4}
-  - name: fly_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: 0.3809524}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 184
-      y: 60
-      width: 56
-      height: 21
-    spriteID: 55bec1f8ed7c66b499fef3b602f10c25
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 184, y: 60}
-  - name: fly_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.2647059}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 192
-      y: 4
-      width: 44
-      height: 34
-    spriteID: 707a7baae49df8846ba4f72cb8f3b9ed
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 192, y: 4}
-  - name: fly_Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5416667}
+    pivot: {x: 0.5, y: 0.625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 60
-      height: 48
-    spriteID: 2fddc32ba0120984898929e25bf65067
+      width: 16
+      height: 8
+    spriteID: 3fb8c95282355fa49abb1405db9312fc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,38 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: fly_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: 0.46296296}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 60
-      width: 50
-      height: 54
-    spriteID: cb1734181dc0f79429b28c3c91a10050
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 60}
-  - name: fly_Frame_6
+  - name: Fly_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 4
-      width: 60
-      height: 48
-    spriteID: e63030364fcf27f4b9ffe7a2221c4a4f
+      x: 4
+      y: 20
+      width: 16
+      height: 8
+    spriteID: 3c116c89a024e02438be1a726a0fa3ce
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,19 +160,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 4}
-  - name: fly_Frame_7
+    uvTransform: {x: 4, y: 20}
+  - name: Fly_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0.46296296}
+    pivot: {x: 0.5, y: 0.375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 60
-      width: 50
-      height: 54
-    spriteID: 14883231f60af8443adb36df191829a3
+      x: 4
+      y: 36
+      width: 16
+      height: 8
+    spriteID: bf961725f77c7104db0e13858808ac5d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,87 +180,79 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 62, y: 60}
+    uvTransform: {x: 4, y: 36}
+  - name: Fly_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 52
+      width: 16
+      height: 8
+    spriteID: 10a25a6a7edaae240afcdf95012ed573
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 52}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 566048763
-    name: fly
+    guid: 566442587
+    name: Fly
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: fly_Frame_0
+    - name: Fly_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
-        x: 4
-        y: 22
-        width: 56
-        height: 21
-      spriteId: b1f7c0724d4484b45b4ee8d5da2806b2
-    - name: fly_Frame_1
+        x: 0
+        y: 3
+        width: 16
+        height: 8
+      spriteId: 3fb8c95282355fa49abb1405db9312fc
+    - name: Fly_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
-        x: 10
-        y: 23
-        width: 44
-        height: 34
-      spriteId: 09be19afcc376d5429d6bb7b2c64c269
-    - name: fly_Frame_2
+        x: 0
+        y: 4
+        width: 16
+        height: 8
+      spriteId: 3c116c89a024e02438be1a726a0fa3ce
+    - name: Fly_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
-        x: 4
-        y: 24
-        width: 56
-        height: 21
-      spriteId: 55bec1f8ed7c66b499fef3b602f10c25
-    - name: fly_Frame_3
+        x: 0
+        y: 5
+        width: 16
+        height: 8
+      spriteId: bf961725f77c7104db0e13858808ac5d
+    - name: Fly_Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
-        x: 10
-        y: 23
-        width: 44
-        height: 34
-      spriteId: 707a7baae49df8846ba4f72cb8f3b9ed
-    - name: fly_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 2
-        y: 6
-        width: 60
-        height: 48
-      spriteId: 2fddc32ba0120984898929e25bf65067
-    - name: fly_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 7
-        y: 7
-        width: 50
-        height: 54
-      spriteId: cb1734181dc0f79429b28c3c91a10050
-    - name: fly_Frame_6
-      frameIndex: 6
-      cellRect:
-        x: 2
-        y: 8
-        width: 60
-        height: 48
-      spriteId: e63030364fcf27f4b9ffe7a2221c4a4f
-    - name: fly_Frame_7
-      frameIndex: 7
-      cellRect:
-        x: 7
-        y: 7
-        width: 50
-        height: 54
-      spriteId: 14883231f60af8443adb36df191829a3
+        x: 0
+        y: 4
+        width: 16
+        height: 8
+      spriteId: 10a25a6a7edaae240afcdf95012ed573
     linkedCells: []
     parentIndex: -1
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
     ignorePlatformSupport: 0
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -408,4 +300,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
+  canvasSize: {x: 16, y: 16}

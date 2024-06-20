@@ -2,52 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class Fly : MonoBehaviour
+public class Fly : Enemy
 {
-    // The starting direction.
-    [SerializeField] protected Vector2 dir;
+    [SerializeField] protected float jumpInterval; // the base time between jumps.
+    [SerializeField] protected float intervalMargin; // the +/- time the interval is randomized to.
+    [SerializeField] protected float moveTime; // the time the fly is moving for
 
-    // Reference to this objects enemy component.
-    private Enemy enemy;
-
-    // Ref to the this object's rigidbody 2D component.
-    protected Rigidbody2D rigidBody;
-
-    // Ran when the object is created.
-    private void Awake()
+    private void OnEnable()
     {
-        this.rigidBody = GetComponent<Rigidbody2D>();
-        this.enemy = GetComponent<Enemy>();
+        StartCoroutine(JumpTimer());
     }
 
-    //private void OnEnable()
-    //{
-    //    rigidBody.AddForce(dir * enemy.Speed / 100);
-    //}
-
-    //Called every physics update frame.
-    private void FixedUpdate()
+    // Continuously jump at semi random intervals.
+    private IEnumerator JumpTimer()
     {
-        if (!this.enemy.IsInHitstun)
-            rigidBody.velocity = dir * enemy.Speed;
+        while (true)
+        {
+            var dir = FindDirection();
+
+            yield return new WaitForSeconds(jumpInterval + Random.Range(-intervalMargin, intervalMargin));
+            if (dir.x < 0) sr.flipX = true;
+            else sr.flipX = false;
+            rb.velocity = (dir * speed);
+            StartCoroutine(StopMovementTimer());
+        }
     }
 
-    //Called when a collider contacts this object.
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator StopMovementTimer()
     {
-        float _x = collision.contacts[0].point.x - this.transform.position.x;
-        float _y = collision.contacts[0].point.y - this.transform.position.y;
+        yield return new WaitForSeconds(moveTime);
+        rb.velocity = Vector3.zero;
+    }
 
-        if (Mathf.Abs(_x) > Mathf.Abs(_y)) // change x dir
-        {
-            dir = dir * new Vector3(-1f, 1f, 0f);
-        }
-        else // change y dir
-        {
-            dir = dir * new Vector3(1f, -1f, 0f);
-        }
-
-        rigidBody.velocity = dir * this.enemy.Speed;
+    // chooses a random direction to move in, 50% to target player
+    private Vector2 FindDirection()
+    {
+        if (Random.Range(0, 2) == 0)
+            return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        else
+            return (player.transform.position - transform.position).normalized;
     }
 }
