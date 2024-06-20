@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Items/ItemData")]
 public class ItemData : ScriptableObject
 {
     [SerializeField] protected string itemName;
     [SerializeField] protected Sprite icon;
+
     [TextArea]
     [SerializeField] protected string description;
 

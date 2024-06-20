@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 949738969500580795}
   - component: {fileID: 7607916502087441912}
   m_Layer: 0
-  m_Name: Shroomie
+  m_Name: Shroomie_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

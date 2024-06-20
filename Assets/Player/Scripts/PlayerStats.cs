@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Player/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
     [SerializeField] private float playerSpeed;
