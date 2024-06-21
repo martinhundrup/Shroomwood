@@ -11,7 +11,7 @@ public class WeaponSprite : MonoBehaviour
 
     private void Awake()
     {
-        defaultPos = transform.position;
+        defaultPos = transform.localPosition;
         player = GetComponentInParent<PlayerController>();
         sr = GetComponent<SpriteRenderer>();
     }

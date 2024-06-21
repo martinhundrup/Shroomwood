@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6b20f62d052e6a04e9ebf7e7c6bf1dd1
+guid: 1a825db1361eca442acd4d2dcbc29cec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -50,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,127 +123,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirt_0
+      name: GrassTilemap_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -5}
-        - {x: 8, y: -5}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a01bc8add9346947b0c0a8b4217d35b
-      internalID: -1062374949
+      spriteID: 7c1f6e8cd512021459feab5f26825aa5
+      internalID: -343210947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_1
+      name: GrassTilemap_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -5}
-        - {x: 8, y: -5}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f5a4a464c2ceb94d8c5a15a84bafe05
-      internalID: 1576234560
+      spriteID: 531a2d03632a3d044bcc7e919e5143b3
+      internalID: 267221706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_2
+      name: GrassTilemap_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -5}
-        - {x: 8, y: -5}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf44c7df65286204e861b8c39273abcd
-      internalID: -1898500298
+      spriteID: 20ac46e55b695de4cad90c0e1fe413b8
+      internalID: 1797631730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_3
+      name: GrassTilemap_3
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fed975d5072a0764c81d40a9fb506ed6
-      internalID: 231501632
+      spriteID: 84ad5146aec0e7f40850456f28b5a578
+      internalID: 390762384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_4
+      name: GrassTilemap_4
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 8, y: -8}
-        - {x: 8, y: 8}
-        - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b55a10380d3fa01478a4def9e51e08d5
-      internalID: 1613635050
+      spriteID: 3ad7c61a7437f714fa57798a36de8f91
+      internalID: -869926784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassTilemap_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5ad85b523f1c242bdb4c226f7d5235
+      internalID: -1079037460
       vertices: []
       indices: 
       edges: []
@@ -259,11 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dirt_0: -1062374949
-      dirt_1: 1576234560
-      dirt_2: -1898500298
-      dirt_3: 231501632
-      dirt_4: 1613635050
+      GrassTilemap_0: -343210947
+      GrassTilemap_1: 267221706
+      GrassTilemap_2: 1797631730
+      GrassTilemap_3: 390762384
+      GrassTilemap_4: -869926784
+      GrassTilemap_5: -1079037460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
