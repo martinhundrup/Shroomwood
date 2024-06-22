@@ -66,8 +66,6 @@ public class CameraFollower : MonoBehaviour
     // Called when player enters a new room
     public void ChangeBounds(Transform _bounder)
     {
-        Debug.Log("player enter");
-
         float x = _bounder.position.x;
         float y = _bounder.position.y;
         float width = _bounder.localScale.x;

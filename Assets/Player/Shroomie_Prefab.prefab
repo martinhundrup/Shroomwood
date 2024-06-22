@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5869557868551473169}
   - component: {fileID: 949738969500580795}
   - component: {fileID: 7607916502087441912}
+  - component: {fileID: 4697735931706246754}
   m_Layer: 0
   m_Name: Shroomie_Prefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +77,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9e79a6edf91394d8e0bb528443d19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &4697735931706246754
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42028626832684923}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.18}
+  m_Size: {x: 0.8, y: 0.5}
+  m_Direction: 1
 --- !u!1 &5474031084378586999
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,9 +184,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: -1701134109
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4662516737680662174, guid: 44cc54018fd2bfa4198284d92f15e505, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -176,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromCenter: 1
   orbitSpeed: 5
-  hitbox: {fileID: 0}
+  hitbox: {fileID: 2305319087690788767, guid: 6fbad8b39b6a7b54f9b99ed623bf4f57, type: 3}
 --- !u!114 &5600079596009702186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +299,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1701134109
+  m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.1764706, g: 0.12941177, b: 0.18039216, a: 0.7058824}
@@ -348,18 +384,18 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1701134109
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -471998666712267507, guid: e9098a345551830468dabe89989f88cb, type: 3}
+  m_Sprite: {fileID: 6858247515776813785, guid: e9098a345551830468dabe89989f88cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 0.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8517590229923186040
@@ -372,7 +408,7 @@ Animator:
   m_GameObject: {fileID: 8621957118937679293}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 6100726090758425165, guid: e9098a345551830468dabe89989f88cb, type: 3}
+  m_Controller: {fileID: -9170907786214903816, guid: e9098a345551830468dabe89989f88cb, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -454,10 +490,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 66dc48a98a8769240846393ae4c2fad5, type: 3}
+  m_SortingLayerID: -1701134109
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ad70fb774a4dfd545bbef14ee901da30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -467,7 +503,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4802960256479463387
 MonoBehaviour:
   m_ObjectHideFlags: 0
