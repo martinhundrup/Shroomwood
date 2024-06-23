@@ -15,7 +15,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private RuleTile wallTile;
     [SerializeField] private string topTilemapTag;
     [SerializeField] private string wallTilemapTag;
-    [SerializeField] private int boarderWidth;
+    private int borderWidth;
     private CameraBounder cameraBounder;
 
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
@@ -24,6 +24,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void Awake()
     {
+        borderWidth = DataDictionary.GameSettings.RoomBorder;
         roomWidth = DataDictionary.GameSettings.RoomWidth;
         roomHeight = DataDictionary.GameSettings.RoomHeight;
         this.topTilemap = GameObject.FindGameObjectWithTag(topTilemapTag).GetComponent<Tilemap>();
@@ -37,7 +38,7 @@ public class DungeonGenerator : MonoBehaviour
     public void Generate(int _numTiles, bool up, bool down, bool left, bool right)
     {
         this.numberOfTiles = _numTiles;
-        if (numberOfTiles > (roomWidth - 4) * (roomHeight - 4)) return; // Ensure numberOfTiles is valid
+        if (numberOfTiles > (roomWidth - (roomWidth * 2)) * (roomHeight - (roomWidth * 2))) return; // Ensure numberOfTiles is valid
         InitRoomTiles();
 
         SetTopDoorway(up);
@@ -48,7 +49,7 @@ public class DungeonGenerator : MonoBehaviour
 
         cameraBounder = new GameObject().AddComponent<CameraBounder>();
         cameraBounder.transform.parent = this.transform;
-        cameraBounder.transform.localPosition = Vector2.zero;
+        cameraBounder.transform.localPosition = Vector2.zero + new Vector2(0f, -0.5f);
         cameraBounder.transform.localScale = new Vector2(roomWidth - 1, roomHeight - 1);
     }
 
@@ -224,8 +225,8 @@ public class DungeonGenerator : MonoBehaviour
                 }
 
                 // Ensure newRoom is not on the border
-                if (newRoom >= roomWidth * boarderWidth && newRoom < roomWidth * (roomHeight - boarderWidth) &&
-                    newRoom % roomWidth >= boarderWidth && newRoom % roomWidth < roomWidth - boarderWidth &&
+                if (newRoom >= roomWidth * borderWidth && newRoom < roomWidth * (roomHeight - borderWidth) &&
+                    newRoom % roomWidth >= borderWidth && newRoom % roomWidth < roomWidth - borderWidth &&
                     roomTiles[newRoom] == 0)
                 {
                     roomTiles[newRoom] = 1;

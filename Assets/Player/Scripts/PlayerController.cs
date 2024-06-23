@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStats playerStats;
 
-
     private void Awake()
     {
         playerStats = DataDictionary.PlayerStats;

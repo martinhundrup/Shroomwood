@@ -10,7 +10,7 @@ public class CameraBounder : MonoBehaviour
     {
         col = GetComponent<BoxCollider2D>();
 
-        if (col == null )
+        if (col == null)
             col = gameObject.AddComponent<BoxCollider2D>();
 
         col.isTrigger = true;

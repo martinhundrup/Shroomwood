@@ -28,9 +28,9 @@ public class AutoTile : MonoBehaviour
         int startY = -1 + Mathf.FloorToInt(bounder.position.y - (bounder.localScale.y / 2));
 
         // Draw tiles
-        for (int i = 0; i <= roomWidth * 2; i++) // Multiply by 2 because of tile size 0.5x
+        for (int i = 0; i <= 1 + roomWidth * 2; i++) // Multiply by 2 because of tile size 0.5x
         {
-            for (int j = 0; j <= roomHeight * 2; j++) // Multiply by 2 because of tile size 0.5x
+            for (int j = 0; j <= 1 + roomHeight * 2; j++) // Multiply by 2 because of tile size 0.5x
             {
                 Vector3Int tilePosition = new Vector3Int(startX * 2 + i, startY * 2 + j, 0);
                 tilemap.SetTile(tilePosition, tile);

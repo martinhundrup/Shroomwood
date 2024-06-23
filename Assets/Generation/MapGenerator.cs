@@ -14,12 +14,13 @@ public class MapGenerator : MonoBehaviour
     private int roomHeight;
     [SerializeField] private GameObject roomPrefab;
     private int furthestRoomIndex = -1;
-
+    private int roomBorder;
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
     private List<int> roomTilesList; // Stores indices of all tiles that have been chosen to become rooms
 
     private void Awake()
     {
+        roomBorder = DataDictionary.GameSettings.RoomBorder;
         roomWidth = DataDictionary.GameSettings.RoomWidth;
         roomHeight = DataDictionary.GameSettings.RoomHeight;
         this.roomTiles = new int[mapSize * mapSize];
@@ -156,7 +157,7 @@ public class MapGenerator : MonoBehaviour
             bool left = room - 1 > 0 && roomTiles[room - 1] != 0;
             bool right = room + 1 < roomTiles.Length && roomTiles[room + 1] != 0;
 
-            int numTiles = roomWidth * roomHeight - (roomHeight * 4 + roomWidth * 4);
+            int numTiles = roomWidth * roomHeight - (roomHeight * (roomBorder * 2) + roomWidth * (roomBorder * 2));
 
             x.GetComponent<DungeonGenerator>().
                 Generate(UnityEngine.Random.Range((int)(numTiles * 0.6f), (int)(numTiles * 0.8f)), up, down, left, right);

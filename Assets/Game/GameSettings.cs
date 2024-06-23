@@ -7,6 +7,7 @@ public class GameSettings : ScriptableObject
 {
     [SerializeField] private int roomWidth;
     [SerializeField] private int roomHeight;
+    [SerializeField] private int roomBorder;
 
     #region PROPERTIES
 
@@ -18,6 +19,9 @@ public class GameSettings : ScriptableObject
     {
         get { return roomHeight; }
     }
-
+    public int RoomBorder
+    {
+        get { return roomBorder; }
+    }
     #endregion
 }
