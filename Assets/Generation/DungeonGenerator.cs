@@ -22,9 +22,9 @@ public class DungeonGenerator : MonoBehaviour
     private int borderWidth;
     private CameraBounder cameraBounder;
     [SerializeField] private List<ObstacleGenerator> obstacles;
-    private Dictionary<int, GameObject> obstacleDictionary; // Stores indices of tiles set by obstacles
 
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
+    private int[] obstacleTiles; // Work in a 1D array so each room has a unique single-integer ID
     private List<int> roomTilesList; // Stores indices of all tiles that have been chosen to become rooms
     [SerializeField] private GameObject dungeonExit;
 
@@ -33,12 +33,12 @@ public class DungeonGenerator : MonoBehaviour
         borderWidth = DataDictionary.GameSettings.RoomBorder;
         roomWidth = DataDictionary.GameSettings.RoomSize.x;
         roomHeight = DataDictionary.GameSettings.RoomSize.y;
-        this.topTilemap = GameObject.FindGameObjectWithTag(topTilemapTag).GetComponent<Tilemap>();
-        this.wallTilemap = GameObject.FindGameObjectWithTag(wallTilemapTag).GetComponent<Tilemap>();
-        this.shadowTilemap = GameObject.FindGameObjectWithTag(shadowTilemapTag).GetComponent<Tilemap>();
-        this.roomTiles = new int[roomWidth * roomHeight];
+        topTilemap = GameObject.FindGameObjectWithTag(topTilemapTag).GetComponent<Tilemap>();
+        wallTilemap = GameObject.FindGameObjectWithTag(wallTilemapTag).GetComponent<Tilemap>();
+        shadowTilemap = GameObject.FindGameObjectWithTag(shadowTilemapTag).GetComponent<Tilemap>();
+        roomTiles = new int[roomWidth * roomHeight];
+        obstacleTiles = new int[roomWidth * roomHeight];
         roomTilesList = new List<int>();
-        obstacleDictionary = new Dictionary<int, GameObject>();
 
         //Generate(numberOfTiles, true, true, true, true);
     }
@@ -89,9 +89,8 @@ public class DungeonGenerator : MonoBehaviour
 
         foreach (var obstacle in obstacles)
         {
-            int i = index++ * 10;
-            obstacle.PlaceObstacles(roomTiles, i);
-            obstacleDictionary.Add(i, obstacle.Prefab);
+            int i = index++;
+            obstacle.PlaceObstacles(obstacleTiles, i);
         }
     }
 
@@ -297,16 +296,24 @@ public class DungeonGenerator : MonoBehaviour
 
     private void DrawObstacles()
     {
-        for (int i = 0; i < roomTiles.Length; i++)
+        for (int i = 0; i < obstacleTiles.Length; i++)
         {
-            if (roomTiles[i] != 0)
+            if (obstacleTiles[i] != 0) // don't place out of bounds
             {
-                if (obstacleDictionary.ContainsKey(roomTiles[i]))
-                {
-                    int x = (int)ConvertToWorldPosition(i).x;
-                    int y = (int)ConvertToWorldPosition(i).y;
+                int x = (int)ConvertToWorldPosition(i).x;
+                int y = (int)ConvertToWorldPosition(i).y;
 
-                    var ob = Instantiate(obstacleDictionary[roomTiles[i]], transform);
+                if (roomTiles[i] == 0)
+                {
+                    if (obstacles[obstacleTiles[i] - 1].DecorPrefab != null)
+                    {
+                        var ob = Instantiate(obstacles[obstacleTiles[i] - 1].DecorPrefab, transform);
+                        ob.transform.localPosition = new Vector2(x + 0.5f, y + 1f);
+                    }
+                }
+                else
+                {
+                    var ob = Instantiate(obstacles[obstacleTiles[i] - 1].ObstaclePrefab, transform);
                     ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
                 }
             }

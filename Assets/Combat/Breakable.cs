@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
+    public delegate void DamageTakenEvent();
+    public event DamageTakenEvent OnDamageTaken;
+
     [SerializeField] private string hitboxTag; // immune to hitboxes of the same tag
     [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
 
     protected SpriteRenderer sr;
     private Shader whiteShader;
@@ -28,14 +32,21 @@ public class Breakable : MonoBehaviour
         }
     }
 
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.gameObject.GetComponent<Hitbox>();
 
         if (hitbox != null && hitbox.HitboxTag != hitboxTag)
-        {
+        {            
             Health -= hitbox.Damage;
             StartCoroutine(Blink());
+            if (OnDamageTaken != null)
+                OnDamageTaken();
         }
     }
 

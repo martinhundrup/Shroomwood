@@ -7,6 +7,7 @@ public class GameSettings : ScriptableObject
 {
     [SerializeField] Vector2Int roomSize;
     [SerializeField] private int roomBorder;
+    [SerializeField] private int gameLevel; // the current level the player is on
 
     #region PROPERTIES
 
@@ -17,6 +18,10 @@ public class GameSettings : ScriptableObject
     public int RoomBorder
     {
         get { return roomBorder; }
+    }
+    public int GameLevel
+    {
+        get { return gameLevel; }
     }
     #endregion
 }

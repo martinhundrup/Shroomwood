@@ -8,7 +8,8 @@ public class ObstacleGenerator : ScriptableObject
 {
     [SerializeField] private float threshold;
     [SerializeField] private float scale;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject decorPrefab;
     private int roomWidth;
     private int roomHeight;
     private int index;
@@ -17,10 +18,15 @@ public class ObstacleGenerator : ScriptableObject
     {
         get { return index; }
     }
-    public GameObject Prefab
+    public GameObject ObstaclePrefab
     {
-        get { return prefab; }
+        get { return obstaclePrefab; }
     }
+    public GameObject DecorPrefab
+    {
+        get { return decorPrefab; }
+    }
+
 
     public void PlaceObstacles(int[] roomTiles, int _index)
     {
@@ -37,7 +43,7 @@ public class ObstacleGenerator : ScriptableObject
             for (int x = 0; x < roomWidth; x++)
             {
                 int i = Convert2DTo1DIndex(y, x);
-                if (roomTiles[i] == 1) // if empty tile
+                if (roomTiles[i] == 0) // if empty tile
                 {
                     float perlinValue = Mathf.PerlinNoise((x * scale) + offsetX, (y * scale) + offsetY);
                     if (perlinValue > threshold) // Adjust the threshold as needed

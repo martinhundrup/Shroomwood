@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SceneTesting
     originalName: 
-    pivot: {x: 0.525, y: -0.18181819}
+    pivot: {x: 0.525, y: -0.1005291}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -131,7 +131,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 320
-      height: 176
+      height: 189
     spriteID: 18a542922983cd246b96ef3d0049db9b
     spriteBone: []
     spriteOutline: []
@@ -155,9 +155,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 32
+        y: 19
         width: 320
-        height: 176
+        height: 189
       spriteId: 18a542922983cd246b96ef3d0049db9b
     linkedCells: []
     parentIndex: -1

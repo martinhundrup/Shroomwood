@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.65
   scale: 0.25
-  prefab: {fileID: 6322441848640302149, guid: 97e1db6597dbf6247b244af2df3e658a, type: 3}
+  obstaclePrefab: {fileID: 6322441848640302149, guid: 97e1db6597dbf6247b244af2df3e658a, type: 3}
+  decorPrefab: {fileID: 6322441848640302149, guid: c5ee6991b5eb7a24c9c0c6168bd4b787, type: 3}

@@ -56,4 +56,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 547e66c5f89e6314b85fdd779e6b16b8, type: 2}
   - {fileID: 11400000, guid: d841c21b7406c0b45a87e0deb1ba3aec, type: 2}
   - {fileID: 11400000, guid: 96644174724236b4b9b66f99627a9a58, type: 2}
+  - {fileID: 11400000, guid: eae9baafb6d91374ca1380f0b875712a, type: 2}
   dungeonExit: {fileID: 0}
