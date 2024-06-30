@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7567e77cacd2549a6e2d2d2c1f6b2d, type: 3}
-  m_Name: New Room Template
+  m_Script: {fileID: 11500000, guid: 53b0f2753a1fed04b816cf3ead033692, type: 3}
+  m_Name: Large Tree Generator
   m_EditorClassIdentifier: 
-  roomSize: {x: 21, y: 13}
+  threshold: 0.9
+  scale: 0.5
+  prefab: {fileID: 3264122750435626444, guid: 356c1f05c5cd68b42914438c560e9b17, type: 3}

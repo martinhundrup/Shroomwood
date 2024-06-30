@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall Tilemap
   - Top Tilemap
+  - Shadow Tilemap
   layers:
   - Default
   - TransparentFX

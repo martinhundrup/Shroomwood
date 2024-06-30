@@ -5,19 +5,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameSettings : ScriptableObject
 {
-    [SerializeField] private int roomWidth;
-    [SerializeField] private int roomHeight;
+    [SerializeField] Vector2Int roomSize;
     [SerializeField] private int roomBorder;
 
     #region PROPERTIES
 
-    public int RoomWidth
+    public Vector2Int RoomSize
     {
-        get { return roomWidth; }
-    }
-    public int RoomHeight
-    {
-        get { return roomHeight; }
+        get { return roomSize; }
     }
     public int RoomBorder
     {

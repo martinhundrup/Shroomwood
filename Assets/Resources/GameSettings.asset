@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbceccf9d612764fbd37f8f85945137, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  roomWidth: 21
-  roomHeight: 13
+  roomSize: {x: 21, y: 13}
   roomBorder: 1

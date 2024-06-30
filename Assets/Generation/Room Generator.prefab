@@ -47,7 +47,13 @@ MonoBehaviour:
   numberOfTiles: 90
   topTile: {fileID: 11400000, guid: bce913a73692eff4abfdd3378c90c71f, type: 2}
   wallTile: {fileID: 11400000, guid: 40c532a9ff7f7344e9860fab31b2a2f2, type: 2}
+  shadowTile: {fileID: 11400000, guid: dedbd2b9d88c67b44b03a62f59db769c, type: 2}
   topTilemapTag: Top Tilemap
   wallTilemapTag: Wall Tilemap
-  boarderWidth: 2
+  shadowTilemapTag: Shadow Tilemap
+  obstacles:
+  - {fileID: 11400000, guid: 838c8196e52eb964b8ba2d7793e8b85e, type: 2}
+  - {fileID: 11400000, guid: 547e66c5f89e6314b85fdd779e6b16b8, type: 2}
+  - {fileID: 11400000, guid: d841c21b7406c0b45a87e0deb1ba3aec, type: 2}
+  - {fileID: 11400000, guid: 96644174724236b4b9b66f99627a9a58, type: 2}
   dungeonExit: {fileID: 0}

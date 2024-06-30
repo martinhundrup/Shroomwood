@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,12 +12,17 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private int numberOfTiles = 100;
     private Tilemap topTilemap;
     private Tilemap wallTilemap;
+    private Tilemap shadowTilemap;
     [SerializeField] private RuleTile topTile;
     [SerializeField] private RuleTile wallTile;
+    [SerializeField] private RuleTile shadowTile;
     [SerializeField] private string topTilemapTag;
     [SerializeField] private string wallTilemapTag;
+    [SerializeField] private string shadowTilemapTag;
     private int borderWidth;
     private CameraBounder cameraBounder;
+    [SerializeField] private List<ObstacleGenerator> obstacles;
+    private Dictionary<int, GameObject> obstacleDictionary; // Stores indices of tiles set by obstacles
 
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
     private List<int> roomTilesList; // Stores indices of all tiles that have been chosen to become rooms
@@ -25,12 +31,14 @@ public class DungeonGenerator : MonoBehaviour
     private void Awake()
     {
         borderWidth = DataDictionary.GameSettings.RoomBorder;
-        roomWidth = DataDictionary.GameSettings.RoomWidth;
-        roomHeight = DataDictionary.GameSettings.RoomHeight;
+        roomWidth = DataDictionary.GameSettings.RoomSize.x;
+        roomHeight = DataDictionary.GameSettings.RoomSize.y;
         this.topTilemap = GameObject.FindGameObjectWithTag(topTilemapTag).GetComponent<Tilemap>();
         this.wallTilemap = GameObject.FindGameObjectWithTag(wallTilemapTag).GetComponent<Tilemap>();
+        this.shadowTilemap = GameObject.FindGameObjectWithTag(shadowTilemapTag).GetComponent<Tilemap>();
         this.roomTiles = new int[roomWidth * roomHeight];
         roomTilesList = new List<int>();
+        obstacleDictionary = new Dictionary<int, GameObject>();
 
         //Generate(numberOfTiles, true, true, true, true);
     }
@@ -41,11 +49,16 @@ public class DungeonGenerator : MonoBehaviour
         if (numberOfTiles > (roomWidth - (roomWidth * 2)) * (roomHeight - (roomWidth * 2))) return; // Ensure numberOfTiles is valid
         InitRoomTiles();
 
+        // place any obstacles
+        PlaceObstacles();
+
         SetTopDoorway(up);
         SetRightDoorway(right);
         SetBottomDoorway(down);
         SetLeftDoorway(left);
+
         DrawRoomTiles();
+        DrawObstacles();
 
         cameraBounder = new GameObject().AddComponent<CameraBounder>();
         cameraBounder.transform.parent = this.transform;
@@ -68,6 +81,20 @@ public class DungeonGenerator : MonoBehaviour
             placedTileCount++;
         }
     }
+
+    private void PlaceObstacles()
+    {
+        if (obstacles == null || obstacles.Count == 0) return;
+        int index = 1;
+
+        foreach (var obstacle in obstacles)
+        {
+            int i = index++ * 10;
+            obstacle.PlaceObstacles(roomTiles, i);
+            obstacleDictionary.Add(i, obstacle.Prefab);
+        }
+    }
+
 
     private void SetTopDoorway(bool doorway)
     {
@@ -263,6 +290,25 @@ public class DungeonGenerator : MonoBehaviour
                 Vector3Int tilePosition = new Vector3Int(x, y, 0);
                 topTilemap.SetTile(tilePosition, topTile);
                 wallTilemap.SetTile(tilePosition, wallTile);
+                shadowTilemap.SetTile(tilePosition, shadowTile);
+            }
+        }
+    }
+
+    private void DrawObstacles()
+    {
+        for (int i = 0; i < roomTiles.Length; i++)
+        {
+            if (roomTiles[i] != 0)
+            {
+                if (obstacleDictionary.ContainsKey(roomTiles[i]))
+                {
+                    int x = (int)ConvertToWorldPosition(i).x;
+                    int y = (int)ConvertToWorldPosition(i).y;
+
+                    var ob = Instantiate(obstacleDictionary[roomTiles[i]], transform);
+                    ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
+                }
             }
         }
     }

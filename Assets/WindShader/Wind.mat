@@ -54,8 +54,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _WindSpeed: 0.5
-    - _WindStrength: 1
+    - _WindSpeed: 0.25
+    - _WindStrength: 1.25
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

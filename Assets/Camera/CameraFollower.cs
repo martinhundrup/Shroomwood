@@ -70,10 +70,10 @@ public class CameraFollower : MonoBehaviour
         float width = _bounder.localScale.x;
         float height = _bounder.localScale.y;
 
-        float max_x = x - (21 / 2) + (DataDictionary.GameSettings.RoomWidth) / 2;
-        float min_x = x + (21 / 2) - (DataDictionary.GameSettings.RoomWidth) / 2;
-        float max_y = y - (13 / 2) + (DataDictionary.GameSettings.RoomHeight) / 2;
-        float min_y = y + (13 / 2) - (DataDictionary.GameSettings.RoomHeight) / 2;
+        float max_x = x - (21 / 2) + (DataDictionary.GameSettings.RoomSize.x) / 2;
+        float min_x = x + (21 / 2) - (DataDictionary.GameSettings.RoomSize.x) / 2;
+        float max_y = y - (13 / 2) + (DataDictionary.GameSettings.RoomSize.y) / 2;
+        float min_y = y + (13 / 2) - (DataDictionary.GameSettings.RoomSize.y) / 2;
 
         if (max_x <= min_x)
         {

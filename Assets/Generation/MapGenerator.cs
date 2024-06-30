@@ -21,8 +21,8 @@ public class MapGenerator : MonoBehaviour
     private void Awake()
     {
         roomBorder = DataDictionary.GameSettings.RoomBorder;
-        roomWidth = DataDictionary.GameSettings.RoomWidth;
-        roomHeight = DataDictionary.GameSettings.RoomHeight;
+        roomWidth = DataDictionary.GameSettings.RoomSize.x;
+        roomHeight = DataDictionary.GameSettings.RoomSize.y;
         this.roomTiles = new int[mapSize * mapSize];
         roomTilesList = new List<int>();
 

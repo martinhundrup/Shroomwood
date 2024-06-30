@@ -15,8 +15,8 @@ public class AutoTile : MonoBehaviour
 
     private void Awake()
     {
-        roomWidth = DataDictionary.GameSettings.RoomWidth;
-        roomHeight = DataDictionary.GameSettings.RoomHeight;
+        roomWidth = DataDictionary.GameSettings.RoomSize.x;
+        roomHeight = DataDictionary.GameSettings.RoomSize.y;
         tilemap = GetComponent<Tilemap>();
         GameEvents.OnPlayerEnterRoom += DrawTiles;
     }
