@@ -37,8 +37,8 @@ public class DataDictionary : MonoBehaviour
 
     private void Initialize()
     {
-        playerStats = Resources.Load<PlayerStats>("ShroomieStats");
-        gameSettings = Resources.Load<GameSettings>("GameSettings");
+        playerStats = Resources.Load<PlayerStats>("Player Stats");
+        gameSettings = Resources.Load<GameSettings>("Game Settings");
         if (playerStats == null)
         {
             Debug.LogError("MoveDictionaryData not found in Resources folder.");

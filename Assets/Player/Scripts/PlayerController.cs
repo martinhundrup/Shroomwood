@@ -14,15 +14,21 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection; // the direction of the cursor relative to shroomie
 
     private PlayerStats playerStats;
+    private Blink blink;
+    private bool isInvulnerable;
 
     private void Awake()
     {
         playerStats = DataDictionary.PlayerStats;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        blink = GetComponentInChildren<Blink>();
         animator = GetComponentInChildren<Animator>();
         swingEffect = GetComponentInChildren<SwingEffect>();
         weaponSprite = GetComponentInChildren<WeaponSprite>();
+
+        // for now, heal player on awake
+        playerStats.PlayerHealth = playerStats.PlayerMaxHealth;
     }
 
     // get input for movement
@@ -73,5 +79,32 @@ public class PlayerController : MonoBehaviour
 
         sr.flipX = flipX;
         weaponSprite.SpriteFlipX(flipX);
+    }
+
+
+    // detect collision from enemy bodies
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null && !isInvulnerable)
+        {
+            playerStats.PlayerHealth -= enemy.ContactDamage;
+            StartCoroutine(MakeInvulnerable());
+            if (playerStats.PlayerHealth == 0)
+            {
+                Debug.LogError("Shroomie died!");
+            }
+        }        
+    }
+
+    private IEnumerator MakeInvulnerable()
+    {
+        isInvulnerable = true;
+        blink.StartBlinking();
+
+        yield return new WaitForSeconds(0.4f);
+
+        isInvulnerable = false;
+        blink.StopBlinking();
     }
 }

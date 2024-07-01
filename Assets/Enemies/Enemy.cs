@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Breakable
 {
     protected PlayerController player;
     protected Rigidbody2D rb;
@@ -12,30 +13,36 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] protected float speed;
     [SerializeField] protected bool hasHitstun = false;
+    [SerializeField] protected float contactDamage; // damage dealt to player on contact
     protected bool isInHitstun = false;
-
+    protected bool isInvulnerable = false;
+    protected Breakable breakable;
     protected SpriteRenderer sr;
 
-    protected void Awake()
+    public float ContactDamage
+    {
+        get { return contactDamage; }
+    }
+
+    new protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         player = FindObjectOfType<PlayerController>();
+        breakable = GetComponent<Breakable>();
 
-        
+        base.Awake();
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected override void TakeDamage(Hitbox _hitbox)
     {
-        // check if we collided with a valid hitbox
-        var _hitbox = collision.GetComponent<Hitbox>();
-        if (_hitbox && !CompareTag(_hitbox.HitboxTag))
+        if (!isInHitstun && !isInvulnerable) // extra check for enemies
         {
-            Debug.Log("enemy hit");
             StartCoroutine(HitStun(_hitbox));
+            StartCoroutine(MakeInvulnerable());
+            base.TakeDamage(_hitbox);
         }
     }
-
 
     // Temporarily pauses the enemy when hit.
     protected IEnumerator HitStun(Hitbox _hitbox)
@@ -53,5 +60,17 @@ public abstract class Enemy : MonoBehaviour
 
         this.speed = s;
         this.isInHitstun = false;
+    }
+
+    // makes enemy unable to take more damage when hit
+    protected IEnumerator MakeInvulnerable()
+    {
+        isInvulnerable = true;
+        GetComponent<Blink>().StartBlinking();
+
+        yield return new WaitForSeconds(0.4f);
+
+        GetComponent<Blink>().StopBlinking();
+        isInvulnerable = false;
     }
 }

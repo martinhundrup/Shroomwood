@@ -23,6 +23,5 @@ public class HealthBar : MonoBehaviour
     {
         canvas.enabled = true;
         slider.value = breakable.Health / breakable.MaxHealth;
-        Debug.Log(slider.value);
     }
 }

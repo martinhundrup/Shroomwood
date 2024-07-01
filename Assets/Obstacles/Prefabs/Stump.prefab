@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd06a8ca68202f1409e90ab5a9589722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxTag: Enemy
+  hitboxTag: 
   health: 3
   maxHealth: 3
 --- !u!70 &6490695180786795644
