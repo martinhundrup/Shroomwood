@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable, CreateAssetMenu]
+[Serializable, CreateAssetMenu(menuName ="Generators/Obstacle Generator")]
 public class ObstacleGenerator : ScriptableObject
 {
     [SerializeField] private float threshold;
     [SerializeField] private float scale;
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] protected GameObject obstaclePrefab;
     [SerializeField] private GameObject decorPrefab;
-    private int roomWidth;
-    private int roomHeight;
-    private int index;
+    protected int roomWidth;
+    protected int roomHeight;
+    protected int index;
 
     public int Index
     {
@@ -28,7 +28,7 @@ public class ObstacleGenerator : ScriptableObject
     }
 
 
-    public void PlaceObstacles(int[] roomTiles, int _index)
+    virtual public void PlaceObstacles(int[] obstacleTiles, int _index)
     {
         index = _index;
 
@@ -43,19 +43,19 @@ public class ObstacleGenerator : ScriptableObject
             for (int x = 0; x < roomWidth; x++)
             {
                 int i = Convert2DTo1DIndex(y, x);
-                if (roomTiles[i] == 0) // if empty tile
+                if (obstacleTiles[i] == 0) // if empty tile
                 {
                     float perlinValue = Mathf.PerlinNoise((x * scale) + offsetX, (y * scale) + offsetY);
                     if (perlinValue > threshold) // Adjust the threshold as needed
                     {
-                        roomTiles[i] = index;
+                        obstacleTiles[i] = index;
                     }
                 }
             }
         }
     }
 
-    private int Convert2DTo1DIndex(int row, int column)
+    protected int Convert2DTo1DIndex(int row, int column)
     {
         return row * this.roomWidth + column;
     }

@@ -7,6 +7,7 @@ using static Unity.Collections.AllocatorManager;
 [RequireComponent(typeof(Collider2D))]
 public abstract class Enemy : Breakable
 {
+    [SerializeField] private float cost; // how many difficulty points the enemy is worth
     protected PlayerController player;
     protected Rigidbody2D rb;
     
@@ -22,6 +23,10 @@ public abstract class Enemy : Breakable
     public float ContactDamage
     {
         get { return contactDamage; }
+    }
+    public float Cost
+    {
+        get { return cost; }
     }
 
     new protected void Awake()

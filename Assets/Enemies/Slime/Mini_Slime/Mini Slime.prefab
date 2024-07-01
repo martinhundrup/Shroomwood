@@ -199,6 +199,7 @@ MonoBehaviour:
   hitboxTag: Enemy
   health: 1
   maxHealth: 1
+  cost: 0.5
   speed: 5
   hasHitstun: 1
   contactDamage: 0.5

@@ -22,6 +22,7 @@ public class DungeonGenerator : MonoBehaviour
     private int borderWidth;
     private CameraBounder cameraBounder;
     [SerializeField] private List<ObstacleGenerator> obstacles;
+    [SerializeField] private List<EnemyGenerator> enemies;
 
     private int[] roomTiles; // Work in a 1D array so each room has a unique single-integer ID
     private int[] obstacleTiles; // Work in a 1D array so each room has a unique single-integer ID
@@ -51,6 +52,7 @@ public class DungeonGenerator : MonoBehaviour
 
         // place any obstacles
         PlaceObstacles();
+        PlaceEnemies();
 
         SetTopDoorway(up);
         SetRightDoorway(right);
@@ -94,6 +96,30 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
+    private void PlaceEnemies()
+    {
+        if (enemies == null || enemies.Count == 0) return;
+        int index = 100;
+
+        foreach (var enemy in enemies)
+        {
+            enemy.OnSpawnEnemy += DrawEnemy;
+            int i = index++;
+            enemy.PlaceEnemies(obstacleTiles, roomTiles, i);
+            enemy.OnSpawnEnemy -= DrawEnemy;
+        }
+    }
+
+    private void DrawEnemy(int i, GameObject enemy)
+    {
+        Debug.Log("draw enemy");
+
+        int x = (int)ConvertToWorldPosition(i).x;
+        int y = (int)ConvertToWorldPosition(i).y;
+
+        var ob = Instantiate(enemy, transform);
+        ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
+    }
 
     private void SetTopDoorway(bool doorway)
     {
@@ -105,6 +131,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 roomTiles[index] = 1;
+                obstacleTiles[index] = 0;
                 index += roomWidth;
                 //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 done = roomTiles[index] != 0;
@@ -133,6 +160,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 roomTiles[index] = 1;
+                obstacleTiles[index] = 0;
                 index -= roomWidth;
                 //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 done = roomTiles[index] != 0;
@@ -161,6 +189,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 roomTiles[index] = 1;
+                obstacleTiles[index] = 0;
                 index++;
                 //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 done = roomTiles[index] != 0;
@@ -189,6 +218,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 roomTiles[index] = 1;
+                obstacleTiles[index] = 0;
                 index--;
                 //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
                 done = roomTiles[index] != 0;
